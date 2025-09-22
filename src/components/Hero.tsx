@@ -20,24 +20,24 @@ const Hero = () => {
         <div className="space-y-8">
           {/* Badge */}
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm">
-            <span className="text-sm font-medium text-primary">🚀 Transform Your Business</span>
+            <span className="text-sm font-medium text-primary">🚀 Boost Your Business Results</span>
           </div>
 
           {/* Main Headline */}
           <h1 className="text-5xl md:text-7xl font-bold leading-tight">
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              GPTs for Business
+              Smart Business Solutions
             </span>
             <br />
             <span className="text-foreground">
-              AI That Actually Works
+              That Work 24/7 For You
             </span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Discover specialized AI assistants that transform how your business operates. 
-            From sales automation to customer support, find the perfect GPT for every department.
+            Get instant expert help for marketing campaigns, financial analysis, and winning tenders. 
+            Our AI specialists work around the clock to grow your business.
           </p>
 
           {/* CTA Buttons */}
@@ -46,14 +46,14 @@ const Hero = () => {
               size="lg" 
               className="text-lg px-8 py-4 bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-105"
             >
-              Explore Business GPTs
+              Start Growing Your Business
             </Button>
             <Button 
               variant="outline" 
               size="lg"
               className="text-lg px-8 py-4 border-primary/30 hover:bg-primary/5 transition-smooth"
             >
-              Watch Demo
+              See How It Works
             </Button>
           </div>
 
@@ -61,15 +61,15 @@ const Hero = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 pt-16 border-t border-border/50">
             <div className="text-center">
               <div className="text-3xl font-bold text-primary mb-2">500+</div>
-              <div className="text-muted-foreground">Business GPTs</div>
+              <div className="text-muted-foreground">Business Solutions</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-accent mb-2">10,000+</div>
-              <div className="text-muted-foreground">Companies Served</div>
+              <div className="text-muted-foreground">Happy Businesses</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-primary mb-2">98%</div>
-              <div className="text-muted-foreground">Satisfaction Rate</div>
+              <div className="text-muted-foreground">Success Rate</div>
             </div>
           </div>
         </div>

@@ -12,29 +12,29 @@ import {
 const benefits = [
   {
     icon: Clock,
-    title: "Save 40+ Hours Weekly",
-    description: "Automate repetitive tasks and focus on strategic initiatives that drive growth",
-    metric: "40hrs",
+    title: "Get Work Done Faster",
+    description: "Stop spending hours on tasks your specialist can do in minutes - get your time back",
+    metric: "10x",
     color: "text-primary"
   },
   {
     icon: DollarSign,
-    title: "Reduce Costs by 60%",
-    description: "Lower operational expenses while improving service quality and efficiency",
-    metric: "60%",
+    title: "Save Money",
+    description: "Why hire expensive consultants when you can get expert help for a fraction of the cost?",
+    metric: "90%",
     color: "text-accent"
   },
   {
     icon: TrendingUp,
-    title: "Boost Revenue 3x",
-    description: "Accelerate sales cycles and improve conversion rates with AI-powered insights",
+    title: "Grow Your Business",
+    description: "Professional marketing, better finances, and winning proposals lead to real growth",
     metric: "3x",
     color: "text-primary"
   },
   {
     icon: Users,
-    title: "24/7 Customer Support",
-    description: "Provide instant, personalized support that scales with your business needs",
+    title: "Always Available",
+    description: "Your business experts work 24/7, ready to help whenever you need them",
     metric: "24/7",
     color: "text-accent"
   }
@@ -48,14 +48,14 @@ const Benefits = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
             <Lightbulb className="w-4 h-4 mr-2 text-accent" />
-            <span className="text-sm font-medium text-accent">Proven Results</span>
+            <span className="text-sm font-medium text-accent">Real Results</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Transform Your Business with 
-            <span className="bg-gradient-primary bg-clip-text text-transparent"> AI-Powered Results</span>
+            Why Business Owners 
+            <span className="bg-gradient-primary bg-clip-text text-transparent"> Love Our Experts</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Join thousands of companies that have revolutionized their operations with our specialized business GPTs.
+            Join thousands of smart business owners who get professional help without the professional price tag.
           </p>
         </div>
 
@@ -95,12 +95,12 @@ const Benefits = () => {
         <div className="text-center">
           <div className="inline-flex items-center justify-center p-8 rounded-2xl bg-gradient-primary text-primary-foreground max-w-2xl mx-auto">
             <div className="text-center">
-              <h3 className="text-2xl font-bold mb-4">Ready to Transform Your Business?</h3>
+              <h3 className="text-2xl font-bold mb-4">Ready to Get Expert Help?</h3>
               <p className="text-primary-foreground/90 mb-6">
-                Start your AI transformation today with our specialized business GPTs
+                Start getting professional results for your business today
               </p>
               <div className="inline-flex items-center px-6 py-3 bg-white/20 rounded-lg font-medium cursor-pointer hover:bg-white/30 transition-colors">
-                Get Started Now
+                Talk to Your Expert
                 <ArrowRight className="w-5 h-5 ml-2" />
               </div>
             </div>
