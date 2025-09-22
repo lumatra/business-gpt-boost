@@ -23,23 +23,23 @@ const aiServices = [
   {
     id: "marketing",
     icon: TrendingUp,
-    title: "Marketing Content Creator",
-    description: "Generate social media posts, ad copy, email campaigns, and brand messaging that converts.",
-    examples: ["Social Media Posts", "Google Ads Copy", "Email Campaigns", "Product Descriptions"],
+    title: "Your Marketing Assistant",
+    description: "Creates marketing content specifically for your business, industry, and target customers.",
+    examples: ["Industry-Specific Content", "Your Brand Voice", "Target Audience Focus", "Competitor Insights"],
     demo: {
-      placeholder: "Describe your business or product...",
-      template: "social media post"
+      placeholder: "Tell me about your business, industry, and target customers...",
+      template: "personalized marketing"
     }
   },
   {
     id: "finance",
     icon: Calculator,
-    title: "Financial Analyst",
-    description: "Create financial reports, budget plans, cash flow forecasts, and investment advice.",
-    examples: ["Budget Analysis", "Financial Reports", "Cost Reduction Plans", "Investment Strategies"],
+    title: "Your Financial Advisor",
+    description: "Provides financial advice tailored to your specific business model, revenue, and growth stage.",
+    examples: ["Your Business Model", "Revenue Analysis", "Custom Budget Plans", "Growth Forecasts"],
     demo: {
-      placeholder: "Tell me about your business finances...",
-      template: "financial analysis"
+      placeholder: "Describe your business type, revenue, main costs, and financial goals...",
+      template: "personalized finance"
     }
   },
   {
@@ -123,34 +123,58 @@ const aiServices = [
 
 const generateSampleContent = (input: string, type: string) => {
   const templates = {
-    "social media post": `🚀 ${input.slice(0, 50)}...
+    "personalized marketing": `🎯 PERSONALIZED MARKETING STRATEGY
 
-Transform your business with AI-powered solutions that work 24/7!
+Based on your business: "${input.slice(0, 100)}..."
 
-✅ Boost productivity by 300%
-✅ Save 20+ hours per week
-✅ Increase revenue growth
+TAILORED CONTENT STRATEGY:
+• Industry-specific messaging that resonates with your exact audience
+• Content pillars designed around your unique value proposition
+• Competitor analysis showing gaps you can fill
+• Brand voice that reflects your company culture
 
-Ready to scale up? Let's talk! 💼
+CUSTOM CAMPAIGN IDEAS:
+📱 Social Media: 3 platform-specific strategies for your target demographic
+📧 Email Series: 5-part sequence addressing your customers' specific pain points  
+🎯 Ad Copy: Headlines and descriptions optimized for your industry keywords
+📝 Blog Topics: 10 ideas that establish you as the expert in your niche
 
-#BusinessGrowth #AIpowered #Productivity #Success`,
+PERSONALIZED METRICS:
+• Track engagement rates specific to your industry benchmarks
+• Monitor conversion rates for your typical customer journey
+• Measure brand awareness within your local/niche market
 
-    "financial analysis": `📊 FINANCIAL ANALYSIS SUMMARY
+💡 This isn't generic advice - it's built specifically for YOUR business model and goals.`,
 
-Based on your business information: "${input.slice(0, 100)}..."
+    "personalized finance": `💰 PERSONALIZED FINANCIAL STRATEGY
 
-KEY RECOMMENDATIONS:
-• Cash Flow: Optimize payment terms to improve monthly cash flow by 15-25%
-• Cost Reduction: Identify 3-5 areas for operational savings
-• Revenue Growth: Implement automated systems to increase efficiency
-• Budget Allocation: Reallocate 10% of marketing budget to high-ROI channels
+Your Business Profile: "${input.slice(0, 100)}..."
 
-NEXT STEPS:
-1. Review monthly expenses for optimization opportunities
-2. Set up automated invoicing to speed up payments
-3. Analyze customer acquisition costs vs lifetime value
+CUSTOM FINANCIAL ANALYSIS:
+• Revenue Model: Analyzed your specific income streams and seasonality patterns
+• Cost Structure: Identified optimization opportunities unique to your business type
+• Cash Flow: Tailored strategies based on your payment cycles and customer behavior
+• Growth Funding: Options that match your business stage and risk tolerance
 
-💡 Estimated savings: $5,000-$15,000 per quarter`,
+PERSONALIZED RECOMMENDATIONS:
+💡 For YOUR Business Type:
+- Pricing strategy adjustments based on your market position
+- Cost reduction areas specific to your industry
+- Revenue diversification opportunities in your sector
+- Tax optimization strategies for your business structure
+
+💡 Custom Budget Allocation:
+- Marketing: % based on your customer acquisition patterns
+- Operations: Optimized for your specific workflow needs  
+- Growth: Investment priorities aligned with your 12-month goals
+- Emergency Fund: Size recommendations based on your cash flow patterns
+
+🎯 PROJECTED IMPACT (Next 12 Months):
+• Revenue increase: 25-35% through personalized pricing and upsell strategies
+• Cost savings: 15-20% via industry-specific optimization
+• Cash flow improvement: 30-40% better predictability
+
+This analysis is built specifically around YOUR business model, not generic advice.`,
 
     "proposal outline": `📋 PROPOSAL OUTLINE
 
@@ -361,13 +385,13 @@ const AIShowcase = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
             <Zap className="w-4 h-4 mr-2 text-accent" />
-            <span className="text-sm font-medium text-accent">AI-Powered Business Solutions</span>
+            <span className="text-sm font-medium text-accent">Personalized AI Assistant</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            See Our <span className="bg-gradient-primary bg-clip-text text-transparent">AI Experts</span> In Action
+            See How <span className="bg-gradient-primary bg-clip-text text-transparent">Personal AI</span> Works
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Try our business AI specialists right now. Enter your business challenge and watch how our AI creates professional solutions instantly.
+            Tell our AI about your business and watch it provide tailored, company-specific advice and solutions instantly.
           </p>
         </div>
 
@@ -514,10 +538,10 @@ const AIShowcase = () => {
         <div className="text-center">
           <div className="inline-flex items-center px-6 py-3 rounded-full bg-gradient-primary text-primary-foreground font-medium hover:shadow-glow transition-all duration-300 cursor-pointer">
             <Zap className="w-5 h-5 mr-2" />
-            Get Access to All 9 AI Business Experts
+            Get Your Personal Business AI Assistant
           </div>
           <p className="text-sm text-muted-foreground mt-4">
-            Each AI specialist works 24/7 to grow your business • No setup required • Instant results
+            AI that learns YOUR business • Personalized advice 24/7 • Setup in under 5 minutes
           </p>
         </div>
       </div>

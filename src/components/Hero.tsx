@@ -26,18 +26,18 @@ const Hero = () => {
           {/* Main Headline */}
           <h1 className="text-5xl md:text-7xl font-bold leading-tight">
             <span className="bg-gradient-primary bg-clip-text text-transparent">
-              Smart Business Solutions
+              Your Personal Business AI
             </span>
             <br />
             <span className="text-foreground">
-              That Work 24/7 For You
+              That Knows Your Company
             </span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Get instant expert help for marketing campaigns, financial analysis, and winning tenders. 
-            Our AI specialists work around the clock to grow your business.
+            Get instant, personalized answers and expert help tailored to your specific business. 
+            Our AI learns your company, industry, and challenges to provide custom solutions 24/7.
           </p>
 
           {/* CTA Buttons */}
@@ -46,30 +46,30 @@ const Hero = () => {
               size="lg" 
               className="text-lg px-8 py-4 bg-gradient-primary hover:shadow-glow transition-all duration-300 transform hover:scale-105"
             >
-              Start Growing Your Business
+              Get My Personal AI Assistant
             </Button>
             <Button 
               variant="outline" 
               size="lg"
               className="text-lg px-8 py-4 border-primary/30 hover:bg-primary/5 transition-smooth"
             >
-              See How It Works
+              See Personalized Examples
             </Button>
           </div>
 
           {/* Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 pt-16 border-t border-border/50">
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">500+</div>
-              <div className="text-muted-foreground">Business Solutions</div>
+              <div className="text-3xl font-bold text-primary mb-2">24/7</div>
+              <div className="text-muted-foreground">Personalized Support</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-accent mb-2">10,000+</div>
-              <div className="text-muted-foreground">Happy Businesses</div>
+              <div className="text-muted-foreground">Companies Helped</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">98%</div>
-              <div className="text-muted-foreground">Success Rate</div>
+              <div className="text-3xl font-bold text-primary mb-2">&lt;5min</div>
+              <div className="text-muted-foreground">Setup Time</div>
             </div>
           </div>
         </div>
