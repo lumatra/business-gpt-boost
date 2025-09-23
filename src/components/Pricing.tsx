@@ -79,7 +79,7 @@ const Pricing = () => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div id="pricing-packages" className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {pricingPlans.map((plan, index) => (
             <Card 
               key={index}
@@ -129,11 +129,25 @@ const Pricing = () => {
         {/* Individual Services */}
         <div className="mt-20">
           <div className="text-center mb-12">
+            <div className="bg-accent/10 border border-accent/20 rounded-xl p-6 mb-8 max-w-2xl mx-auto">
+              <p className="text-accent font-medium mb-2">💰 Want Better Value?</p>
+              <p className="text-muted-foreground text-sm">
+                Save up to 60% with our bundled packages above! Get multiple AI assistants for less than individual pricing.
+              </p>
+              <Button 
+                variant="outline" 
+                size="sm" 
+                className="mt-3"
+                onClick={() => document.getElementById('pricing-packages')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                View Package Deals
+              </Button>
+            </div>
             <h3 className="text-3xl font-bold mb-4">
               Or Choose <span className="bg-gradient-primary bg-clip-text text-transparent">Individual Services</span>
             </h3>
             <p className="text-muted-foreground">
-              Need just one AI assistant? Pick exactly what your business needs.
+              Need just one AI assistant? All individual services just £19.99/month.
             </p>
           </div>
 
@@ -142,7 +156,7 @@ const Pricing = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   Social Media AI
-                  <Badge variant="secondary">£39/mo</Badge>
+                  <Badge variant="secondary">£19.99/mo</Badge>
                 </CardTitle>
                 <CardDescription>Complete social media automation</CardDescription>
               </CardHeader>
@@ -152,7 +166,7 @@ const Pricing = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   Financial AI
-                  <Badge variant="secondary">£49/mo</Badge>
+                  <Badge variant="secondary">£19.99/mo</Badge>
                 </CardTitle>
                 <CardDescription>Smart financial planning & analysis</CardDescription>
               </CardHeader>
@@ -162,7 +176,7 @@ const Pricing = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   Marketing AI
-                  <Badge variant="secondary">£49/mo</Badge>
+                  <Badge variant="secondary">£19.99/mo</Badge>
                 </CardTitle>
                 <CardDescription>Complete marketing automation</CardDescription>
               </CardHeader>
@@ -172,7 +186,7 @@ const Pricing = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   Tender & Sales AI
-                  <Badge variant="secondary">£59/mo</Badge>
+                  <Badge variant="secondary">£19.99/mo</Badge>
                 </CardTitle>
                 <CardDescription>Win more contracts & deals</CardDescription>
               </CardHeader>
@@ -182,7 +196,7 @@ const Pricing = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   Customer Service AI
-                  <Badge variant="secondary">£45/mo</Badge>
+                  <Badge variant="secondary">£19.99/mo</Badge>
                 </CardTitle>
                 <CardDescription>24/7 customer support automation</CardDescription>
               </CardHeader>
@@ -192,9 +206,12 @@ const Pricing = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   Custom AI Solutions
-                  <Badge variant="secondary">From £79/mo</Badge>
+                  <div className="text-right">
+                    <Badge variant="secondary" className="text-xs">£99 setup</Badge>
+                    <div className="text-xs text-muted-foreground mt-1">+ £19/month</div>
+                  </div>
                 </CardTitle>
-                <CardDescription>Tailored for your unique needs</CardDescription>
+                <CardDescription>Tailored for your unique business needs</CardDescription>
               </CardHeader>
             </Card>
           </div>
