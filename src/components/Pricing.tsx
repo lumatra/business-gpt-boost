@@ -224,7 +224,7 @@ const Pricing = () => {
               Ready to Transform Your Business with AI?
             </h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Join over 10,000 businesses already using personalized AI to save time, increase revenue, and stay competitive.
+              Get personalized AI solutions designed specifically for your business needs, with expert training and ongoing support.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-gradient-primary hover:shadow-glow transition-all duration-300">

@@ -60,15 +60,15 @@ const Hero = () => {
             </Button>
           </div>
 
-          {/* Stats */}
+          {/* Features highlight instead of misleading stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 pt-16 border-t border-border/50">
             <div className="text-center">
               <div className="text-3xl font-bold text-primary mb-2">24/7</div>
-              <div className="text-muted-foreground">Personalized Support</div>
+              <div className="text-muted-foreground">AI Availability</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-accent mb-2">10,000+</div>
-              <div className="text-muted-foreground">Companies Helped</div>
+              <div className="text-3xl font-bold text-accent mb-2">Expert</div>
+              <div className="text-muted-foreground">Industry Knowledge</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-primary mb-2">&lt;5min</div>

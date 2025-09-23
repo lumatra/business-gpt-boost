@@ -102,7 +102,7 @@ const Categories = () => {
             </p>
             <div className="flex items-center justify-center gap-6 text-sm">
               <div className="bg-primary/10 text-primary px-4 py-2 rounded-full font-medium">
-                Over 10,000 businesses trust our AI
+                Expert AI specialists ready to help
               </div>
               <div className="bg-accent/10 text-accent px-4 py-2 rounded-full font-medium">
                 Setup in under 5 minutes
