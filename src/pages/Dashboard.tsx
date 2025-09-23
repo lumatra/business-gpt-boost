@@ -15,6 +15,8 @@ const Dashboard = () => {
   const [company, setCompany] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [selectedAssistant, setSelectedAssistant] = useState<'overview' | 'social' | 'hr' | 'marketing'>('overview');
+  const [aiAssistantData, setAiAssistantData] = useState<any>(null);
+  const [aiAssistantFiles, setAiAssistantFiles] = useState<any[]>([]);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -62,6 +64,37 @@ const Dashboard = () => {
       console.error('Error loading user data:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const loadAIAssistantData = async (companyId: string) => {
+    try {
+      // Load AI assistant data
+      const { data: assistantData, error: assistantError } = await supabase
+        .from('ai_assistant_data')
+        .select('*')
+        .eq('company_id', companyId)
+        .maybeSingle();
+
+      if (assistantError) {
+        console.error('Error loading AI assistant data:', assistantError);
+      } else if (assistantData) {
+        setAiAssistantData(assistantData);
+
+        // Load associated files
+        const { data: filesData, error: filesError } = await supabase
+          .from('ai_assistant_files')
+          .select('*')
+          .eq('assistant_data_id', assistantData.id);
+
+        if (filesError) {
+          console.error('Error loading AI assistant files:', filesError);
+        } else {
+          setAiAssistantFiles(filesData || []);
+        }
+      }
+    } catch (error) {
+      console.error('Error loading AI assistant data:', error);
     }
   };
 
@@ -376,6 +409,79 @@ const Dashboard = () => {
                         </Button>
                       </CardContent>
                     </Card>
+
+                    {/* AI Assistant Data Section */}
+                    {aiAssistantData && (
+                      <Card>
+                        <CardHeader>
+                          <CardTitle>AI Assistant Training Data</CardTitle>
+                          <CardDescription>
+                            Uploaded company information and files
+                          </CardDescription>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                          <div className="space-y-3">
+                            <div>
+                              <h4 className="font-medium text-sm">Assistant Type</h4>
+                              <p className="text-sm text-muted-foreground">{aiAssistantData.assistant_type}</p>
+                            </div>
+                            
+                            {aiAssistantData.website_url && (
+                              <div>
+                                <h4 className="font-medium text-sm">Website</h4>
+                                <a 
+                                  href={aiAssistantData.website_url} 
+                                  target="_blank" 
+                                  rel="noopener noreferrer"
+                                  className="text-sm text-primary hover:underline"
+                                >
+                                  {aiAssistantData.website_url}
+                                </a>
+                              </div>
+                            )}
+
+                            {aiAssistantData.business_info && (
+                              <div>
+                                <h4 className="font-medium text-sm">Business Information</h4>
+                                <p className="text-sm text-muted-foreground line-clamp-3">
+                                  {aiAssistantData.business_info}
+                                </p>
+                              </div>
+                            )}
+
+                            {aiAssistantFiles.length > 0 && (
+                              <div>
+                                <h4 className="font-medium text-sm mb-2">Uploaded Files ({aiAssistantFiles.length})</h4>
+                                <div className="space-y-2">
+                                  {aiAssistantFiles.map((file, index) => (
+                                    <div key={file.id || index} className="flex items-center justify-between p-2 bg-secondary/50 rounded text-sm">
+                                      <div className="flex items-center gap-2">
+                                        {file.is_image ? (
+                                          <div className="w-6 h-6 bg-green-100 rounded flex items-center justify-center">
+                                            <span className="text-xs text-green-600">IMG</span>
+                                          </div>
+                                        ) : (
+                                          <div className="w-6 h-6 bg-blue-100 rounded flex items-center justify-center">
+                                            <span className="text-xs text-blue-600">DOC</span>
+                                          </div>
+                                        )}
+                                        <span className="font-medium">{file.file_name}</span>
+                                      </div>
+                                      <span className="text-muted-foreground">
+                                        {(file.file_size / 1024).toFixed(1)}KB
+                                      </span>
+                                    </div>
+                                  ))}
+                                </div>
+                                <div className="pt-2 border-t text-xs text-muted-foreground">
+                                  Total size: {((aiAssistantData.total_file_size || 0) / 1024 / 1024).toFixed(2)}MB
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    )}
                   </div>
                 </div>
               </>
