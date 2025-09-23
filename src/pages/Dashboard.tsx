@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
-import { Loader2, LogOut, MessageSquare, Settings, Users, BarChart3, Calendar, Heart, Share2, Hash, TrendingUp, Clock } from 'lucide-react';
+import { Loader2, LogOut, MessageSquare, Settings, Users, BarChart3, Calendar, Heart, Share2, Hash, TrendingUp, Clock, Plus } from 'lucide-react';
 import type { User } from '@supabase/supabase-js';
 
 const Dashboard = () => {
@@ -173,6 +173,19 @@ const Dashboard = () => {
               >
                 <TrendingUp className="h-4 w-4" />
                 Marketing
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => {
+                  toast({
+                    title: "Add New Assistant",
+                    description: "Feature coming soon! You'll be able to add custom AI assistants.",
+                  });
+                }}
+                className="flex items-center gap-2 ml-2 border-dashed"
+              >
+                <Plus className="h-4 w-4" />
+                Add Assistant
               </Button>
             </div>
 
