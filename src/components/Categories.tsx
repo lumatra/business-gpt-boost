@@ -126,9 +126,17 @@ const Categories = () => {
               <h3 className="text-2xl font-bold mb-3">
                 💰 Save More with <span className="bg-gradient-primary bg-clip-text text-transparent">Bundled Packages</span>
               </h3>
-              <p className="text-muted-foreground">
-                Choose individual AI specialists or save with our bundled packages for comprehensive AI support.
+              <p className="text-muted-foreground mb-3">
+                Choose individual AI specialists or save significantly with our bundled packages for comprehensive AI support.
               </p>
+              <div className="flex items-center justify-center gap-4 text-sm">
+                <div className="bg-green-100 text-green-800 px-3 py-1 rounded-full font-medium">
+                  🎯 Over 10,000 businesses trust our AI
+                </div>
+                <div className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full font-medium">
+                  ⚡ Setup in under 5 minutes
+                </div>
+              </div>
             </div>
           </div>
 
@@ -144,17 +152,17 @@ const Categories = () => {
                   <span className="text-4xl font-bold">£19.99</span>
                   <span className="text-muted-foreground">/month</span>
                 </div>
-                <p className="text-muted-foreground">Pick exactly what you need</p>
+                <p className="text-muted-foreground">Pick 1 from 6 specialists</p>
               </div>
               
               <ul className="space-y-3 mb-8">
                 <li className="flex items-center gap-3">
                   <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-sm">Choose Any 1 AI Assistant</span>
+                  <span className="text-sm">1 AI Specialist of Your Choice</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-sm">6 Specialists Available</span>
+                  <span className="text-sm">6 Different Specialists Available</span>
                 </li>
                 <li className="flex items-center gap-3">
                   <Check className="w-5 h-5 text-primary flex-shrink-0" />
@@ -167,7 +175,7 @@ const Categories = () => {
               </ul>
               
               <Button className="w-full" variant="outline">
-                <span className="mr-2">View Options</span>
+                <span className="mr-2">View All Specialists</span>
                 <ChevronDown className={`w-4 h-4 transition-transform ${showIndividual ? "rotate-180" : ""}`} />
               </Button>
             </div>
@@ -175,9 +183,12 @@ const Categories = () => {
             <div className="relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-card">
               <div className="text-center mb-6">
                 <h4 className="text-2xl font-bold mb-2">Starter</h4>
-                <div className="mb-4">
+                <div className="mb-2">
                   <span className="text-4xl font-bold">£29</span>
                   <span className="text-muted-foreground">/month</span>
+                </div>
+                <div className="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded-full mb-3">
+                  Save £10.98/month vs individual
                 </div>
                 <p className="text-muted-foreground">Perfect for solo entrepreneurs getting started with AI</p>
               </div>
@@ -207,18 +218,21 @@ const Categories = () => {
             </div>
 
             {/* Pro Package */}
-            <div className="relative bg-card/50 backdrop-blur-sm border-primary shadow-glow scale-105 rounded-2xl p-6 transition-all duration-300 hover:shadow-card">
+            <div className="relative bg-card/50 backdrop-blur-sm border-2 border-primary shadow-lg shadow-primary/20 scale-105 rounded-2xl p-6 transition-all duration-300 hover:shadow-card">
               <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                <Badge className="bg-gradient-primary text-primary-foreground px-4 py-1">
-                  Most Popular
+                <Badge className="bg-gradient-primary text-primary-foreground px-4 py-1 text-sm font-semibold">
+                  🔥 Most Popular
                 </Badge>
               </div>
               
               <div className="text-center mb-6">
                 <h4 className="text-2xl font-bold mb-2">Pro</h4>
-                <div className="mb-4">
+                <div className="mb-2">
                   <span className="text-4xl font-bold">£49</span>
                   <span className="text-muted-foreground">/month</span>
+                </div>
+                <div className="bg-gradient-to-r from-green-400 to-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-full mb-3">
+                  Save £30.96/month vs individual
                 </div>
                 <p className="text-muted-foreground">Ideal for growing businesses with small teams</p>
               </div>
@@ -246,9 +260,9 @@ const Categories = () => {
                 </li>
               </ul>
               
-              <Button className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300">
-                <Zap className="w-4 h-4 mr-2" />
-                Start Free Trial
+              <Button className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg font-semibold py-3">
+                <Zap className="w-5 h-5 mr-2" />
+                Start Free Trial Now
               </Button>
             </div>
 
@@ -256,9 +270,12 @@ const Categories = () => {
             <div className="relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-card">
               <div className="text-center mb-6">
                 <h4 className="text-2xl font-bold mb-2">Enterprise</h4>
-                <div className="mb-4">
+                <div className="mb-2">
                   <span className="text-4xl font-bold">£119</span>
                   <span className="text-muted-foreground">/month</span>
+                </div>
+                <div className="bg-purple-100 text-purple-800 text-xs font-medium px-2 py-1 rounded-full mb-3">
+                  Save £20.94/month vs individual
                 </div>
                 <p className="text-muted-foreground">Complete AI solution for established businesses</p>
               </div>
