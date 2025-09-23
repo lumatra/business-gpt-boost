@@ -88,9 +88,14 @@ const Categories = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="bg-gradient-primary bg-clip-text text-transparent">Expert Specialists</span> at the Touch of a Button
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-4">
             Why hire multiple expensive consultants when you can have an entire team of AI specialists ready to help your business 24/7? Each AI is trained specifically for your industry and challenges.
           </p>
+          <div className="bg-accent/10 border border-accent/20 rounded-xl p-4 max-w-2xl mx-auto mb-8">
+            <p className="text-accent font-medium text-sm">
+              💡 Choose individual AI specialists below at £19.99/month each, or save significantly with our bundled packages that combine multiple specialists at discounted rates.
+            </p>
+          </div>
           <div className="flex items-center justify-center gap-8 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-primary"></div>
