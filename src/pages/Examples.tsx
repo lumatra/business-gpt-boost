@@ -237,7 +237,7 @@ const Examples = () => {
                           <div className="space-y-3">
                             <div className="text-sm font-medium">{example.demo.aiResponse.analysis}</div>
                             <div className="grid gap-2">
-                              {example.demo.aiResponse.recommendations.map((rec, i) => (
+                              {(example.demo.aiResponse.recommendations || []).map((rec, i) => (
                                 <div key={i} className="flex items-start gap-2 text-sm">
                                   <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0"></div>
                                   <span>{rec}</span>
@@ -276,7 +276,7 @@ const Examples = () => {
                             <div>
                               <div className="font-medium text-xs mb-2">Channels:</div>
                               <div className="grid gap-1">
-                                {example.demo.aiResponse.channels.map((channel, i) => (
+                                {(example.demo.aiResponse.channels || []).map((channel, i) => (
                                   <div key={i} className="text-sm flex items-center gap-2">
                                     <div className="w-1 h-1 rounded-full bg-accent"></div>
                                     {channel}
@@ -287,7 +287,7 @@ const Examples = () => {
                             <div>
                               <div className="font-medium text-xs mb-2">Special Offers:</div>
                               <div className="grid gap-1">
-                                {example.demo.aiResponse.offers.map((offer, i) => (
+                                {(example.demo.aiResponse.offers || []).map((offer, i) => (
                                   <div key={i} className="text-sm bg-accent/10 rounded p-2">
                                     {offer}
                                   </div>
@@ -331,7 +331,7 @@ const Examples = () => {
                             <div>
                               <div className="font-medium text-xs mb-2">Morning Routine:</div>
                               <div className="space-y-1">
-                                {example.demo.aiResponse.morning.map((item, i) => (
+                                {(example.demo.aiResponse.morning || []).map((item, i) => (
                                   <div key={i} className="text-sm">{item}</div>
                                 ))}
                               </div>
@@ -340,7 +340,7 @@ const Examples = () => {
                             <div>
                               <div className="font-medium text-xs mb-2">Throughout Day:</div>
                               <div className="space-y-1">
-                                {example.demo.aiResponse.throughout.map((item, i) => (
+                                {(example.demo.aiResponse.throughout || []).map((item, i) => (
                                   <div key={i} className="text-sm">{item}</div>
                                 ))}
                               </div>
@@ -349,7 +349,7 @@ const Examples = () => {
                             <div>
                               <div className="font-medium text-xs mb-2">End of Day:</div>
                               <div className="space-y-1">
-                                {example.demo.aiResponse.closing.map((item, i) => (
+                                {(example.demo.aiResponse.closing || []).map((item, i) => (
                                   <div key={i} className="text-sm">{item}</div>
                                 ))}
                               </div>
