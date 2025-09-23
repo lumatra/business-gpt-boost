@@ -1,11 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Brain, Menu, X, LogIn } from 'lucide-react';
 import { useState } from 'react';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const goToSection = (id: string) => {
+    const scroll = () => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(scroll, 50);
+    } else {
+      scroll();
+    }
+    setIsMenuOpen(false);
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
@@ -22,10 +37,24 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <div className="flex items-center space-x-6">
-              <Link to="/#categories" className="text-muted-foreground hover:text-foreground transition-colors">
+              <Link
+                to="/#categories"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goToSection('categories');
+                }}
+              >
                 Categories
               </Link>
-              <Link to="/#benefits" className="text-muted-foreground hover:text-foreground transition-colors">
+              <Link
+                to="/#benefits"
+                className="text-muted-foreground hover:text-foreground transition-colors"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goToSection('benefits');
+                }}
+              >
                 Benefits
               </Link>
               <Link to="/examples" className="text-muted-foreground hover:text-foreground transition-colors">
@@ -65,10 +94,24 @@ const Navigation = () => {
         {isMenuOpen && (
           <div className="md:hidden mt-4 pt-4 border-t border-border/50">
             <div className="flex flex-col space-y-4">
-              <Link to="/#categories" className="text-muted-foreground hover:text-foreground transition-colors py-2">
+              <Link
+                to="/#categories"
+                className="text-muted-foreground hover:text-foreground transition-colors py-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goToSection('categories');
+                }}
+              >
                 Categories
               </Link>
-              <Link to="/#benefits" className="text-muted-foreground hover:text-foreground transition-colors py-2">
+              <Link
+                to="/#benefits"
+                className="text-muted-foreground hover:text-foreground transition-colors py-2"
+                onClick={(e) => {
+                  e.preventDefault();
+                  goToSection('benefits');
+                }}
+              >
                 Benefits
               </Link>
               <Link to="/examples" className="text-muted-foreground hover:text-foreground transition-colors py-2">

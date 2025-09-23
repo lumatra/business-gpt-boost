@@ -146,7 +146,13 @@ const Categories = () => {
                 </li>
               </ul>
               
-              <Link to="/#categories">
+              <Link
+                to="/#categories"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('categories')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+              >
                 <Button className="w-full" variant="outline">
                   <span className="mr-2">View All Specialists</span>
                   <ChevronDown className="w-4 h-4" />
