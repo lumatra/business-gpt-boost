@@ -54,7 +54,7 @@ const Categories = () => {
         {/* Package Plans */}
         <div className="mb-16">
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Individual Services Package */}
             <div className="relative bg-card border border-border rounded-2xl p-6 transition-all duration-300 hover:shadow-card">
               <div className="text-center mb-6">
@@ -178,48 +178,33 @@ const Categories = () => {
               </Button>
             </div>
 
-            {/* Enterprise Package */}
-            <div className="relative bg-card border border-border rounded-2xl p-6 transition-all duration-300 hover:shadow-card">
-              <div className="text-center mb-6">
-                <h4 className="text-2xl font-bold mb-2 text-foreground">Enterprise</h4>
-                <div className="mb-2">
-                  <span className="text-4xl font-bold text-foreground">£119</span>
-                  <span className="text-muted-foreground">/month</span>
-                </div>
-                <div className="bg-accent/10 text-accent text-xs font-medium px-3 py-1 rounded-full mb-3">
-                  Save £20.94/month
-                </div>
-                <p className="text-muted-foreground">Complete AI solution</p>
-              </div>
-              
-              <ul className="space-y-4 mb-8">
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">All 6 AI assistants included</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">2 custom AI solutions</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">Up to 10 users</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">Dedicated account manager</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-sm text-foreground">Custom integrations</span>
-                </li>
-              </ul>
-              
-              <Button className="w-full" variant="outline">
-                Contact Sales
-              </Button>
             </div>
 
+            {/* Enterprise Package - Full Width Below */}
+            <div className="mt-12 max-w-4xl mx-auto">
+              <div className="relative bg-card border border-border rounded-2xl p-8 text-center">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                  <div className="flex-1">
+                    <h4 className="text-3xl font-bold mb-2 text-foreground">Enterprise</h4>
+                    <p className="text-muted-foreground mb-4">Complete AI solution for established businesses</p>
+                    <div className="flex flex-wrap justify-center gap-4 text-sm">
+                      <span className="bg-primary/10 text-primary px-3 py-1 rounded-full">All 6 AI assistants</span>
+                      <span className="bg-accent/10 text-accent px-3 py-1 rounded-full">Custom solutions</span>
+                      <span className="bg-primary/10 text-primary px-3 py-1 rounded-full">Up to 10 users</span>
+                      <span className="bg-accent/10 text-accent px-3 py-1 rounded-full">Dedicated support</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center gap-4">
+                    <div>
+                      <span className="text-4xl font-bold text-foreground">£119</span>
+                      <span className="text-muted-foreground">/month</span>
+                    </div>
+                    <Button size="lg" variant="outline" className="px-8">
+                      Contact Sales
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </div>
         </div>
       </div>
