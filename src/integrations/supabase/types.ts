@@ -92,6 +92,132 @@ export type Database = {
         }
         Relationships: []
       }
+      onboarding_data: {
+        Row: {
+          created_at: string
+          data_content: Json
+          data_type: string
+          id: string
+          session_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          data_content: Json
+          data_type: string
+          id?: string
+          session_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          data_content?: Json
+          data_type?: string
+          id?: string
+          session_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "onboarding_data_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "onboarding_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      onboarding_files: {
+        Row: {
+          created_at: string
+          description: string | null
+          file_name: string
+          file_path: string
+          file_size: number
+          file_type: string
+          id: string
+          session_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          file_name: string
+          file_path: string
+          file_size: number
+          file_type: string
+          id?: string
+          session_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          file_name?: string
+          file_path?: string
+          file_size?: number
+          file_type?: string
+          id?: string
+          session_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "onboarding_files_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "onboarding_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      onboarding_sessions: {
+        Row: {
+          access_token: string
+          client_email: string
+          client_name: string
+          company_id: string | null
+          completed_at: string | null
+          created_at: string
+          created_by: string | null
+          expires_at: string
+          id: string
+          status: string
+          steps_completed: Json | null
+          updated_at: string
+        }
+        Insert: {
+          access_token: string
+          client_email: string
+          client_name: string
+          company_id?: string | null
+          completed_at?: string | null
+          created_at?: string
+          created_by?: string | null
+          expires_at: string
+          id?: string
+          status?: string
+          steps_completed?: Json | null
+          updated_at?: string
+        }
+        Update: {
+          access_token?: string
+          client_email?: string
+          client_name?: string
+          company_id?: string | null
+          completed_at?: string | null
+          created_at?: string
+          created_by?: string | null
+          expires_at?: string
+          id?: string
+          status?: string
+          steps_completed?: Json | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "onboarding_sessions_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       profiles: {
         Row: {
           company_id: string | null
@@ -156,6 +282,14 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      cleanup_expired_onboarding_sessions: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
+      generate_onboarding_token: {
+        Args: Record<PropertyKey, never>
+        Returns: string
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
