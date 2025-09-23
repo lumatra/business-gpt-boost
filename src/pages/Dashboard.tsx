@@ -344,14 +344,43 @@ const Dashboard = () => {
                     {/* Account Info */}
                     <Card>
                       <CardHeader>
-                        <CardTitle>Account Overview</CardTitle>
+                        <CardTitle>Company Profile</CardTitle>
                       </CardHeader>
                       <CardContent className="space-y-4">
-                        <div className="space-y-2">
+                        <div className="space-y-3">
                           <div className="flex justify-between text-sm">
                             <span className="text-muted-foreground">Company:</span>
                             <span className="font-medium">{company.name}</span>
                           </div>
+                          
+                          {company.email && (
+                            <div className="flex justify-between text-sm">
+                              <span className="text-muted-foreground">Email:</span>
+                              <span className="font-medium">{company.email}</span>
+                            </div>
+                          )}
+                          
+                          {company.phone && (
+                            <div className="flex justify-between text-sm">
+                              <span className="text-muted-foreground">Phone:</span>
+                              <span className="font-medium">{company.phone}</span>
+                            </div>
+                          )}
+                          
+                          {aiAssistantData?.website_url && (
+                            <div className="flex justify-between text-sm">
+                              <span className="text-muted-foreground">Website:</span>
+                              <a 
+                                href={aiAssistantData.website_url} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="font-medium text-primary hover:underline"
+                              >
+                                Visit Site
+                              </a>
+                            </div>
+                          )}
+                          
                           <div className="flex justify-between text-sm">
                             <span className="text-muted-foreground">Plan:</span>
                             <span className="font-medium capitalize">{company.subscription_tier || 'Professional'}</span>
@@ -362,7 +391,16 @@ const Dashboard = () => {
                           </div>
                         </div>
                         
-                        <div className="pt-2 border-t">
+                        {aiAssistantData?.business_info && (
+                          <div className="pt-3 border-t">
+                            <h4 className="font-medium text-sm mb-2">Business Details</h4>
+                            <p className="text-xs text-muted-foreground leading-relaxed">
+                              {aiAssistantData.business_info}
+                            </p>
+                          </div>
+                        )}
+                        
+                        <div className="pt-3 border-t">
                           <div className="flex justify-between text-sm mb-2">
                             <span>Monthly Usage</span>
                             <span>78%</span>
@@ -371,6 +409,33 @@ const Dashboard = () => {
                             <div className="bg-primary h-2 rounded-full" style={{ width: '78%' }}></div>
                           </div>
                         </div>
+
+                        {aiAssistantFiles.length > 0 && (
+                          <div className="pt-3 border-t">
+                            <h4 className="font-medium text-sm mb-2">Training Files</h4>
+                            <div className="space-y-1">
+                              {aiAssistantFiles.slice(0, 3).map((file, index) => (
+                                <div key={file.id || index} className="flex items-center gap-2 text-xs">
+                                  {file.is_image ? (
+                                    <div className="w-4 h-4 bg-green-100 rounded flex items-center justify-center">
+                                      <span className="text-[10px] text-green-600">IMG</span>
+                                    </div>
+                                  ) : (
+                                    <div className="w-4 h-4 bg-blue-100 rounded flex items-center justify-center">
+                                      <span className="text-[10px] text-blue-600">DOC</span>
+                                    </div>
+                                  )}
+                                  <span className="text-muted-foreground truncate">{file.file_name}</span>
+                                </div>
+                              ))}
+                              {aiAssistantFiles.length > 3 && (
+                                <div className="text-xs text-muted-foreground">
+                                  +{aiAssistantFiles.length - 3} more files
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        )}
                       </CardContent>
                     </Card>
 
