@@ -14,6 +14,91 @@ export type Database = {
   }
   public: {
     Tables: {
+      ai_assistant_data: {
+        Row: {
+          assistant_type: string
+          business_info: string | null
+          company_id: string | null
+          created_at: string
+          id: string
+          total_file_size: number | null
+          updated_at: string
+          website_content: string | null
+          website_url: string | null
+        }
+        Insert: {
+          assistant_type: string
+          business_info?: string | null
+          company_id?: string | null
+          created_at?: string
+          id?: string
+          total_file_size?: number | null
+          updated_at?: string
+          website_content?: string | null
+          website_url?: string | null
+        }
+        Update: {
+          assistant_type?: string
+          business_info?: string | null
+          company_id?: string | null
+          created_at?: string
+          id?: string
+          total_file_size?: number | null
+          updated_at?: string
+          website_content?: string | null
+          website_url?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ai_assistant_data_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      ai_assistant_files: {
+        Row: {
+          assistant_data_id: string | null
+          created_at: string
+          file_name: string
+          file_path: string
+          file_size: number
+          file_type: string
+          id: string
+          is_image: boolean | null
+        }
+        Insert: {
+          assistant_data_id?: string | null
+          created_at?: string
+          file_name: string
+          file_path: string
+          file_size: number
+          file_type: string
+          id?: string
+          is_image?: boolean | null
+        }
+        Update: {
+          assistant_data_id?: string | null
+          created_at?: string
+          file_name?: string
+          file_path?: string
+          file_size?: number
+          file_type?: string
+          id?: string
+          is_image?: boolean | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ai_assistant_files_assistant_data_id_fkey"
+            columns: ["assistant_data_id"]
+            isOneToOne: false
+            referencedRelation: "ai_assistant_data"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       companies: {
         Row: {
           created_at: string

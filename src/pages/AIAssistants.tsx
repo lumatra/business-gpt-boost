@@ -171,6 +171,79 @@ const AIAssistants = () => {
     
     setIsUploading(true);
     try {
+      // Create or get assistant data record first
+      let assistantDataId;
+      
+      const { data: existingAssistant, error: fetchError } = await supabase
+        .from('ai_assistant_data')
+        .select('id')
+        .eq('company_id', company.id)
+        .eq('assistant_type', assistantType)
+        .maybeSingle();
+        
+      if (fetchError) throw fetchError;
+      
+      if (existingAssistant) {
+        // Update existing record
+        const { error: updateError } = await supabase
+          .from('ai_assistant_data')
+          .update({
+            business_info: businessInfo || null,
+            website_url: websiteUrl || null,
+            total_file_size: totalSize,
+            updated_at: new Date().toISOString()
+          })
+          .eq('id', existingAssistant.id);
+          
+        if (updateError) throw updateError;
+        assistantDataId = existingAssistant.id;
+      } else {
+        // Create new record
+        const { data: newAssistant, error: insertError } = await supabase
+          .from('ai_assistant_data')
+          .insert({
+            company_id: company.id,
+            assistant_type: assistantType,
+            business_info: businessInfo || null,
+            website_url: websiteUrl || null,
+            total_file_size: totalSize
+          })
+          .select('id')
+          .single();
+          
+        if (insertError) throw insertError;
+        assistantDataId = newAssistant.id;
+      }
+
+      // Upload files to storage and save records
+      for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const isImage = file.type.startsWith('image/');
+        const fileName = `${assistantDataId}/${Date.now()}-${file.name}`;
+        
+        // Upload to Supabase Storage
+        const { error: uploadError } = await supabase.storage
+          .from('ai-assistant-files')
+          .upload(fileName, file);
+
+        if (uploadError) throw uploadError;
+
+        // Save file record to database
+        const { error: recordError } = await supabase
+          .from('ai_assistant_files')
+          .insert({
+            assistant_data_id: assistantDataId,
+            file_name: file.name,
+            file_path: fileName,
+            file_type: file.type,
+            file_size: file.size,
+            is_image: isImage
+          });
+
+        if (recordError) throw recordError;
+      }
+
+      // Now call the AI assistant function to process the data
       const documents = [];
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
@@ -206,7 +279,8 @@ const AIAssistants = () => {
           assistantType: assistantType,
           documents: documents,
           businessInfo: businessInfo || undefined,
-          websiteUrl: websiteUrl || undefined
+          websiteUrl: websiteUrl || undefined,
+          assistantDataId: assistantDataId
         }
       });
 
@@ -214,7 +288,7 @@ const AIAssistants = () => {
 
       toast({
         title: "Content Uploaded",
-        description: `${files.length} file(s) uploaded successfully!`,
+        description: `${files.length} file(s) uploaded successfully! View them in Onboarding Management.`,
       });
 
       setUploadDialogOpen(false);
@@ -224,7 +298,7 @@ const AIAssistants = () => {
     } catch (error: any) {
       toast({
         title: "Error",
-        description: error.message,
+        description: error.message || "Failed to upload files",
         variant: "destructive",
       });
     } finally {
@@ -505,6 +579,22 @@ const AIAssistants = () => {
                                     <span>Setting up your assistant with the provided information...</span>
                                   </div>
                                 )}
+                                
+                                <div className="mt-4 p-3 bg-muted/50 rounded-lg">
+                                  <p className="text-xs text-muted-foreground text-center">
+                                    💡 Tip: View all your uploaded documents and business information in{' '}
+                                    <Button 
+                                      variant="link" 
+                                      className="p-0 h-auto text-xs underline"
+                                      onClick={() => {
+                                        setUploadDialogOpen(false);
+                                        navigate('/onboarding-management');
+                                      }}
+                                    >
+                                      Onboarding Management
+                                    </Button>
+                                  </p>
+                                </div>
                               </div>
                             </DialogContent>
                           </Dialog>
