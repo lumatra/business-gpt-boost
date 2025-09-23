@@ -11,6 +11,8 @@ import Dashboard from "./pages/Dashboard";
 import AIAssistants from "./pages/AIAssistants";
 import Contact from "./pages/Contact";
 import CategoriesPage from "./pages/CategoriesPage";
+import OnboardingPortal from "./pages/OnboardingPortal";
+import OnboardingManagement from "./pages/OnboardingManagement";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +31,8 @@ const App = () => (
           <Route path="/ai-assistants" element={<AIAssistants />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/categories" element={<CategoriesPage />} />
+          <Route path="/onboarding/:token" element={<OnboardingPortal />} />
+          <Route path="/onboarding-management" element={<OnboardingManagement />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
