@@ -13,6 +13,7 @@ import Contact from "./pages/Contact";
 import CategoriesPage from "./pages/CategoriesPage";
 import OnboardingPortal from "./pages/OnboardingPortal";
 import OnboardingManagement from "./pages/OnboardingManagement";
+import AdminPortal from "./pages/AdminPortal";
 import NotFound from "./pages/NotFound";
 import { AuthProvider } from "./hooks/useAuth";
 
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/categories" element={<CategoriesPage />} />
           <Route path="/onboarding/:token" element={<OnboardingPortal />} />
           <Route path="/onboarding-management" element={<OnboardingManagement />} />
+          <Route path="/admin" element={<AdminPortal />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
