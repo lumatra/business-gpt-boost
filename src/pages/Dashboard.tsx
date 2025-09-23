@@ -96,7 +96,7 @@ const Dashboard = () => {
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div>
             <h1 className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              GPT Dashboard
+              AI Dashboard
             </h1>
             {profile && (
               <p className="text-muted-foreground">
@@ -116,9 +116,9 @@ const Dashboard = () => {
           <div className="max-w-2xl mx-auto text-center space-y-6">
             <Card>
               <CardHeader>
-                <CardTitle>Welcome to GPTs for Business!</CardTitle>
+                <CardTitle>Welcome to Business AI Solutions!</CardTitle>
                 <CardDescription>
-                  Your account has been created successfully. We're currently setting up your custom GPT solution.
+                  Your account has been created successfully. We're currently setting up your custom AI solution.
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
@@ -127,12 +127,12 @@ const Dashboard = () => {
                   <ul className="text-sm text-muted-foreground space-y-2 text-left">
                     <li>• Our team will contact you within 24 hours</li>
                     <li>• We'll discuss your specific business needs</li>
-                    <li>• We'll configure your custom GPT solution</li>
+                    <li>• We'll configure your custom AI solution</li>
                     <li>• You'll receive access to your personalized AI assistant</li>
                   </ul>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Questions? Contact our support team at support@gptforbusiness.com
+                  Questions? Contact our support team at support@businessai.com
                 </p>
               </CardContent>
             </Card>
@@ -155,7 +155,7 @@ const Dashboard = () => {
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">GPT Assistant</CardTitle>
+                  <CardTitle className="text-sm font-medium">AI Assistant</CardTitle>
                   <MessageSquare className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
@@ -196,19 +196,19 @@ const Dashboard = () => {
 
             <Card>
               <CardHeader>
-                <CardTitle>Your Custom GPT Assistant</CardTitle>
+                <CardTitle>Your Custom AI Assistant</CardTitle>
                 <CardDescription>
-                  {company.gpt_configuration 
-                    ? "Your GPT is ready to use!" 
-                    : "Your GPT assistant is being configured by our team."
-                  }
+                   {company.gpt_configuration 
+                     ? "Your AI assistant is ready to use!" 
+                     : "Your AI assistant is being configured by our team."
+                   }
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 {company.gpt_configuration ? (
                   <div className="space-y-4">
                     <div className="p-4 bg-secondary/50 rounded-lg">
-                      <h4 className="font-semibold mb-2">GPT Assistant Features:</h4>
+                      <h4 className="font-semibold mb-2">AI Assistant Features:</h4>
                       <ul className="text-sm space-y-1">
                         <li>• Trained on your business data</li>
                         <li>• Customized for your industry</li>
@@ -218,14 +218,14 @@ const Dashboard = () => {
                     </div>
                     <Button className="w-full md:w-auto">
                       <MessageSquare className="mr-2 h-4 w-4" />
-                      Launch GPT Assistant
+                      Launch AI Assistant
                     </Button>
                   </div>
                 ) : (
                   <div className="text-center py-8">
                     <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4" />
                     <p className="text-muted-foreground">
-                      Our team is configuring your custom GPT solution...
+                      Our team is configuring your custom AI solution...
                     </p>
                   </div>
                 )}

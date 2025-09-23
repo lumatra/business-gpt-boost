@@ -42,7 +42,7 @@ const ContactForm = () => {
 
       toast({
         title: "Inquiry Submitted!",
-        description: "We'll get back to you within 24 hours to discuss your custom GPT solution.",
+        description: "We'll get back to you within 24 hours to discuss your custom AI solution.",
       });
 
       setFormData({
@@ -74,10 +74,10 @@ const ContactForm = () => {
     <Card className="max-w-2xl mx-auto">
       <CardHeader className="text-center">
         <CardTitle className="text-2xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-          Get Your Custom GPT Solution
+          Get Your Custom AI Solution
         </CardTitle>
         <CardDescription>
-          Tell us about your business needs and we'll create a tailored GPT solution for your team.
+          Tell us about your business needs and we'll create a tailored AI solution for your team.
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -161,7 +161,7 @@ const ContactForm = () => {
             </label>
             <Select value={formData.use_case} onValueChange={(value) => handleChange('use_case', value)}>
               <SelectTrigger>
-                <SelectValue placeholder="What will you use GPT for?" />
+                <SelectValue placeholder="What will you use AI for?" />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="sales">Sales & Lead Generation</SelectItem>

@@ -143,9 +143,9 @@ const Auth = () => {
             Back to Home
           </Link>
           <h1 className="text-3xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            GPTs for Business
+            Business AI Solutions
           </h1>
-          <p className="text-muted-foreground mt-2">Access your custom GPT solutions</p>
+          <p className="text-muted-foreground mt-2">Access your custom AI solutions</p>
         </div>
 
         <Tabs defaultValue="login" className="w-full">
@@ -159,7 +159,7 @@ const Auth = () => {
               <CardHeader>
                 <CardTitle>Welcome Back</CardTitle>
                 <CardDescription>
-                  Sign in to access your custom GPT dashboard
+                  Sign in to access your custom AI dashboard
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -210,7 +210,7 @@ const Auth = () => {
               <CardHeader>
                 <CardTitle>Create Account</CardTitle>
                 <CardDescription>
-                  Start your journey with custom GPT solutions
+                  Start your journey with custom AI solutions
                 </CardDescription>
               </CardHeader>
               <CardContent>
