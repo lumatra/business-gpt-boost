@@ -19,7 +19,7 @@ const categories = [
     features: ["Content Creation", "Posting Schedule", "Audience Engagement", "Performance Analytics"],
     color: "text-primary",
     bgColor: "bg-primary/10",
-    price: "$297/month"
+    price: "$39/month"
   },
   {
     icon: Calculator,
@@ -28,7 +28,7 @@ const categories = [
     features: ["Budget Planning", "Cash Flow Analysis", "Financial Reports", "Investment Advice"],
     color: "text-accent",
     bgColor: "bg-accent/10",
-    price: "$397/month"
+    price: "$49/month"
   },
   {
     icon: FileText,
@@ -37,7 +37,7 @@ const categories = [
     features: ["Proposal Writing", "Bid Strategy", "Sales Copy", "Contract Analysis"],
     color: "text-primary",
     bgColor: "bg-primary/10",
-    price: "$497/month"
+    price: "$59/month"
   },
   {
     icon: TrendingUp,
@@ -46,7 +46,7 @@ const categories = [
     features: ["Campaign Strategy", "Email Marketing", "Ad Creation", "Brand Development"],
     color: "text-accent",
     bgColor: "bg-accent/10",
-    price: "$447/month"
+    price: "$49/month"
   },
   {
     icon: Lightbulb,
@@ -55,7 +55,7 @@ const categories = [
     features: ["CRM Integration", "Business Cases", "Process Automation", "Custom Workflows"],
     color: "text-primary",
     bgColor: "bg-primary/10",
-    price: "From $697/month"
+    price: "From $79/month"
   }
 ];
 

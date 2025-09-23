@@ -7,9 +7,9 @@ import { Check, Star, Zap } from "lucide-react";
 const pricingPlans = [
   {
     name: "Starter Pack",
-    price: "$597",
+    price: "$79",
     period: "/month",
-    description: "Perfect for small businesses getting started with AI",
+    description: "Perfect for solo entrepreneurs and micro businesses",
     features: [
       "Social Media AI Assistant",
       "Financial AI Advisor", 
@@ -22,9 +22,9 @@ const pricingPlans = [
   },
   {
     name: "Business Pro",
-    price: "$997",
+    price: "$149",
     period: "/month", 
-    description: "Complete AI solution for growing businesses",
+    description: "Complete AI solution for small growing businesses",
     features: [
       "All Starter Pack features",
       "Marketing AI Specialist",
@@ -38,9 +38,9 @@ const pricingPlans = [
   },
   {
     name: "Enterprise",
-    price: "Custom",
-    period: "pricing",
-    description: "Fully customized AI solutions for large organizations",
+    price: "$299",
+    period: "/month",
+    description: "Fully customized AI solutions for established businesses",
     features: [
       "All Business Pro features", 
       "Custom AI Solutions",
@@ -62,13 +62,13 @@ const Pricing = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
             <Star className="w-4 h-4 mr-2 text-accent" />
-            <span className="text-sm font-medium text-accent">Simple, Transparent Pricing</span>
+            <span className="text-sm font-medium text-accent">Affordable AI for Small Business</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Choose Your <span className="bg-gradient-primary bg-clip-text text-transparent">AI Package</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Get the AI specialists your business needs. Start with what you need today, upgrade as you grow.
+            Professional AI assistance that fits your small business budget. Start with what you need, upgrade as you grow.
           </p>
         </div>
 
@@ -136,7 +136,7 @@ const Pricing = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   Social Media AI
-                  <Badge variant="secondary">$297/mo</Badge>
+                  <Badge variant="secondary">$39/mo</Badge>
                 </CardTitle>
                 <CardDescription>Complete social media automation</CardDescription>
               </CardHeader>
@@ -146,7 +146,7 @@ const Pricing = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   Financial AI
-                  <Badge variant="secondary">$397/mo</Badge>
+                  <Badge variant="secondary">$49/mo</Badge>
                 </CardTitle>
                 <CardDescription>Smart financial planning & analysis</CardDescription>
               </CardHeader>
@@ -156,7 +156,7 @@ const Pricing = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   Marketing AI
-                  <Badge variant="secondary">$447/mo</Badge>
+                  <Badge variant="secondary">$49/mo</Badge>
                 </CardTitle>
                 <CardDescription>Complete marketing automation</CardDescription>
               </CardHeader>
@@ -166,7 +166,7 @@ const Pricing = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   Tender & Sales AI
-                  <Badge variant="secondary">$497/mo</Badge>
+                  <Badge variant="secondary">$59/mo</Badge>
                 </CardTitle>
                 <CardDescription>Win more contracts & deals</CardDescription>
               </CardHeader>
@@ -176,7 +176,7 @@ const Pricing = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   Custom AI Solutions
-                  <Badge variant="secondary">From $697/mo</Badge>
+                  <Badge variant="secondary">From $79/mo</Badge>
                 </CardTitle>
                 <CardDescription>Tailored for your unique needs</CardDescription>
               </CardHeader>
