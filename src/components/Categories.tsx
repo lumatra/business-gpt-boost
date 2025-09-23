@@ -20,7 +20,7 @@ const categories = [
     features: ["Daily Post Creation", "Brand Voice Learning", "Auto Scheduling", "Comment Management", "Hashtag Research", "Performance Insights"],
     color: "text-primary",
     bgColor: "bg-primary/10",
-    price: "$39/month",
+    price: "£19.99/month",
     details: "Perfect for restaurants, retail stores, service providers, and any business wanting consistent social media presence without the daily hassle."
   },
   {
@@ -30,7 +30,7 @@ const categories = [
     features: ["Cash Flow Forecasting", "Pricing Optimization", "Tax Planning", "Expense Tracking", "Profit Analysis", "Growth Recommendations"],
     color: "text-accent",
     bgColor: "bg-accent/10",
-    price: "$49/month",
+    price: "£19.99/month",
     details: "Ideal for consultants, contractors, small manufacturers, and service businesses who need financial clarity without expensive accountants."
   },
   {
@@ -40,7 +40,7 @@ const categories = [
     features: ["Proposal Writing", "RFP Analysis", "Quote Generation", "Win/Loss Tracking", "Competitor Research", "Follow-up Sequences"],
     color: "text-primary",
     bgColor: "bg-primary/10",
-    price: "$59/month",
+    price: "£19.99/month",
     details: "Essential for B2B services, contractors, agencies, and any business that needs to write proposals or respond to tenders regularly."
   },
   {
@@ -50,7 +50,7 @@ const categories = [
     features: ["Campaign Creation", "Email Sequences", "Ad Copywriting", "Landing Pages", "A/B Testing", "ROI Tracking"],
     color: "text-accent",
     bgColor: "bg-accent/10",
-    price: "$49/month",
+    price: "£19.99/month",
     details: "Perfect for e-commerce, local services, B2B companies, and any business wanting to attract more customers systematically."
   },
   {
@@ -60,7 +60,7 @@ const categories = [
     features: ["24/7 Chat Support", "FAQ Automation", "Ticket Management", "Customer Insights", "Multi-Channel Support", "Sentiment Analysis"],
     color: "text-accent",
     bgColor: "bg-accent/10",
-    price: "$45/month",
+    price: "£19.99/month",
     details: "Essential for online stores, service providers, and any business that values customer satisfaction and wants to provide instant support."
   },
   {
@@ -70,7 +70,7 @@ const categories = [
     features: ["CRM Automation", "Process Optimization", "Business Case Writing", "Industry-Specific Solutions", "Workflow Design", "Custom Integrations"],
     color: "text-primary",
     bgColor: "bg-primary/10",
-    price: "From $79/month",
+    price: "£99 setup + £19/month",
     details: "Tailored for businesses with specific needs - from medical practices to manufacturing, construction to consulting - we build AI that fits your exact requirements."
   }
 ];
