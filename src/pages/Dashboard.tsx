@@ -14,6 +14,7 @@ const Dashboard = () => {
   const [profile, setProfile] = useState<any>(null);
   const [company, setCompany] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [selectedAssistant, setSelectedAssistant] = useState<'overview' | 'social' | 'hr' | 'marketing'>('overview');
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -139,348 +140,476 @@ const Dashboard = () => {
           </div>
         ) : (
           <div className="space-y-8">
-            {/* Quick Actions Bar */}
-            <div className="flex flex-wrap gap-4">
-              <Button 
-                onClick={() => navigate('/ai-assistants')}
-                className="flex-1 md:flex-none"
+            {/* AI Assistants Navigation */}
+            <div className="flex flex-wrap gap-2 p-1 bg-secondary/20 rounded-lg">
+              <Button
+                variant={selectedAssistant === 'overview' ? 'default' : 'ghost'}
+                onClick={() => setSelectedAssistant('overview')}
+                className="flex items-center gap-2"
               >
-                <MessageSquare className="mr-2 h-4 w-4" />
-                Launch AI Assistant
+                <BarChart3 className="h-4 w-4" />
+                Overview
               </Button>
-              <Button variant="outline" className="flex-1 md:flex-none">
-                <Settings className="mr-2 h-4 w-4" />
-                Account Settings
+              <Button
+                variant={selectedAssistant === 'social' ? 'default' : 'ghost'}
+                onClick={() => setSelectedAssistant('social')}
+                className="flex items-center gap-2"
+              >
+                <Share2 className="h-4 w-4" />
+                Social Media
+              </Button>
+              <Button
+                variant={selectedAssistant === 'hr' ? 'default' : 'ghost'}
+                onClick={() => setSelectedAssistant('hr')}
+                className="flex items-center gap-2"
+              >
+                <Users className="h-4 w-4" />
+                HR Assistant
+              </Button>
+              <Button
+                variant={selectedAssistant === 'marketing' ? 'default' : 'ghost'}
+                onClick={() => setSelectedAssistant('marketing')}
+                className="flex items-center gap-2"
+              >
+                <TrendingUp className="h-4 w-4" />
+                Marketing
               </Button>
             </div>
 
-            {/* Stats Overview - Combined from 3 AI Assistants */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card>
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">AI Tasks Completed</CardTitle>
-                  <BarChart3 className="h-4 w-4 text-muted-foreground" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold">324</div>
-                  <p className="text-xs text-muted-foreground">
-                    Across all 3 assistants
-                  </p>
-                </CardContent>
-              </Card>
+            {/* Dynamic Content Based on Selection */}
+            {selectedAssistant === 'overview' && (
+              <>
+                {/* Stats Overview - Combined from 3 AI Assistants */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                  <Card>
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                      <CardTitle className="text-sm font-medium">AI Tasks Completed</CardTitle>
+                      <BarChart3 className="h-4 w-4 text-muted-foreground" />
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-2xl font-bold">324</div>
+                      <p className="text-xs text-muted-foreground">
+                        Across all 3 assistants
+                      </p>
+                    </CardContent>
+                  </Card>
 
-              <Card>
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Time Saved</CardTitle>
-                  <Clock className="h-4 w-4 text-muted-foreground" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold">47h</div>
-                  <p className="text-xs text-muted-foreground">
-                    This month
-                  </p>
-                </CardContent>
-              </Card>
+                  <Card>
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                      <CardTitle className="text-sm font-medium">Time Saved</CardTitle>
+                      <Clock className="h-4 w-4 text-muted-foreground" />
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-2xl font-bold">47h</div>
+                      <p className="text-xs text-muted-foreground">
+                        This month
+                      </p>
+                    </CardContent>
+                  </Card>
 
-              <Card>
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Content Created</CardTitle>
-                  <Share2 className="h-4 w-4 text-muted-foreground" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold">156</div>
-                  <p className="text-xs text-muted-foreground">
-                    Posts, emails & reports
-                  </p>
-                </CardContent>
-              </Card>
+                  <Card>
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                      <CardTitle className="text-sm font-medium">Content Created</CardTitle>
+                      <Share2 className="h-4 w-4 text-muted-foreground" />
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-2xl font-bold">156</div>
+                      <p className="text-xs text-muted-foreground">
+                        Posts, emails & reports
+                      </p>
+                    </CardContent>
+                  </Card>
 
-              <Card>
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Business Growth</CardTitle>
-                  <TrendingUp className="h-4 w-4 text-muted-foreground" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold">+28%</div>
-                  <p className="text-xs text-muted-foreground">
-                    Overall efficiency gain
-                  </p>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Main Content Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              {/* AI Assistants Panel */}
-              <div className="lg:col-span-2 space-y-6">
-                {/* Social Media Assistant */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <MessageSquare className="h-5 w-5" />
-                      Social Media AI Assistant
-                    </CardTitle>
-                    <CardDescription>
-                      AI-powered social media management for MJ Hairdressers
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="p-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg border">
-                        <h4 className="font-semibold mb-2 text-primary flex items-center gap-2">
-                          <Calendar className="h-4 w-4" />
-                          47 Posts Scheduled
-                        </h4>
-                        <p className="text-sm text-muted-foreground">
-                          Content posted at optimal times across all platforms
-                        </p>
-                      </div>
-                      <div className="p-4 bg-gradient-to-br from-secondary/10 to-primary/10 rounded-lg border">
-                        <h4 className="font-semibold mb-2 flex items-center gap-2">
-                          <Heart className="h-4 w-4" />
-                          8.4% Engagement
-                        </h4>
-                        <p className="text-sm text-muted-foreground">
-                          AI learns your salon's unique brand voice
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* HR Assistant */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Users className="h-5 w-5" />
-                      HR AI Assistant
-                    </CardTitle>
-                    <CardDescription>
-                      Streamline staff management and client communication
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="p-4 bg-gradient-to-br from-accent/10 to-primary/10 rounded-lg border">
-                        <h4 className="font-semibold mb-2 text-accent flex items-center gap-2">
-                          <Calendar className="h-4 w-4" />
-                          24 Shifts Scheduled
-                        </h4>
-                        <p className="text-sm text-muted-foreground">
-                          Automated staff scheduling and shift management
-                        </p>
-                      </div>
-                      <div className="p-4 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg border">
-                        <h4 className="font-semibold mb-2 flex items-center gap-2">
-                          <MessageSquare className="h-4 w-4" />
-                          18 Client Responses
-                        </h4>
-                        <p className="text-sm text-muted-foreground">
-                          Automated booking confirmations and follow-ups
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                {/* Marketing Assistant */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <TrendingUp className="h-5 w-5" />
-                      Marketing AI Assistant
-                    </CardTitle>
-                    <CardDescription>
-                      Drive growth with AI-powered marketing campaigns
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="p-4 bg-gradient-to-br from-secondary/10 to-accent/10 rounded-lg border">
-                        <h4 className="font-semibold mb-2 text-secondary-foreground flex items-center gap-2">
-                          <BarChart3 className="h-4 w-4" />
-                          12 Campaigns Active
-                        </h4>
-                        <p className="text-sm text-muted-foreground">
-                          Email campaigns and promotional offers
-                        </p>
-                      </div>
-                      <div className="p-4 bg-gradient-to-br from-accent/10 to-secondary/10 rounded-lg border">
-                        <h4 className="font-semibold mb-2 flex items-center gap-2">
-                          <Hash className="h-4 w-4" />
-                          +35% New Bookings
-                        </h4>
-                        <p className="text-sm text-muted-foreground">
-                          AI-optimized customer acquisition strategies
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                  <Card>
+                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                      <CardTitle className="text-sm font-medium">Business Growth</CardTitle>
+                      <TrendingUp className="h-4 w-4 text-muted-foreground" />
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-2xl font-bold">+28%</div>
+                      <p className="text-xs text-muted-foreground">
+                        Overall efficiency gain
+                      </p>
+                    </CardContent>
+                  </Card>
+                </div>
 
                 {/* Combined Activity Summary */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Today's AI Activity Summary</CardTitle>
-                    <CardDescription>
-                      Combined activity from all 3 AI assistants
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="p-4 bg-secondary/20 rounded-lg border-l-4 border-primary">
-                      <div className="space-y-3 text-sm">
-                        <div className="flex justify-between items-center py-2 border-b border-muted">
-                          <span className="flex items-center gap-2 font-medium">
-                            <Share2 className="h-4 w-4 text-primary" />
-                            Social Media Assistant
-                          </span>
-                          <span className="text-muted-foreground">8 posts created</span>
-                        </div>
-                        <div className="flex justify-between items-center py-2 border-b border-muted">
-                          <span className="flex items-center gap-2 font-medium">
-                            <Users className="h-4 w-4 text-accent" />
-                            HR Assistant
-                          </span>
-                          <span className="text-muted-foreground">6 shifts scheduled</span>
-                        </div>
-                        <div className="flex justify-between items-center py-2">
-                          <span className="flex items-center gap-2 font-medium">
-                            <TrendingUp className="h-4 w-4 text-secondary-foreground" />
-                            Marketing Assistant
-                          </span>
-                          <span className="text-muted-foreground">3 campaigns launched</span>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <Button 
-                      size="lg"
-                      className="w-full mt-4"
-                      onClick={() => navigate('/ai-assistants')}
-                    >
-                      <MessageSquare className="mr-2 h-4 w-4" />
-                      Launch AI Assistant Hub
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* Recent Activity from All Assistants */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Recent AI Activity</CardTitle>
-                    <CardDescription>
-                      Latest activity from all your AI assistants
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      {[
-                        { title: "Weekend styling tips for summer hair", time: "2 hours ago", type: "Social Media", platform: "📸", assistant: "Social" },
-                        { title: "Staff schedule for next week generated", time: "3 hours ago", type: "HR", platform: "👥", assistant: "HR" },
-                        { title: "Email campaign: 'Back-to-School Special'", time: "4 hours ago", type: "Marketing", platform: "📧", assistant: "Marketing" },
-                        { title: "Client transformation spotlight post", time: "5 hours ago", type: "Social Media", platform: "📸", assistant: "Social" },
-                        { title: "Booking confirmation responses sent", time: "6 hours ago", type: "HR", platform: "📞", assistant: "HR" },
-                        { title: "Customer retention analysis completed", time: "1 day ago", type: "Marketing", platform: "📊", assistant: "Marketing" },
-                      ].map((activity, index) => (
-                        <div key={index} className="flex items-center justify-between p-3 bg-secondary/30 rounded-lg">
-                          <div>
-                            <h5 className="font-medium flex items-center gap-2">
-                              <span>{activity.platform}</span>
-                              {activity.title}
-                            </h5>
-                            <p className="text-sm text-muted-foreground">{activity.time} • {activity.assistant} Assistant</p>
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  <div className="lg:col-span-2">
+                    <Card>
+                      <CardHeader>
+                        <CardTitle>Today's AI Activity Summary</CardTitle>
+                        <CardDescription>
+                          Combined activity from all 3 AI assistants
+                        </CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-4">
+                          <div className="flex justify-between items-center p-3 bg-primary/5 rounded-lg border-l-4 border-primary">
+                            <div className="flex items-center gap-3">
+                              <div className="p-2 bg-primary/10 rounded">
+                                <Share2 className="h-4 w-4 text-primary" />
+                              </div>
+                              <div>
+                                <h4 className="font-medium">Social Media Assistant</h4>
+                                <p className="text-sm text-muted-foreground">8 posts created & scheduled</p>
+                              </div>
+                            </div>
+                            <Button variant="outline" size="sm">View</Button>
                           </div>
-                          <div className="flex items-center gap-2">
-                            <span className={`text-xs px-2 py-1 rounded ${
-                              activity.assistant === 'Social' ? 'bg-primary/10 text-primary' :
-                              activity.assistant === 'HR' ? 'bg-accent/10 text-accent' :
-                              'bg-secondary/10 text-secondary-foreground'
-                            }`}>
-                              {activity.type}
-                            </span>
-                            <Button variant="ghost" size="sm">
-                              View
-                            </Button>
+                          
+                          <div className="flex justify-between items-center p-3 bg-accent/5 rounded-lg border-l-4 border-accent">
+                            <div className="flex items-center gap-3">
+                              <div className="p-2 bg-accent/10 rounded">
+                                <Users className="h-4 w-4 text-accent" />
+                              </div>
+                              <div>
+                                <h4 className="font-medium">HR Assistant</h4>
+                                <p className="text-sm text-muted-foreground">6 shifts scheduled, 18 client responses</p>
+                              </div>
+                            </div>
+                            <Button variant="outline" size="sm">View</Button>
+                          </div>
+                          
+                          <div className="flex justify-between items-center p-3 bg-secondary/5 rounded-lg border-l-4 border-secondary">
+                            <div className="flex items-center gap-3">
+                              <div className="p-2 bg-secondary/10 rounded">
+                                <TrendingUp className="h-4 w-4 text-secondary-foreground" />
+                              </div>
+                              <div>
+                                <h4 className="font-medium">Marketing Assistant</h4>
+                                <p className="text-sm text-muted-foreground">3 campaigns launched, +35% bookings</p>
+                              </div>
+                            </div>
+                            <Button variant="outline" size="sm">View</Button>
                           </div>
                         </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
+                        
+                        <Button 
+                          size="lg"
+                          className="w-full mt-6"
+                          onClick={() => navigate('/ai-assistants')}
+                        >
+                          <MessageSquare className="mr-2 h-4 w-4" />
+                          Launch AI Assistant Hub
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </div>
+
+                  {/* Side Panel */}
+                  <div className="space-y-6">
+                    {/* Account Info */}
+                    <Card>
+                      <CardHeader>
+                        <CardTitle>Account Overview</CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <div className="space-y-2">
+                          <div className="flex justify-between text-sm">
+                            <span className="text-muted-foreground">Company:</span>
+                            <span className="font-medium">{company.name}</span>
+                          </div>
+                          <div className="flex justify-between text-sm">
+                            <span className="text-muted-foreground">Plan:</span>
+                            <span className="font-medium capitalize">{company.subscription_tier || 'Professional'}</span>
+                          </div>
+                          <div className="flex justify-between text-sm">
+                            <span className="text-muted-foreground">Status:</span>
+                            <span className="font-medium capitalize text-green-600">{company.status}</span>
+                          </div>
+                        </div>
+                        
+                        <div className="pt-2 border-t">
+                          <div className="flex justify-between text-sm mb-2">
+                            <span>Monthly Usage</span>
+                            <span>78%</span>
+                          </div>
+                          <div className="w-full bg-secondary rounded-full h-2">
+                            <div className="bg-primary h-2 rounded-full" style={{ width: '78%' }}></div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    {/* Quick Actions */}
+                    <Card>
+                      <CardHeader>
+                        <CardTitle>Quick Actions</CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-3">
+                        <Button variant="outline" className="w-full justify-start">
+                          <Users className="mr-2 h-4 w-4" />
+                          Manage Team Access
+                        </Button>
+                        <Button variant="outline" className="w-full justify-start">
+                          <Settings className="mr-2 h-4 w-4" />
+                          AI Configuration
+                        </Button>
+                        <Button variant="outline" className="w-full justify-start">
+                          <BarChart3 className="mr-2 h-4 w-4" />
+                          Usage Analytics
+                        </Button>
+                      </CardContent>
+                    </Card>
+
+                    {/* Support */}
+                    <Card>
+                      <CardHeader>
+                        <CardTitle>Need Help?</CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-3">
+                        <div className="text-sm text-muted-foreground">
+                          Our support team is here to help you get the most out of your AI assistant.
+                        </div>
+                        <Button variant="outline" className="w-full">
+                          Contact Support
+                        </Button>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {selectedAssistant === 'social' && (
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="lg:col-span-2 space-y-6">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Share2 className="h-5 w-5" />
+                        Social Media AI Assistant
+                      </CardTitle>
+                      <CardDescription>
+                        AI-powered social media management for MJ Hairdressers
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="p-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg border">
+                          <h4 className="font-semibold mb-2 text-primary flex items-center gap-2">
+                            <Calendar className="h-4 w-4" />
+                            47 Posts Scheduled
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            Content posted at optimal times across all platforms
+                          </p>
+                        </div>
+                        <div className="p-4 bg-gradient-to-br from-secondary/10 to-primary/10 rounded-lg border">
+                          <h4 className="font-semibold mb-2 flex items-center gap-2">
+                            <Heart className="h-4 w-4" />
+                            8.4% Engagement
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            AI learns your salon's unique brand voice
+                          </p>
+                        </div>
+                      </div>
+                      
+                      <Button 
+                        size="lg"
+                        className="w-full"
+                        onClick={() => navigate('/ai-assistants')}
+                      >
+                        <MessageSquare className="mr-2 h-4 w-4" />
+                        Create Social Media Content
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Recent Social Media Content</CardTitle>
+                      <CardDescription>
+                        Your latest AI-generated posts and content ideas
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        {[
+                          { title: "Weekend styling tips for summer hair", time: "2 hours ago", type: "Instagram", platform: "📸" },
+                          { title: "Client transformation spotlight", time: "5 hours ago", type: "Facebook", platform: "👤" },
+                          { title: "Hair care routine thread", time: "1 day ago", type: "Twitter", platform: "🐦" },
+                          { title: "Behind-the-scenes salon tour", time: "2 days ago", type: "TikTok", platform: "🎵" },
+                        ].map((content, index) => (
+                          <div key={index} className="flex items-center justify-between p-3 bg-secondary/30 rounded-lg">
+                            <div>
+                              <h5 className="font-medium flex items-center gap-2">
+                                <span>{content.platform}</span>
+                                {content.title}
+                              </h5>
+                              <p className="text-sm text-muted-foreground">{content.time}</p>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
+                                {content.type}
+                              </span>
+                              <Button variant="ghost" size="sm">
+                                View
+                              </Button>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="space-y-6">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Social Media Stats</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Posts This Month:</span>
+                          <span className="font-medium">47</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Engagement Rate:</span>
+                          <span className="font-medium">8.4%</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Followers Gained:</span>
+                          <span className="font-medium">+235</span>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
+            )}
 
-              {/* Side Panel */}
-              <div className="space-y-6">
-                {/* Account Info */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Account Overview</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="space-y-2">
-                      <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">Company:</span>
-                        <span className="font-medium">{company.name}</span>
+            {selectedAssistant === 'hr' && (
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="lg:col-span-2 space-y-6">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <Users className="h-5 w-5" />
+                        HR AI Assistant
+                      </CardTitle>
+                      <CardDescription>
+                        Streamline staff management and client communication
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="p-4 bg-gradient-to-br from-accent/10 to-primary/10 rounded-lg border">
+                          <h4 className="font-semibold mb-2 text-accent flex items-center gap-2">
+                            <Calendar className="h-4 w-4" />
+                            24 Shifts Scheduled
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            Automated staff scheduling and shift management
+                          </p>
+                        </div>
+                        <div className="p-4 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg border">
+                          <h4 className="font-semibold mb-2 flex items-center gap-2">
+                            <MessageSquare className="h-4 w-4" />
+                            18 Client Responses
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            Automated booking confirmations and follow-ups
+                          </p>
+                        </div>
                       </div>
-                      <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">Plan:</span>
-                        <span className="font-medium capitalize">{company.subscription_tier || 'Professional'}</span>
-                      </div>
-                      <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">Status:</span>
-                        <span className="font-medium capitalize text-green-600">{company.status}</span>
-                      </div>
-                    </div>
-                    
-                    <div className="pt-2 border-t">
-                      <div className="flex justify-between text-sm mb-2">
-                        <span>Monthly Usage</span>
-                        <span>78%</span>
-                      </div>
-                      <div className="w-full bg-secondary rounded-full h-2">
-                        <div className="bg-primary h-2 rounded-full" style={{ width: '78%' }}></div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </div>
 
-                {/* Quick Actions */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Quick Actions</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <Button variant="outline" className="w-full justify-start">
-                      <Users className="mr-2 h-4 w-4" />
-                      Manage Team Access
-                    </Button>
-                    <Button variant="outline" className="w-full justify-start">
-                      <Settings className="mr-2 h-4 w-4" />
-                      AI Configuration
-                    </Button>
-                    <Button variant="outline" className="w-full justify-start">
-                      <BarChart3 className="mr-2 h-4 w-4" />
-                      Usage Analytics
-                    </Button>
-                  </CardContent>
-                </Card>
-
-                {/* Support */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle>Need Help?</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <div className="text-sm text-muted-foreground">
-                      Our support team is here to help you get the most out of your AI assistant.
-                    </div>
-                    <Button variant="outline" className="w-full">
-                      Contact Support
-                    </Button>
-                  </CardContent>
-                </Card>
+                <div className="space-y-6">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>HR Stats</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Staff Members:</span>
+                          <span className="font-medium">8</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Shifts This Week:</span>
+                          <span className="font-medium">24</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Client Responses:</span>
+                          <span className="font-medium">18</span>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
               </div>
-            </div>
+            )}
+
+            {selectedAssistant === 'marketing' && (
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="lg:col-span-2 space-y-6">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <TrendingUp className="h-5 w-5" />
+                        Marketing AI Assistant
+                      </CardTitle>
+                      <CardDescription>
+                        Drive growth with AI-powered marketing campaigns
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="p-4 bg-gradient-to-br from-secondary/10 to-accent/10 rounded-lg border">
+                          <h4 className="font-semibold mb-2 text-secondary-foreground flex items-center gap-2">
+                            <BarChart3 className="h-4 w-4" />
+                            12 Campaigns Active
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            Email campaigns and promotional offers
+                          </p>
+                        </div>
+                        <div className="p-4 bg-gradient-to-br from-accent/10 to-secondary/10 rounded-lg border">
+                          <h4 className="font-semibold mb-2 flex items-center gap-2">
+                            <Hash className="h-4 w-4" />
+                            +35% New Bookings
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            AI-optimized customer acquisition strategies
+                          </p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="space-y-6">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle>Marketing Stats</CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <div className="space-y-2">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Active Campaigns:</span>
+                          <span className="font-medium">12</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">New Bookings:</span>
+                          <span className="font-medium">+35%</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">Email Open Rate:</span>
+                          <span className="font-medium">68%</span>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </main>
