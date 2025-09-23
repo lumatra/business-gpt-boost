@@ -176,12 +176,7 @@ const Dashboard = () => {
               </Button>
               <Button
                 variant="outline"
-                onClick={() => {
-                  toast({
-                    title: "Add New Assistant",
-                    description: "Feature coming soon! You'll be able to add custom AI assistants.",
-                  });
-                }}
+                onClick={() => navigate('/ai-assistants')}
                 className="flex items-center gap-2 ml-2 border-dashed"
               >
                 <Plus className="h-4 w-4" />
