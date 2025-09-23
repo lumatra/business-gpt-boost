@@ -28,6 +28,9 @@ const Navigation = () => {
               <a href="#benefits" className="text-muted-foreground hover:text-foreground transition-colors">
                 Benefits
               </a>
+              <Link to="/examples" className="text-muted-foreground hover:text-foreground transition-colors">
+                Examples
+              </Link>
               <Link to="/contact" className="text-muted-foreground hover:text-foreground transition-colors">
                 Contact
               </Link>
@@ -68,6 +71,9 @@ const Navigation = () => {
               <a href="#benefits" className="text-muted-foreground hover:text-foreground transition-colors py-2">
                 Benefits
               </a>
+              <Link to="/examples" className="text-muted-foreground hover:text-foreground transition-colors py-2">
+                Examples
+              </Link>
               <Link to="/contact" className="text-muted-foreground hover:text-foreground transition-colors py-2">
                 Contact
               </Link>

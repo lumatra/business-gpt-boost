@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/business-hero.jpg";
 
 const Hero = () => {
@@ -52,13 +53,10 @@ const Hero = () => {
               variant="outline" 
               size="lg"
               className="text-lg px-8 py-4 border-primary/30 hover:bg-primary/5 transition-smooth"
-              onClick={() => {
-                document.getElementById('categories')?.scrollIntoView({ 
-                  behavior: 'smooth' 
-                });
-              }}
             >
-              See Personalized Examples
+              <Link to="/examples">
+                See Personalized Examples
+              </Link>
             </Button>
           </div>
 
