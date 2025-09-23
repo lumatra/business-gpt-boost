@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import TypingDemo from "@/components/TypingDemo";
 import { 
   TrendingUp, 
   Calculator, 
@@ -123,11 +124,15 @@ const Categories = () => {
                         </Badge>
                       ))}
                     </div>
-                    <div className="p-3 bg-muted/30 rounded-lg border-l-4 border-l-primary/30">
-                      <p className="text-sm text-muted-foreground italic">
-                        {category.example}
-                      </p>
-                    </div>
+                    {category.title === "Social Media AI Assistant" ? (
+                      <TypingDemo />
+                    ) : (
+                      <div className="p-3 bg-muted/30 rounded-lg border-l-4 border-l-primary/30">
+                        <p className="text-sm text-muted-foreground italic">
+                          {category.example}
+                        </p>
+                      </div>
+                    )}
                   </div>
                 </CardContent>
               </Card>
