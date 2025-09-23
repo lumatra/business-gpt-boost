@@ -37,6 +37,9 @@ const AIAssistants = () => {
   const [isChatting, setIsChatting] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadDialogOpen, setUploadDialogOpen] = useState(false);
+  const [totalFileSize, setTotalFileSize] = useState(0);
+  const [businessInfo, setBusinessInfo] = useState('');
+  const [websiteUrl, setWebsiteUrl] = useState('');
 
   const assistantTypes = {
     social: {
@@ -151,17 +154,49 @@ const AIAssistants = () => {
   const uploadDocuments = async (assistantType: string, files: FileList) => {
     if (!company || !files.length) return;
     
+    // Check total file size (4MB limit)
+    let totalSize = 0;
+    for (let i = 0; i < files.length; i++) {
+      totalSize += files[i].size;
+    }
+    
+    if (totalSize > 4 * 1024 * 1024) { // 4MB
+      toast({
+        title: "Files too large",
+        description: "Total file size must be under 4MB. Please select smaller files.",
+        variant: "destructive",
+      });
+      return;
+    }
+    
     setIsUploading(true);
     try {
       const documents = [];
       for (let i = 0; i < files.length; i++) {
         const file = files[i];
-        const content = await file.text();
-        documents.push({
-          name: file.name,
-          content: content,
-          type: file.type
-        });
+        
+        // Handle images vs text files differently
+        if (file.type.startsWith('image/')) {
+          const base64 = await new Promise<string>((resolve) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result as string);
+            reader.readAsDataURL(file);
+          });
+          documents.push({
+            name: file.name,
+            content: base64,
+            type: file.type,
+            isImage: true
+          });
+        } else {
+          const content = await file.text();
+          documents.push({
+            name: file.name,
+            content: content,
+            type: file.type,
+            isImage: false
+          });
+        }
       }
 
       const response = await supabase.functions.invoke('ai-assistant', {
@@ -169,18 +204,23 @@ const AIAssistants = () => {
           action: 'upload_documents',
           companyId: company.id,
           assistantType: assistantType,
-          documents: documents
+          documents: documents,
+          businessInfo: businessInfo || undefined,
+          websiteUrl: websiteUrl || undefined
         }
       });
 
       if (response.error) throw response.error;
 
       toast({
-        title: "Documents Uploaded",
-        description: `${files.length} document(s) uploaded successfully!`,
+        title: "Content Uploaded",
+        description: `${files.length} file(s) uploaded successfully!`,
       });
 
       setUploadDialogOpen(false);
+      setBusinessInfo('');
+      setWebsiteUrl('');
+      setTotalFileSize(0);
     } catch (error: any) {
       toast({
         title: "Error",
@@ -190,6 +230,16 @@ const AIAssistants = () => {
     } finally {
       setIsUploading(false);
     }
+  };
+
+  const handleFileSelection = (files: FileList | null) => {
+    if (!files) return;
+    
+    let totalSize = 0;
+    for (let i = 0; i < files.length; i++) {
+      totalSize += files[i].size;
+    }
+    setTotalFileSize(totalSize);
   };
 
   const chatWithAssistant = async (assistantType: string, message: string) => {
@@ -352,38 +402,134 @@ const AIAssistants = () => {
                                 Upload Documents
                               </Button>
                             </DialogTrigger>
-                            <DialogContent>
+                            <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
                               <DialogHeader>
-                                <DialogTitle>Upload Documents for {config.name}</DialogTitle>
+                                <DialogTitle>Setup {config.name}</DialogTitle>
                               </DialogHeader>
-                              <div className="space-y-4">
-                                <p className="text-sm text-muted-foreground">
-                                  Upload relevant documents to train your assistant. Supported formats: PDF, TXT, DOC, DOCX
-                                </p>
-                                <Input
-                                  type="file"
-                                  multiple
-                                  accept=".pdf,.txt,.doc,.docx"
-                                  onChange={(e) => {
-                                    if (e.target.files) {
-                                      uploadDocuments(key, e.target.files);
-                                    }
-                                  }}
-                                  disabled={isUploading}
-                                />
+                              <div className="space-y-6">
+                                
+                                {/* Business Information */}
+                                <div className="space-y-3">
+                                  <h4 className="font-medium">Business Information</h4>
+                                  <Textarea
+                                    placeholder="Tell us about your business - what you do, your values, target customers, unique selling points..."
+                                    value={businessInfo}
+                                    onChange={(e) => setBusinessInfo(e.target.value)}
+                                    className="min-h-[80px]"
+                                  />
+                                </div>
+
+                                {/* Website URL */}
+                                <div className="space-y-3">
+                                  <h4 className="font-medium">Website (Optional)</h4>
+                                  <Input
+                                    placeholder="https://yourwebsite.com (we'll extract your about page content)"
+                                    value={websiteUrl}
+                                    onChange={(e) => setWebsiteUrl(e.target.value)}
+                                  />
+                                </div>
+                                
+                                {/* File Upload */}
+                                <div className="space-y-3">
+                                  <h4 className="font-medium">Upload Files & Images</h4>
+                                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-muted-foreground mb-3">
+                                    <div>
+                                      <h5 className="font-medium text-foreground">📄 Documents</h5>
+                                      <ul className="space-y-1 text-xs">
+                                        <li>• Company policies</li>
+                                        <li>• Service descriptions</li>
+                                        <li>• Price lists</li>
+                                        <li>• FAQ documents</li>
+                                        <li>• Process guides</li>
+                                      </ul>
+                                    </div>
+                                    <div>
+                                      <h5 className="font-medium text-foreground">🎨 Images</h5>
+                                      <ul className="space-y-1 text-xs">
+                                        <li>• Company logo</li>
+                                        <li>• Location photos</li>
+                                        <li>• Product images</li>
+                                        <li>• Marketing materials</li>
+                                        <li>• Team photos</li>
+                                      </ul>
+                                    </div>
+                                  </div>
+                                  
+                                  <Input
+                                    type="file"
+                                    multiple
+                                    accept=".pdf,.txt,.doc,.docx,.jpg,.jpeg,.png,.webp"
+                                    onChange={(e) => {
+                                      handleFileSelection(e.target.files);
+                                    }}
+                                    disabled={isUploading}
+                                  />
+                                  
+                                  <div className="flex justify-between text-sm">
+                                    <span className="text-muted-foreground">
+                                      Supported: PDF, DOC, TXT, JPG, PNG
+                                    </span>
+                                    <span className={`${totalFileSize > 4 * 1024 * 1024 ? 'text-destructive' : 'text-muted-foreground'}`}>
+                                      {(totalFileSize / 1024 / 1024).toFixed(1)}MB / 4.0MB
+                                    </span>
+                                  </div>
+                                </div>
+
+                                {/* Upload Button */}
+                                <div className="flex gap-2 pt-4">
+                                  <Button 
+                                    onClick={() => {
+                                      const fileInput = document.querySelector('input[type="file"]') as HTMLInputElement;
+                                      if (fileInput?.files) {
+                                        uploadDocuments(key, fileInput.files);
+                                      }
+                                    }}
+                                    disabled={isUploading || (!businessInfo && !websiteUrl && totalFileSize === 0)}
+                                    className="flex-1"
+                                  >
+                                    {isUploading ? (
+                                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                    ) : (
+                                      <Upload className="mr-2 h-4 w-4" />
+                                    )}
+                                    Setup Assistant
+                                  </Button>
+                                  <Button variant="outline" onClick={() => setUploadDialogOpen(false)}>
+                                    Cancel
+                                  </Button>
+                                </div>
+                                
                                 {isUploading && (
-                                  <div className="flex items-center gap-2">
+                                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                     <Loader2 className="h-4 w-4 animate-spin" />
-                                    <span className="text-sm">Uploading documents...</span>
+                                    <span>Setting up your assistant with the provided information...</span>
                                   </div>
                                 )}
                               </div>
                             </DialogContent>
                           </Dialog>
                         </div>
-                        <p className="text-sm text-muted-foreground">
-                          Upload company documents, policies, and procedures to make your assistant more helpful and accurate.
-                        </p>
+                        <div className="bg-secondary/50 p-4 rounded-lg space-y-2">
+                          <p className="text-sm font-medium">Setup Guide:</p>
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-muted-foreground">
+                            <div>
+                              <p className="font-medium text-foreground mb-1">📝 Business Info</p>
+                              <p className="text-xs">Share your story, values, and what makes you unique</p>
+                            </div>
+                            <div>
+                              <p className="font-medium text-foreground mb-1">📄 Documents (4MB max)</p>
+                              <p className="text-xs">Policies, services, prices, FAQs</p>
+                            </div>
+                            <div>
+                              <p className="font-medium text-foreground mb-1">🎨 Visual Assets</p>
+                              <p className="text-xs">Logo, location, products, marketing materials</p>
+                            </div>
+                            <div>
+                              <p className="font-medium text-foreground mb-1">🌐 Website</p>
+                              <p className="text-xs">We'll extract your about page content</p>
+                            </div>
+                          </div>
+                        </div>
                       </div>
 
                       {/* Chat Interface */}
