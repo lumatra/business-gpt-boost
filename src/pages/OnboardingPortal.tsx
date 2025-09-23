@@ -20,7 +20,7 @@ interface OnboardingSession {
 }
 
 const ONBOARDING_STEPS = [
-  { id: 'company_info', title: 'Company Information', description: 'Basic company details and contact information' },
+  { id: 'company_info', title: 'Company Information', description: 'Basic company details, location, and key personnel' },
   { id: 'technical_requirements', title: 'Technical Requirements', description: 'System specifications and integration needs' },
   { id: 'access_credentials', title: 'Access & Credentials', description: 'API keys and system access information' },
   { id: 'documentation', title: 'Documentation Upload', description: 'Upload relevant documents and files' },
@@ -43,7 +43,13 @@ export default function OnboardingPortal() {
     company_size: '',
     primary_contact: '',
     phone: '',
-    website: ''
+    website: '',
+    business_description: '',
+    key_employees: '',
+    location_details: '',
+    marketing_strapline: '',
+    target_market: '',
+    unique_selling_points: ''
   });
 
   const [technicalData, setTechnicalData] = useState({
@@ -327,12 +333,64 @@ export default function OnboardingPortal() {
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="company_address">Company Address</Label>
+                    <Label htmlFor="company_address">Company Address & Location Details</Label>
                     <Textarea
                       id="company_address"
                       value={companyData.company_address}
                       onChange={(e) => setCompanyData(prev => ({ ...prev, company_address: e.target.value }))}
+                      placeholder="Full address, city, country, nearby landmarks..."
                     />
+                  </div>
+                  <div>
+                    <Label htmlFor="business_description">Business Description</Label>
+                    <Textarea
+                      id="business_description"
+                      value={companyData.business_description}
+                      onChange={(e) => setCompanyData(prev => ({ ...prev, business_description: e.target.value }))}
+                      placeholder="What does your company do? Products, services, mission..."
+                      rows={3}
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="marketing_strapline">Marketing Strapline / Tagline</Label>
+                    <Input
+                      id="marketing_strapline"
+                      value={companyData.marketing_strapline}
+                      onChange={(e) => setCompanyData(prev => ({ ...prev, marketing_strapline: e.target.value }))}
+                      placeholder="Your company's main marketing message or tagline"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="key_employees">Key Employees & Team</Label>
+                    <Textarea
+                      id="key_employees"
+                      value={companyData.key_employees}
+                      onChange={(e) => setCompanyData(prev => ({ ...prev, key_employees: e.target.value }))}
+                      placeholder="CEO, CTO, department heads, key personnel and their roles..."
+                      rows={3}
+                    />
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="target_market">Target Market</Label>
+                      <Textarea
+                        id="target_market"
+                        value={companyData.target_market}
+                        onChange={(e) => setCompanyData(prev => ({ ...prev, target_market: e.target.value }))}
+                        placeholder="Who are your customers? Demographics, industries..."
+                        rows={2}
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="unique_selling_points">Unique Selling Points</Label>
+                      <Textarea
+                        id="unique_selling_points"
+                        value={companyData.unique_selling_points}
+                        onChange={(e) => setCompanyData(prev => ({ ...prev, unique_selling_points: e.target.value }))}
+                        placeholder="What makes you different from competitors?"
+                        rows={2}
+                      />
+                    </div>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div>
