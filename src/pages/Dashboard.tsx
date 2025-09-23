@@ -18,6 +18,14 @@ const Dashboard = () => {
   const [aiAssistantData, setAiAssistantData] = useState<any>(null);
   const [aiAssistantFiles, setAiAssistantFiles] = useState<any[]>([]);
 
+  const formatFileSize = (bytes: number) => {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  };
+
   useEffect(() => {
     const checkAuth = async () => {
       const { data: { session } } = await supabase.auth.getSession();
@@ -28,10 +36,15 @@ const Dashboard = () => {
       }
 
       setUser(session.user);
-      await loadUserData(session.user.id);
+      await loadAIAssistantData(session.user.id);
     };
 
     checkAuth();
+
+    // Load AI assistant data when user is loaded
+    if (user && profile?.companies?.id) {
+      loadAIAssistantData(profile.companies.id);
+    }
 
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
@@ -58,6 +71,9 @@ const Dashboard = () => {
         setProfile(profileData);
         if (profileData.companies) {
           setCompany(profileData.companies);
+          
+          // Load AI assistant data when company is available
+          await loadAIAssistantData(profileData.companies.id);
         }
       }
     } catch (error) {
@@ -417,7 +433,7 @@ const Dashboard = () => {
 
                         {aiAssistantFiles.length > 0 && (
                           <div className="pt-3 border-t">
-                            <h4 className="font-medium text-sm mb-2">Training Files</h4>
+                            <h4 className="font-medium text-sm mb-2">Training Files ({aiAssistantFiles.length})</h4>
                             <div className="space-y-1">
                               {aiAssistantFiles.slice(0, 3).map((file, index) => (
                                 <div key={file.id || index} className="flex items-center gap-2 text-xs">
@@ -439,6 +455,27 @@ const Dashboard = () => {
                                 </div>
                               )}
                             </div>
+                            <Button 
+                              variant="outline" 
+                              size="sm" 
+                              className="mt-2 w-full"
+                              onClick={() => navigate('/ai-training-data')}
+                            >
+                              Manage AI Training Data
+                            </Button>
+                          </div>
+                        )}
+                        
+                        {(!aiAssistantFiles || aiAssistantFiles.length === 0) && (
+                          <div className="pt-3 border-t">
+                            <Button 
+                              variant="outline" 
+                              size="sm" 
+                              className="w-full"
+                              onClick={() => navigate('/ai-training-data')}
+                            >
+                              Add AI Training Data
+                            </Button>
                           </div>
                         )}
                       </CardContent>
