@@ -342,9 +342,14 @@ const Dashboard = () => {
                   {/* Side Panel */}
                   <div className="space-y-6">
                     {/* Account Info */}
-                    <Card>
+                    <Card className="cursor-pointer hover:shadow-md transition-shadow" onClick={() => navigate('/company-profile')}>
                       <CardHeader>
-                        <CardTitle>Company Profile</CardTitle>
+                        <CardTitle className="flex items-center justify-between">
+                          Company Profile
+                          <Button variant="outline" size="sm">
+                            View Full Profile
+                          </Button>
+                        </CardTitle>
                       </CardHeader>
                       <CardContent className="space-y-4">
                         <div className="space-y-3">

@@ -14,6 +14,7 @@ import CategoriesPage from "./pages/CategoriesPage";
 import OnboardingPortal from "./pages/OnboardingPortal";
 import OnboardingManagement from "./pages/OnboardingManagement";
 import AdminPortal from "./pages/AdminPortal";
+import CompanyProfile from "./pages/CompanyProfile";
 import NotFound from "./pages/NotFound";
 import { AuthProvider } from "./hooks/useAuth";
 
@@ -37,6 +38,7 @@ const App = () => (
           <Route path="/onboarding/:token" element={<OnboardingPortal />} />
           <Route path="/onboarding-management" element={<OnboardingManagement />} />
           <Route path="/admin" element={<AdminPortal />} />
+          <Route path="/company-profile" element={<CompanyProfile />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
