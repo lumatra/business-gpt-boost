@@ -42,7 +42,7 @@ const benefits = [
 
 const Benefits = () => {
   return (
-    <section className="py-24 px-6">
+    <section id="benefits" className="py-24 px-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
