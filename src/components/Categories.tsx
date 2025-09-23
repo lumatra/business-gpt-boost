@@ -66,7 +66,7 @@ const categories = [
 
 const Categories = () => {
   return (
-    <section className="py-24 px-6 bg-gradient-secondary">
+    <section id="categories" className="py-24 px-6 bg-gradient-secondary">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
