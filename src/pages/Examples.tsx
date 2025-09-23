@@ -4,6 +4,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import bakeryDisplay from "@/assets/bakery-display.jpg";
+import weddingCake from "@/assets/wedding-cake.jpg";
+import freshPastries from "@/assets/fresh-pastries.jpg";
 import { 
   MessageSquare, 
   Calculator, 
@@ -145,8 +148,18 @@ const Examples = () => {
       <Navigation />
       
       {/* Header */}
-      <section className="pt-24 pb-16 px-6 bg-gradient-secondary">
-        <div className="max-w-6xl mx-auto">
+      <section className="pt-24 pb-16 px-6 bg-gradient-secondary relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src={bakeryDisplay} 
+            alt="Beautiful bakery display with fresh pastries and cakes"
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/95" />
+        </div>
+        
+        <div className="max-w-6xl mx-auto relative z-10">
           <div className="flex items-center gap-4 mb-8">
             <Link to="/">
               <Button variant="outline" size="sm">
@@ -219,10 +232,21 @@ const Examples = () => {
                               <Calendar className="w-3 h-3 mr-1" />
                               {example.demo.aiResponse.scheduledFor}
                             </Badge>
-                            <div className="bg-muted/30 rounded p-3">
-                              <div className="text-xs text-muted-foreground mb-2">📱 Instagram Post</div>
-                              <div className="text-sm whitespace-pre-line">
-                                {example.demo.aiResponse.content}
+                            <div className="flex gap-4">
+                              <div className="flex-1">
+                                <div className="bg-muted/30 rounded p-3">
+                                  <div className="text-xs text-muted-foreground mb-2">📱 Instagram Post</div>
+                                  <div className="text-sm whitespace-pre-line">
+                                    {example.demo.aiResponse.content}
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="w-24 h-24 rounded-lg overflow-hidden flex-shrink-0">
+                                <img 
+                                  src={freshPastries} 
+                                  alt="Fresh pastries and croissants" 
+                                  className="w-full h-full object-cover"
+                                />
                               </div>
                             </div>
                             <div className="text-xs text-muted-foreground">
@@ -257,8 +281,19 @@ const Examples = () => {
                         {/* Proposal Example */}
                         {example.title.includes("Sales") && (
                           <div className="space-y-3">
-                            <div className="bg-muted/30 rounded p-4 text-sm whitespace-pre-line">
-                              {example.demo.aiResponse.proposal}
+                            <div className="flex gap-4">
+                              <div className="flex-1">
+                                <div className="bg-muted/30 rounded p-4 text-sm whitespace-pre-line">
+                                  {example.demo.aiResponse.proposal}
+                                </div>
+                              </div>
+                              <div className="w-32 h-32 rounded-lg overflow-hidden flex-shrink-0">
+                                <img 
+                                  src={weddingCake} 
+                                  alt="Elegant wedding cake" 
+                                  className="w-full h-full object-cover"
+                                />
+                              </div>
                             </div>
                             <div className="text-xs text-muted-foreground">
                               ⏰ {example.demo.aiResponse.followUp}
