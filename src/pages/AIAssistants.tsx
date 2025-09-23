@@ -14,12 +14,10 @@ import {
   MessageSquare, 
   Upload, 
   FileText, 
-  Users, 
-  DollarSign, 
-  Megaphone,
-  Settings,
-  Scale,
-  HeadphonesIcon,
+  Calculator,
+  TrendingUp,
+  Headphones,
+  Lightbulb,
   Loader2,
   Send,
   Plus
@@ -32,7 +30,7 @@ const AIAssistants = () => {
   const [user, setUser] = useState<User | null>(null);
   const [company, setCompany] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [selectedAssistant, setSelectedAssistant] = useState('hr');
+  const [selectedAssistant, setSelectedAssistant] = useState('social');
   const [chatMessage, setChatMessage] = useState('');
   const [chatHistory, setChatHistory] = useState<any[]>([]);
   const [isCreating, setIsCreating] = useState(false);
@@ -41,41 +39,41 @@ const AIAssistants = () => {
   const [uploadDialogOpen, setUploadDialogOpen] = useState(false);
 
   const assistantTypes = {
-    hr: {
-      name: 'HR Assistant',
-      icon: Users,
-      description: 'Employee onboarding, policies, benefits, and HR questions',
-      color: 'bg-blue-500'
+    social: {
+      name: 'Social Media AI Assistant',
+      icon: MessageSquare,
+      description: 'Daily post creation, brand voice learning, auto scheduling, and comment management',
+      color: 'bg-primary text-white'
     },
     finance: {
-      name: 'Finance Assistant',
-      icon: DollarSign,
-      description: 'Budgeting, financial analysis, and expense management',
-      color: 'bg-green-500'
+      name: 'Financial AI Advisor',
+      icon: Calculator,
+      description: 'Cash flow forecasting, pricing optimization, tax planning, and profit analysis',
+      color: 'bg-accent text-white'
+    },
+    sales: {
+      name: 'Tender & Sales AI Expert',
+      icon: FileText,
+      description: 'Proposal writing, RFP analysis, quote generation, and competitor research',
+      color: 'bg-primary text-white'
     },
     marketing: {
-      name: 'Marketing Assistant',
-      icon: Megaphone,
-      description: 'Campaign planning, content creation, and brand management',
-      color: 'bg-purple-500'
+      name: 'Marketing AI Specialist',
+      icon: TrendingUp,
+      description: 'Campaign creation, email sequences, ad copywriting, and ROI tracking',
+      color: 'bg-accent text-white'
     },
-    operations: {
-      name: 'Operations Assistant',
-      icon: Settings,
-      description: 'Process optimization and workflow management',
-      color: 'bg-orange-500'
+    customer: {
+      name: 'Customer Service AI Assistant',
+      icon: Headphones,
+      description: '24/7 chat support, FAQ automation, ticket management, and sentiment analysis',
+      color: 'bg-accent text-white'
     },
-    legal: {
-      name: 'Legal Assistant',
-      icon: Scale,
-      description: 'Contract review, compliance, and legal documentation',
-      color: 'bg-red-500'
-    },
-    customer_service: {
-      name: 'Customer Service Assistant',
-      icon: HeadphonesIcon,
-      description: 'Customer inquiries and support processes',
-      color: 'bg-teal-500'
+    custom: {
+      name: 'Custom AI Solutions',
+      icon: Lightbulb,
+      description: 'CRM automation, process optimization, business case writing, and custom integrations',
+      color: 'bg-primary text-white'
     }
   };
 
@@ -284,13 +282,13 @@ const AIAssistants = () => {
 
       <main className="container mx-auto px-4 py-8">
         <Tabs value={selectedAssistant} onValueChange={setSelectedAssistant}>
-          <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6">
+          <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6 gap-1">
             {Object.entries(assistantTypes).map(([key, config]) => {
               const Icon = config.icon;
               return (
                 <TabsTrigger key={key} value={key} className="flex items-center gap-2">
                   <Icon className="h-4 w-4" />
-                  <span className="hidden sm:inline">{config.name.split(' ')[0]}</span>
+                  <span className="hidden md:inline text-xs">{config.name.split(' ')[0]}</span>
                 </TabsTrigger>
               );
             })}
