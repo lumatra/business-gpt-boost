@@ -5,61 +5,57 @@ import {
   TrendingUp, 
   Calculator, 
   FileText, 
-  Users, 
-  BarChart3, 
-  Shield,
+  MessageSquare, 
+  Lightbulb,
   Zap,
   Target
 } from "lucide-react";
 
 const categories = [
   {
-    icon: TrendingUp,
-    title: "Marketing for YOUR Industry",
-    description: "Get marketing strategies specifically tailored to your business type, target customers, and competitive landscape.",
-    features: ["Your Industry Focus", "Custom Campaigns", "Competitor Analysis", "Brand Voice"],
+    icon: MessageSquare,
+    title: "Social Media AI Assistant",
+    description: "AI that creates posts, manages content calendars, and engages with your audience across all platforms.",
+    features: ["Content Creation", "Posting Schedule", "Audience Engagement", "Performance Analytics"],
     color: "text-primary",
-    bgColor: "bg-primary/10"
+    bgColor: "bg-primary/10",
+    price: "$297/month"
   },
   {
     icon: Calculator,
-    title: "Financial Planning for YOUR Business",
-    description: "Personalized financial advice based on your actual revenue, costs, and business model.",
-    features: ["Your Business Model", "Custom Budgets", "Cash Flow Analysis", "Growth Planning"],
+    title: "Financial AI Advisor",
+    description: "Personalized financial planning, budgeting, cash flow management, and investment guidance for your business.",
+    features: ["Budget Planning", "Cash Flow Analysis", "Financial Reports", "Investment Advice"],
     color: "text-accent",
-    bgColor: "bg-accent/10"
+    bgColor: "bg-accent/10",
+    price: "$397/month"
   },
   {
     icon: FileText,
-    title: "Proposals Tailored to YOU",
-    description: "AI that knows your company's strengths, experience, and capabilities to write winning proposals.",
-    features: ["Your Experience", "Company Strengths", "Past Projects", "Custom Templates"],
+    title: "Tender & Sales AI Expert",
+    description: "Win more contracts with AI-powered proposal writing, bid strategy, and sales copy optimization.",
+    features: ["Proposal Writing", "Bid Strategy", "Sales Copy", "Contract Analysis"],
     color: "text-primary",
-    bgColor: "bg-primary/10"
+    bgColor: "bg-primary/10",
+    price: "$497/month"
   },
   {
-    icon: Users,
-    title: "HR for YOUR Company Culture",
-    description: "HR guidance that reflects your company values, size, and specific workplace challenges.",
-    features: ["Your Culture", "Team Size", "Company Policies", "Custom Solutions"],
+    icon: TrendingUp,
+    title: "Marketing AI Specialist",
+    description: "Complete marketing automation including campaigns, email marketing, advertising, and brand strategy.",
+    features: ["Campaign Strategy", "Email Marketing", "Ad Creation", "Brand Development"],
     color: "text-accent",
-    bgColor: "bg-accent/10"
+    bgColor: "bg-accent/10",
+    price: "$447/month"
   },
   {
-    icon: BarChart3,
-    title: "Analysis of YOUR Data",
-    description: "Turn your specific business metrics and performance data into actionable insights and recommendations.",
-    features: ["Your Metrics", "Custom Reports", "Trend Analysis", "Personal Goals"],
+    icon: Lightbulb,
+    title: "Custom AI Solutions",
+    description: "Tailored AI for your unique needs - CRM automation, business case development, process optimization.",
+    features: ["CRM Integration", "Business Cases", "Process Automation", "Custom Workflows"],
     color: "text-primary",
-    bgColor: "bg-primary/10"
-  },
-  {
-    icon: Shield,
-    title: "Operations for YOUR Workflow",
-    description: "Process improvements designed around your specific operations, team structure, and business needs.",
-    features: ["Your Processes", "Team Structure", "Custom Workflows", "Efficiency Plans"],
-    color: "text-accent",
-    bgColor: "bg-accent/10"
+    bgColor: "bg-primary/10",
+    price: "From $697/month"
   }
 ];
 
@@ -88,8 +84,13 @@ const Categories = () => {
             return (
               <Card 
                 key={index} 
-                className="group hover:shadow-card transition-all duration-300 hover:scale-105 border-border/50 bg-card/50 backdrop-blur-sm"
+                className="group hover:shadow-card transition-all duration-300 hover:scale-105 border-border/50 bg-card/50 backdrop-blur-sm relative"
               >
+                <div className="absolute top-4 right-4">
+                  <div className="bg-gradient-primary text-primary-foreground text-sm font-bold px-3 py-1 rounded-full">
+                    {category.price}
+                  </div>
+                </div>
                 <CardHeader className="pb-4">
                   <div className={`w-12 h-12 rounded-lg ${category.bgColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                     <Icon className={`w-6 h-6 ${category.color}`} />
