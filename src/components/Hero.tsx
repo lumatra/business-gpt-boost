@@ -52,6 +52,11 @@ const Hero = () => {
               variant="outline" 
               size="lg"
               className="text-lg px-8 py-4 border-primary/30 hover:bg-primary/5 transition-smooth"
+              onClick={() => {
+                document.getElementById('categories')?.scrollIntoView({ 
+                  behavior: 'smooth' 
+                });
+              }}
             >
               See Personalized Examples
             </Button>
