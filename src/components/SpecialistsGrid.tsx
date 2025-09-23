@@ -1,10 +1,18 @@
 import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Check } from "lucide-react";
+import { Check, ArrowRight } from "lucide-react";
 import { categories } from "@/data/categories";
+import { useNavigate } from "react-router-dom";
 
 const SpecialistsGrid = () => {
+  const navigate = useNavigate();
+
+  const handleGetStarted = (categoryTitle: string) => {
+    // Navigate to auth page with the selected category
+    navigate(`/auth?category=${encodeURIComponent(categoryTitle)}`);
+  };
   return (
     <section className="py-16 px-6">
       <div className="max-w-6xl mx-auto">
@@ -34,7 +42,7 @@ const SpecialistsGrid = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-2">
+                  <div className="space-y-2 mb-6">
                     {category.features.slice(0, 4).map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center gap-2">
                         <Check className="w-4 h-4 text-primary flex-shrink-0" />
@@ -42,6 +50,13 @@ const SpecialistsGrid = () => {
                       </div>
                     ))}
                   </div>
+                  <Button 
+                    onClick={() => handleGetStarted(category.title)}
+                    className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300"
+                  >
+                    Get Started
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
                 </CardContent>
               </Card>
             );
