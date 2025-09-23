@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Navigation from "@/components/Navigation";
-import Categories from "@/components/Categories";
+import SpecialistsGrid from "@/components/SpecialistsGrid";
 
 const CategoriesPage = () => {
   useEffect(() => {
@@ -10,7 +10,7 @@ const CategoriesPage = () => {
   return (
     <main className="min-h-screen bg-background">
       <Navigation />
-      <Categories />
+      <SpecialistsGrid />
     </main>
   );
 };
