@@ -6,48 +6,54 @@ import { Check, Star, Zap } from "lucide-react";
 
 const pricingPlans = [
   {
-    name: "Starter Pack",
-    price: "$79",
+    name: "Starter",
+    price: "£29",
     period: "/month",
-    description: "Perfect for solo entrepreneurs and micro businesses",
+    description: "Perfect for solo entrepreneurs getting started with AI",
     features: [
-      "Social Media AI Assistant",
-      "Financial AI Advisor", 
+      "Choose 2 AI Assistants",
+      "1 User Account", 
       "24/7 AI Support",
-      "Basic Analytics",
-      "Email Support"
+      "Basic Training & Setup",
+      "Email Support",
+      "Monthly Usage Reports"
     ],
     popular: false,
     cta: "Start Free Trial"
   },
   {
-    name: "Business Pro",
-    price: "$149",
+    name: "Pro",
+    price: "£49",
     period: "/month", 
-    description: "Complete AI solution for small growing businesses",
+    description: "Ideal for growing businesses with small teams",
     features: [
-      "All Starter Pack features",
-      "Marketing AI Specialist",
-      "Tender & Sales AI Expert",
-      "Advanced Analytics",
-      "Priority Support",
-      "Custom Integrations"
+      "Choose 4 AI Assistants",
+      "Up to 3 Users",
+      "Priority AI Support", 
+      "Advanced Training & Customization",
+      "Phone & Email Support",
+      "Weekly Performance Analytics",
+      "Team Collaboration Tools",
+      "Custom Workflows"
     ],
     popular: true,
-    cta: "Get Business Pro"
+    cta: "Start Free Trial"
   },
   {
     name: "Enterprise",
-    price: "$299",
+    price: "£119",
     period: "/month",
-    description: "Fully customized AI solutions for established businesses",
+    description: "Complete AI solution for established businesses",
     features: [
-      "All Business Pro features", 
-      "Custom AI Solutions",
+      "All 6 AI Assistants Included",
+      "2 Custom AI Solutions",
+      "Up to 10 Users",
       "Dedicated Account Manager",
-      "White-label Options",
-      "Advanced Security",
-      "SLA Guarantee"
+      "White-label Options", 
+      "Custom Integrations",
+      "Real-time Analytics Dashboard",
+      "Priority Phone Support",
+      "Onboarding & Training Sessions"
     ],
     popular: false,
     cta: "Contact Sales"
@@ -136,7 +142,7 @@ const Pricing = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   Social Media AI
-                  <Badge variant="secondary">$39/mo</Badge>
+                  <Badge variant="secondary">£39/mo</Badge>
                 </CardTitle>
                 <CardDescription>Complete social media automation</CardDescription>
               </CardHeader>
@@ -146,7 +152,7 @@ const Pricing = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   Financial AI
-                  <Badge variant="secondary">$49/mo</Badge>
+                  <Badge variant="secondary">£49/mo</Badge>
                 </CardTitle>
                 <CardDescription>Smart financial planning & analysis</CardDescription>
               </CardHeader>
@@ -156,7 +162,7 @@ const Pricing = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   Marketing AI
-                  <Badge variant="secondary">$49/mo</Badge>
+                  <Badge variant="secondary">£49/mo</Badge>
                 </CardTitle>
                 <CardDescription>Complete marketing automation</CardDescription>
               </CardHeader>
@@ -166,17 +172,27 @@ const Pricing = () => {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   Tender & Sales AI
-                  <Badge variant="secondary">$59/mo</Badge>
+                  <Badge variant="secondary">£59/mo</Badge>
                 </CardTitle>
                 <CardDescription>Win more contracts & deals</CardDescription>
               </CardHeader>
             </Card>
 
-            <Card className="bg-card/30 backdrop-blur-sm border-border/50 hover:shadow-card transition-all duration-300 md:col-span-2 lg:col-span-1">
+            <Card className="bg-card/30 backdrop-blur-sm border-border/50 hover:shadow-card transition-all duration-300">
+              <CardHeader>
+                <CardTitle className="flex items-center justify-between">
+                  Customer Service AI
+                  <Badge variant="secondary">£45/mo</Badge>
+                </CardTitle>
+                <CardDescription>24/7 customer support automation</CardDescription>
+              </CardHeader>
+            </Card>
+
+            <Card className="bg-card/30 backdrop-blur-sm border-border/50 hover:shadow-card transition-all duration-300">
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   Custom AI Solutions
-                  <Badge variant="secondary">From $79/mo</Badge>
+                  <Badge variant="secondary">From £79/mo</Badge>
                 </CardTitle>
                 <CardDescription>Tailored for your unique needs</CardDescription>
               </CardHeader>
