@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
-import { Loader2, LogOut, MessageSquare, Settings, Users, BarChart3 } from 'lucide-react';
+import { Loader2, LogOut, MessageSquare, Settings, Users, BarChart3, Calendar, Heart, Share2, Hash, TrendingUp, Clock } from 'lucide-react';
 import type { User } from '@supabase/supabase-js';
 
 const Dashboard = () => {
@@ -158,24 +158,11 @@ const Dashboard = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Project Status</CardTitle>
-                  <BarChart3 className="h-4 w-4 text-muted-foreground" />
+                  <CardTitle className="text-sm font-medium">Posts Scheduled</CardTitle>
+                  <Calendar className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold capitalize">{company.status}</div>
-                  <p className="text-xs text-muted-foreground">
-                    {company.subscription_tier} plan
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">AI Sessions</CardTitle>
-                  <MessageSquare className="h-4 w-4 text-muted-foreground" />
-                </CardHeader>
-                <CardContent>
-                  <div className="text-2xl font-bold">24</div>
+                  <div className="text-2xl font-bold">47</div>
                   <p className="text-xs text-muted-foreground">
                     This month
                   </p>
@@ -184,26 +171,39 @@ const Dashboard = () => {
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Documents</CardTitle>
-                  <Users className="h-4 w-4 text-muted-foreground" />
+                  <CardTitle className="text-sm font-medium">Engagement Rate</CardTitle>
+                  <Heart className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">12</div>
+                  <div className="text-2xl font-bold">8.4%</div>
                   <p className="text-xs text-muted-foreground">
-                    Processed
+                    +2.1% from last month
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Usage</CardTitle>
-                  <Settings className="h-4 w-4 text-muted-foreground" />
+                  <CardTitle className="text-sm font-medium">Content Ideas</CardTitle>
+                  <Share2 className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">78%</div>
+                  <div className="text-2xl font-bold">156</div>
                   <p className="text-xs text-muted-foreground">
-                    Monthly quota
+                    AI Generated
+                  </p>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+                  <CardTitle className="text-sm font-medium">Monthly Reach</CardTitle>
+                  <TrendingUp className="h-4 w-4 text-muted-foreground" />
+                </CardHeader>
+                <CardContent>
+                  <div className="text-2xl font-bold">12.8K</div>
+                  <p className="text-xs text-muted-foreground">
+                    +18% growth
                   </p>
                 </CardContent>
               </Card>
@@ -217,42 +217,64 @@ const Dashboard = () => {
                   <CardHeader>
                     <CardTitle className="flex items-center gap-2">
                       <MessageSquare className="h-5 w-5" />
-                      Your AI Assistant
+                      Social Media AI Assistant
                     </CardTitle>
                     <CardDescription>
-                      Custom-trained AI assistant ready for your business needs
+                      AI-powered social media management for MJ Hairdressers
                     </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="p-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg border">
-                        <h4 className="font-semibold mb-2 text-primary">Specialized Knowledge</h4>
+                        <h4 className="font-semibold mb-2 text-primary flex items-center gap-2">
+                          <Calendar className="h-4 w-4" />
+                          Auto Scheduling
+                        </h4>
                         <p className="text-sm text-muted-foreground">
-                          Trained on your industry data, company documents, and business processes
+                          Content posted at optimal times across all platforms for maximum engagement
                         </p>
                       </div>
                       <div className="p-4 bg-gradient-to-br from-secondary/10 to-primary/10 rounded-lg border">
-                        <h4 className="font-semibold mb-2">24/7 Availability</h4>
+                        <h4 className="font-semibold mb-2 flex items-center gap-2">
+                          <Hash className="h-4 w-4" />
+                          Brand Voice Learning
+                        </h4>
                         <p className="text-sm text-muted-foreground">
-                          Always available to help with customer inquiries and internal tasks
+                          AI learns your salon's unique style and creates content that sounds authentically you
                         </p>
                       </div>
                     </div>
                     
                     <div className="p-4 bg-secondary/20 rounded-lg border-l-4 border-primary">
-                      <h4 className="font-semibold mb-2">Recent Activity</h4>
+                      <h4 className="font-semibold mb-2">Today's Social Media Activity</h4>
                       <div className="space-y-2 text-sm">
                         <div className="flex justify-between items-center">
-                          <span>Customer support queries handled</span>
-                          <span className="font-medium">18 today</span>
+                          <span className="flex items-center gap-2">
+                            <Share2 className="h-3 w-3" />
+                            Posts created & scheduled
+                          </span>
+                          <span className="font-medium">8 posts</span>
                         </div>
                         <div className="flex justify-between items-center">
-                          <span>Document analysis completed</span>
-                          <span className="font-medium">3 this week</span>
+                          <span className="flex items-center gap-2">
+                            <Heart className="h-3 w-3" />
+                            Comments responded to
+                          </span>
+                          <span className="font-medium">12 replies</span>
                         </div>
                         <div className="flex justify-between items-center">
-                          <span>Average response time</span>
-                          <span className="font-medium">1.2 seconds</span>
+                          <span className="flex items-center gap-2">
+                            <Hash className="h-3 w-3" />
+                            Hashtags researched
+                          </span>
+                          <span className="font-medium">24 trending</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span className="flex items-center gap-2">
+                            <Clock className="h-3 w-3" />
+                            Next post scheduled
+                          </span>
+                          <span className="font-medium">2:30 PM</span>
                         </div>
                       </div>
                     </div>
@@ -263,7 +285,7 @@ const Dashboard = () => {
                       onClick={() => navigate('/ai-assistants')}
                     >
                       <MessageSquare className="mr-2 h-4 w-4" />
-                      Start New Conversation
+                      Create Social Media Content
                     </Button>
                   </CardContent>
                 </Card>
@@ -271,21 +293,25 @@ const Dashboard = () => {
                 {/* Recent Conversations */}
                 <Card>
                   <CardHeader>
-                    <CardTitle>Recent Conversations</CardTitle>
+                    <CardTitle>Recent Social Media Content</CardTitle>
                     <CardDescription>
-                      Your latest AI assistant interactions
+                      Your latest AI-generated posts and content ideas
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
                       {[
-                        { title: "Customer onboarding process", time: "2 hours ago", type: "Support" },
-                        { title: "Market analysis for Q4", time: "1 day ago", type: "Analysis" },
-                        { title: "Product documentation review", time: "2 days ago", type: "Review" },
+                        { title: "Weekend styling tips for summer hair", time: "2 hours ago", type: "Instagram", platform: "📸" },
+                        { title: "Client transformation spotlight", time: "5 hours ago", type: "Facebook", platform: "👤" },
+                        { title: "Hair care routine thread", time: "1 day ago", type: "Twitter", platform: "🐦" },
+                        { title: "Behind-the-scenes salon tour", time: "2 days ago", type: "TikTok", platform: "🎵" },
                       ].map((convo, index) => (
                         <div key={index} className="flex items-center justify-between p-3 bg-secondary/30 rounded-lg">
                           <div>
-                            <h5 className="font-medium">{convo.title}</h5>
+                            <h5 className="font-medium flex items-center gap-2">
+                              <span>{convo.platform}</span>
+                              {convo.title}
+                            </h5>
                             <p className="text-sm text-muted-foreground">{convo.time}</p>
                           </div>
                           <div className="flex items-center gap-2">
@@ -293,7 +319,7 @@ const Dashboard = () => {
                               {convo.type}
                             </span>
                             <Button variant="ghost" size="sm">
-                              Continue
+                              View
                             </Button>
                           </div>
                         </div>
