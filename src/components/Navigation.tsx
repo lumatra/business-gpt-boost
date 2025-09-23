@@ -37,14 +37,7 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             <div className="flex items-center space-x-6">
-              <Link
-                to="/#categories"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                onClick={(e) => {
-                  e.preventDefault();
-                  goToSection('categories');
-                }}
-              >
+              <Link to="/categories" className="text-muted-foreground hover:text-foreground transition-colors">
                 Categories
               </Link>
               <Link
@@ -94,14 +87,7 @@ const Navigation = () => {
         {isMenuOpen && (
           <div className="md:hidden mt-4 pt-4 border-t border-border/50">
             <div className="flex flex-col space-y-4">
-              <Link
-                to="/#categories"
-                className="text-muted-foreground hover:text-foreground transition-colors py-2"
-                onClick={(e) => {
-                  e.preventDefault();
-                  goToSection('categories');
-                }}
-              >
+              <Link to="/categories" className="text-muted-foreground hover:text-foreground transition-colors py-2">
                 Categories
               </Link>
               <Link
