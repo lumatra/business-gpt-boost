@@ -139,10 +139,26 @@ const Dashboard = () => {
           </div>
         ) : (
           <div className="space-y-8">
+            {/* Quick Actions Bar */}
+            <div className="flex flex-wrap gap-4">
+              <Button 
+                onClick={() => navigate('/ai-assistants')}
+                className="flex-1 md:flex-none"
+              >
+                <MessageSquare className="mr-2 h-4 w-4" />
+                Launch AI Assistant
+              </Button>
+              <Button variant="outline" className="flex-1 md:flex-none">
+                <Settings className="mr-2 h-4 w-4" />
+                Account Settings
+              </Button>
+            </div>
+
+            {/* Stats Overview */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Company Status</CardTitle>
+                  <CardTitle className="text-sm font-medium">Project Status</CardTitle>
                   <BarChart3 className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
@@ -155,85 +171,210 @@ const Dashboard = () => {
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">AI Assistant</CardTitle>
+                  <CardTitle className="text-sm font-medium">AI Sessions</CardTitle>
                   <MessageSquare className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">
-                    {company.gpt_configuration ? 'Active' : 'Pending'}
-                  </div>
+                  <div className="text-2xl font-bold">24</div>
                   <p className="text-xs text-muted-foreground">
-                    Custom configuration
+                    This month
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Team Members</CardTitle>
+                  <CardTitle className="text-sm font-medium">Documents</CardTitle>
                   <Users className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold">1</div>
+                  <div className="text-2xl font-bold">12</div>
                   <p className="text-xs text-muted-foreground">
-                    Active users
+                    Processed
                   </p>
                 </CardContent>
               </Card>
 
               <Card>
                 <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                  <CardTitle className="text-sm font-medium">Settings</CardTitle>
+                  <CardTitle className="text-sm font-medium">Usage</CardTitle>
                   <Settings className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                  <Button variant="outline" size="sm" className="w-full">
-                    Manage
-                  </Button>
+                  <div className="text-2xl font-bold">78%</div>
+                  <p className="text-xs text-muted-foreground">
+                    Monthly quota
+                  </p>
                 </CardContent>
               </Card>
             </div>
 
-            <Card>
-              <CardHeader>
-                <CardTitle>Your Custom AI Assistant</CardTitle>
-                <CardDescription>
-                   {company.gpt_configuration 
-                     ? "Your AI assistant is ready to use!" 
-                     : "Your AI assistant is being configured by our team."
-                   }
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                {company.gpt_configuration ? (
-                  <div className="space-y-4">
-                    <div className="p-4 bg-secondary/50 rounded-lg">
-                      <h4 className="font-semibold mb-2">AI Assistant Features:</h4>
-                      <ul className="text-sm space-y-1">
-                        <li>• Trained on your business data</li>
-                        <li>• Customized for your industry</li>
-                        <li>• Secure and private conversations</li>
-                        <li>• Integration with your workflows</li>
-                      </ul>
+            {/* Main Content Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* AI Assistant Panel */}
+              <div className="lg:col-span-2 space-y-6">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <MessageSquare className="h-5 w-5" />
+                      Your AI Assistant
+                    </CardTitle>
+                    <CardDescription>
+                      Custom-trained AI assistant ready for your business needs
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="p-4 bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg border">
+                        <h4 className="font-semibold mb-2 text-primary">Specialized Knowledge</h4>
+                        <p className="text-sm text-muted-foreground">
+                          Trained on your industry data, company documents, and business processes
+                        </p>
+                      </div>
+                      <div className="p-4 bg-gradient-to-br from-secondary/10 to-primary/10 rounded-lg border">
+                        <h4 className="font-semibold mb-2">24/7 Availability</h4>
+                        <p className="text-sm text-muted-foreground">
+                          Always available to help with customer inquiries and internal tasks
+                        </p>
+                      </div>
                     </div>
+                    
+                    <div className="p-4 bg-secondary/20 rounded-lg border-l-4 border-primary">
+                      <h4 className="font-semibold mb-2">Recent Activity</h4>
+                      <div className="space-y-2 text-sm">
+                        <div className="flex justify-between items-center">
+                          <span>Customer support queries handled</span>
+                          <span className="font-medium">18 today</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span>Document analysis completed</span>
+                          <span className="font-medium">3 this week</span>
+                        </div>
+                        <div className="flex justify-between items-center">
+                          <span>Average response time</span>
+                          <span className="font-medium">1.2 seconds</span>
+                        </div>
+                      </div>
+                    </div>
+                    
                     <Button 
-                      className="w-full md:w-auto"
+                      size="lg"
+                      className="w-full"
                       onClick={() => navigate('/ai-assistants')}
                     >
                       <MessageSquare className="mr-2 h-4 w-4" />
-                      Launch AI Assistants
+                      Start New Conversation
                     </Button>
-                  </div>
-                ) : (
-                  <div className="text-center py-8">
-                    <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4" />
-                    <p className="text-muted-foreground">
-                      Our team is configuring your custom AI solution...
-                    </p>
-                  </div>
-                )}
-              </CardContent>
-            </Card>
+                  </CardContent>
+                </Card>
+
+                {/* Recent Conversations */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Recent Conversations</CardTitle>
+                    <CardDescription>
+                      Your latest AI assistant interactions
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-4">
+                      {[
+                        { title: "Customer onboarding process", time: "2 hours ago", type: "Support" },
+                        { title: "Market analysis for Q4", time: "1 day ago", type: "Analysis" },
+                        { title: "Product documentation review", time: "2 days ago", type: "Review" },
+                      ].map((convo, index) => (
+                        <div key={index} className="flex items-center justify-between p-3 bg-secondary/30 rounded-lg">
+                          <div>
+                            <h5 className="font-medium">{convo.title}</h5>
+                            <p className="text-sm text-muted-foreground">{convo.time}</p>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded">
+                              {convo.type}
+                            </span>
+                            <Button variant="ghost" size="sm">
+                              Continue
+                            </Button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Side Panel */}
+              <div className="space-y-6">
+                {/* Account Info */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Account Overview</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">Company:</span>
+                        <span className="font-medium">{company.name}</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">Plan:</span>
+                        <span className="font-medium capitalize">{company.subscription_tier || 'Professional'}</span>
+                      </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">Status:</span>
+                        <span className="font-medium capitalize text-green-600">{company.status}</span>
+                      </div>
+                    </div>
+                    
+                    <div className="pt-2 border-t">
+                      <div className="flex justify-between text-sm mb-2">
+                        <span>Monthly Usage</span>
+                        <span>78%</span>
+                      </div>
+                      <div className="w-full bg-secondary rounded-full h-2">
+                        <div className="bg-primary h-2 rounded-full" style={{ width: '78%' }}></div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                {/* Quick Actions */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Quick Actions</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <Button variant="outline" className="w-full justify-start">
+                      <Users className="mr-2 h-4 w-4" />
+                      Manage Team Access
+                    </Button>
+                    <Button variant="outline" className="w-full justify-start">
+                      <Settings className="mr-2 h-4 w-4" />
+                      AI Configuration
+                    </Button>
+                    <Button variant="outline" className="w-full justify-start">
+                      <BarChart3 className="mr-2 h-4 w-4" />
+                      Usage Analytics
+                    </Button>
+                  </CardContent>
+                </Card>
+
+                {/* Support */}
+                <Card>
+                  <CardHeader>
+                    <CardTitle>Need Help?</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="text-sm text-muted-foreground">
+                      Our support team is here to help you get the most out of your AI assistant.
+                    </div>
+                    <Button variant="outline" className="w-full">
+                      Contact Support
+                    </Button>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
           </div>
         )}
       </main>
