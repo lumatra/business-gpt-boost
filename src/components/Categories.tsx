@@ -2,6 +2,7 @@ import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { 
   TrendingUp, 
   Calculator, 
@@ -79,8 +80,6 @@ const categories = [
 ];
 
 const Categories = () => {
-  const [showIndividual, setShowIndividual] = React.useState(false);
-
   return (
     <section id="categories" className="py-24 px-6 bg-gradient-secondary">
       <div className="max-w-6xl mx-auto">
@@ -118,10 +117,7 @@ const Categories = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Individual Services Package */}
-            <div 
-              className="relative bg-card border border-border rounded-2xl p-6 transition-all duration-300 hover:shadow-card cursor-pointer"
-              onClick={() => setShowIndividual(!showIndividual)}
-            >
+            <div className="relative bg-card border border-border rounded-2xl p-6 transition-all duration-300 hover:shadow-card">
               <div className="text-center mb-6">
                 <h4 className="text-2xl font-bold mb-2 text-foreground">Individual</h4>
                 <div className="mb-4">
@@ -150,10 +146,12 @@ const Categories = () => {
                 </li>
               </ul>
               
-              <Button className="w-full" variant="outline">
-                <span className="mr-2">View All Specialists</span>
-                <ChevronDown className={`w-4 h-4 transition-transform ${showIndividual ? "rotate-180" : ""}`} />
-              </Button>
+              <Link to="/#categories">
+                <Button className="w-full" variant="outline">
+                  <span className="mr-2">View All Specialists</span>
+                  <ChevronDown className="w-4 h-4" />
+                </Button>
+              </Link>
             </div>
             {/* Starter Package */}
             <div className="relative bg-card border border-border rounded-2xl p-6 transition-all duration-300 hover:shadow-card">
@@ -283,49 +281,9 @@ const Categories = () => {
               </Button>
             </div>
 
-          {/* Individual Services Expanded View */}
-          {showIndividual && (
-            <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {categories.map((category, index) => {
-                const Icon = category.icon;
-                return (
-                  <Card 
-                    key={index} 
-                    className="group hover:shadow-card transition-all duration-300 border-border bg-card relative"
-                  >
-                    <div className="absolute top-6 right-6">
-                      <div className="bg-primary/10 text-primary text-sm font-semibold px-3 py-1 rounded-full">
-                        {category.price}
-                      </div>
-                    </div>
-                    <CardHeader className="pb-4">
-                      <div className={`w-12 h-12 rounded-xl ${category.bgColor} flex items-center justify-center mb-4`}>
-                        <Icon className={`w-6 h-6 ${category.color}`} />
-                      </div>
-                      <CardTitle className="text-xl mb-3 text-foreground pr-20">{category.title}</CardTitle>
-                      <CardDescription className="text-muted-foreground text-sm leading-relaxed">
-                        {category.description}
-                      </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-2">
-                        {category.features.slice(0, 4).map((feature, featureIndex) => (
-                          <div key={featureIndex} className="flex items-center gap-2">
-                            <Check className="w-4 h-4 text-primary flex-shrink-0" />
-                            <span className="text-xs text-muted-foreground">{feature}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                );
-              })}
             </div>
-          )}
         </div>
-        </div>
-
-        </div>
+      </div>
     </section>
   );
 };
