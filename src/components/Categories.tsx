@@ -83,14 +83,28 @@ const Categories = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
             <Zap className="w-4 h-4 mr-2 text-primary" />
-            <span className="text-sm font-medium text-primary">Personalized to Your Company</span>
+            <span className="text-sm font-medium text-primary">Your Specialist Team Awaits</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            AI That <span className="bg-gradient-primary bg-clip-text text-transparent">Knows Your Business</span>
+            <span className="bg-gradient-primary bg-clip-text text-transparent">Expert Specialists</span> at the Touch of a Button
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Your AI assistant learns your company's unique needs, industry challenges, and goals to provide tailored advice and solutions.
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            Why hire multiple expensive consultants when you can have an entire team of AI specialists ready to help your business 24/7? Each AI is trained specifically for your industry and challenges.
           </p>
+          <div className="flex items-center justify-center gap-8 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span>No Hiring Hassles</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-accent"></div>
+              <span>Instant Expertise</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-primary"></div>
+              <span>Always Available</span>
+            </div>
+          </div>
         </div>
 
         {/* Categories Grid */}
