@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import bakeryDisplay from "@/assets/bakery-display.jpg";
 import weddingCake from "@/assets/wedding-cake.jpg";
 import freshPastries from "@/assets/fresh-pastries.jpg";
+import aiAssistantIcon from "@/assets/ai-assistant-icon.png";
+import maryAvatar from "@/assets/mary-avatar.png";
 import { 
   MessageSquare, 
   Calculator, 
@@ -204,27 +206,41 @@ const Examples = () => {
                   <CardContent className="p-6">
                     {/* User Input */}
                     <div className="mb-6">
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                          <span className="text-sm">👤</span>
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20">
+                          <img 
+                            src={maryAvatar} 
+                            alt="Mary, bakery owner" 
+                            className="w-full h-full object-cover"
+                          />
                         </div>
-                        <span className="font-medium text-sm">Mary asks:</span>
+                        <div>
+                          <span className="font-medium text-sm">Mary asks:</span>
+                          <div className="text-xs text-muted-foreground">Owner, Mary's Bakery</div>
+                        </div>
                       </div>
-                      <div className="bg-muted/50 rounded-lg p-4 border-l-4 border-l-primary/30">
+                      <div className="bg-muted/50 rounded-lg p-4 border-l-4 border-l-primary/30 ml-13">
                         <p className="text-foreground italic">"{example.demo.userInput}"</p>
                       </div>
                     </div>
 
                     {/* AI Response */}
                     <div>
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center">
-                          <span className="text-sm">🤖</span>
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-10 h-10 rounded-full overflow-hidden bg-gradient-primary p-1">
+                          <img 
+                            src={aiAssistantIcon} 
+                            alt="AI Specialist" 
+                            className="w-full h-full object-cover rounded-full"
+                          />
                         </div>
-                        <span className="font-medium text-sm">AI Specialist responds:</span>
+                        <div>
+                          <span className="font-medium text-sm">AI Specialist responds:</span>
+                          <div className="text-xs text-muted-foreground">{example.title}</div>
+                        </div>
                       </div>
                       
-                      <div className="bg-card border border-border rounded-lg p-4 space-y-4">
+                      <div className="bg-card border border-border rounded-lg p-4 space-y-4 ml-13">
                         {/* Social Media Example */}
                         {example.title.includes("Social Media") && (
                           <div className="space-y-3">
