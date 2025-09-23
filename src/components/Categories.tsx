@@ -11,7 +11,8 @@ import {
   Zap,
   Target,
   Headphones,
-  Check
+  Check,
+  ChevronDown
 } from "lucide-react";
 
 const categories = [
@@ -78,6 +79,8 @@ const categories = [
 ];
 
 const Categories = () => {
+  const [showIndividual, setShowIndividual] = React.useState(false);
+
   return (
     <section id="categories" className="py-24 px-6 bg-gradient-secondary">
       <div className="max-w-6xl mx-auto">
@@ -114,59 +117,9 @@ const Categories = () => {
           </div>
         </div>
 
-        {/* Individual Services First */}
-        <div className="mb-16">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl font-bold mb-4">
-              Choose <span className="bg-gradient-primary bg-clip-text text-transparent">Individual AI Specialists</span>
-            </h3>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Each AI specialist is £19.99/month. Pick exactly what your business needs.
-            </p>
-          </div>
+        {/* Remove individual services section - now integrated into packages */}
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {categories.map((category, index) => {
-              const Icon = category.icon;
-              return (
-                <Card 
-                  key={index} 
-                  className="group hover:shadow-card transition-all duration-300 hover:scale-105 border-border/50 bg-card/50 backdrop-blur-sm relative"
-                >
-                  <div className="absolute top-4 right-4">
-                    <div className="bg-gradient-primary text-primary-foreground text-sm font-bold px-3 py-1 rounded-full">
-                      {category.price}
-                    </div>
-                  </div>
-                  <CardHeader className="pb-4">
-                    <div className={`w-12 h-12 rounded-lg ${category.bgColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                      <Icon className={`w-6 h-6 ${category.color}`} />
-                    </div>
-                    <CardTitle className="text-xl mb-2">{category.title}</CardTitle>
-                    <CardDescription className="text-muted-foreground">
-                      {category.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="flex flex-wrap gap-2">
-                      {category.features.map((feature, featureIndex) => (
-                        <Badge 
-                          key={featureIndex}
-                          variant="secondary"
-                          className="text-xs bg-secondary/50 hover:bg-secondary/70 transition-colors"
-                        >
-                          {feature}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Package Plans */}
+        {/* Package Plans with Individual Services Option */}
         <div className="mb-16">
           <div className="text-center mb-12">
             <div className="bg-accent/10 border border-accent/20 rounded-xl p-6 max-w-3xl mx-auto mb-8">
@@ -174,12 +127,50 @@ const Categories = () => {
                 💰 Save More with <span className="bg-gradient-primary bg-clip-text text-transparent">Bundled Packages</span>
               </h3>
               <p className="text-muted-foreground">
-                Get multiple AI specialists at discounted rates. Perfect for businesses that need comprehensive AI support.
+                Choose individual AI specialists or save with our bundled packages for comprehensive AI support.
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Individual Services Package */}
+            <div 
+              className="relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-card cursor-pointer"
+              onClick={() => setShowIndividual(!showIndividual)}
+            >
+              <div className="text-center mb-6">
+                <h4 className="text-2xl font-bold mb-2">Individual</h4>
+                <div className="mb-4">
+                  <span className="text-4xl font-bold">£19.99</span>
+                  <span className="text-muted-foreground">/month</span>
+                </div>
+                <p className="text-muted-foreground">Pick exactly what you need</p>
+              </div>
+              
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                  <span className="text-sm">Choose Any 1 AI Assistant</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                  <span className="text-sm">6 Specialists Available</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                  <span className="text-sm">Basic Training & Setup</span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                  <span className="text-sm">Email Support</span>
+                </li>
+              </ul>
+              
+              <Button className="w-full" variant="outline">
+                <span className="mr-2">View Options</span>
+                <ChevronDown className={`w-4 h-4 transition-transform ${showIndividual ? "rotate-180" : ""}`} />
+              </Button>
+            </div>
             {/* Starter Package */}
             <div className="relative bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-6 transition-all duration-300 hover:shadow-card">
               <div className="text-center mb-6">
@@ -298,8 +289,51 @@ const Categories = () => {
               <Button className="w-full" variant="outline">
                 Contact Sales
               </Button>
-            </div>
           </div>
+
+          {/* Individual Services Expanded View */}
+          {showIndividual && (
+            <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {categories.map((category, index) => {
+                const Icon = category.icon;
+                return (
+                  <Card 
+                    key={index} 
+                    className="group hover:shadow-card transition-all duration-300 hover:scale-105 border-border/50 bg-card/50 backdrop-blur-sm relative"
+                  >
+                    <div className="absolute top-4 right-4">
+                      <div className="bg-gradient-primary text-primary-foreground text-sm font-bold px-3 py-1 rounded-full">
+                        {category.price}
+                      </div>
+                    </div>
+                    <CardHeader className="pb-4">
+                      <div className={`w-12 h-12 rounded-lg ${category.bgColor} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
+                        <Icon className={`w-6 h-6 ${category.color}`} />
+                      </div>
+                      <CardTitle className="text-xl mb-2">{category.title}</CardTitle>
+                      <CardDescription className="text-muted-foreground">
+                        {category.description}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="flex flex-wrap gap-2">
+                        {category.features.map((feature, featureIndex) => (
+                          <Badge 
+                            key={featureIndex}
+                            variant="secondary"
+                            className="text-xs bg-secondary/50 hover:bg-secondary/70 transition-colors"
+                          >
+                            {feature}
+                          </Badge>
+                        ))}
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+            </div>
+          )}
+        </div>
         </div>
 
         {/* Bottom CTA */}
