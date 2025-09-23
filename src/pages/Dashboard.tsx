@@ -216,9 +216,12 @@ const Dashboard = () => {
                         <li>• Integration with your workflows</li>
                       </ul>
                     </div>
-                    <Button className="w-full md:w-auto">
+                    <Button 
+                      className="w-full md:w-auto"
+                      onClick={() => navigate('/ai-assistants')}
+                    >
                       <MessageSquare className="mr-2 h-4 w-4" />
-                      Launch AI Assistant
+                      Launch AI Assistants
                     </Button>
                   </div>
                 ) : (
