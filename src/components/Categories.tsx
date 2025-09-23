@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import TypingDemo from "@/components/TypingDemo";
 import { 
   TrendingUp, 
   Calculator, 
@@ -9,7 +8,8 @@ import {
   MessageSquare, 
   Lightbulb,
   Zap,
-  Target
+  Target,
+  Headphones
 } from "lucide-react";
 
 const categories = [
@@ -21,8 +21,7 @@ const categories = [
     color: "text-primary",
     bgColor: "bg-primary/10",
     price: "$39/month",
-    details: "Perfect for restaurants, retail stores, service providers, and any business wanting consistent social media presence without the daily hassle.",
-    example: "📱 Example: 'Create 5 Instagram posts for my bakery this week highlighting our new seasonal pastries, include relevant hashtags and schedule them for peak engagement times.'"
+    details: "Perfect for restaurants, retail stores, service providers, and any business wanting consistent social media presence without the daily hassle."
   },
   {
     icon: Calculator,
@@ -32,8 +31,7 @@ const categories = [
     color: "text-accent",
     bgColor: "bg-accent/10",
     price: "$49/month",
-    details: "Ideal for consultants, contractors, small manufacturers, and service businesses who need financial clarity without expensive accountants.",
-    example: "💰 Example: 'Should I raise my consulting rates to $150/hour? Analyze my current profit margins and show me how this impacts my quarterly cash flow.'"
+    details: "Ideal for consultants, contractors, small manufacturers, and service businesses who need financial clarity without expensive accountants."
   },
   {
     icon: FileText,
@@ -43,8 +41,7 @@ const categories = [
     color: "text-primary",
     bgColor: "bg-primary/10",
     price: "$59/month",
-    details: "Essential for B2B services, contractors, agencies, and any business that needs to write proposals or respond to tenders regularly.",
-    example: "📄 Example: 'Write a proposal for a $50k office renovation project. Highlight our 15 years of experience and include a timeline that beats their deadline by 2 weeks.'"
+    details: "Essential for B2B services, contractors, agencies, and any business that needs to write proposals or respond to tenders regularly."
   },
   {
     icon: TrendingUp,
@@ -54,8 +51,17 @@ const categories = [
     color: "text-accent",
     bgColor: "bg-accent/10",
     price: "$49/month",
-    details: "Perfect for e-commerce, local services, B2B companies, and any business wanting to attract more customers systematically.",
-    example: "📈 Example: 'Create a Facebook ad campaign to promote our new fitness classes. Target busy professionals within 5 miles and write 3 different ad variations to test.'"
+    details: "Perfect for e-commerce, local services, B2B companies, and any business wanting to attract more customers systematically."
+  },
+  {
+    icon: Headphones,
+    title: "Customer Service AI Assistant",
+    description: "Deliver exceptional customer support 24/7 with AI that handles inquiries, resolves issues, and maintains your customer relationships while you sleep. Never miss a customer question again.",
+    features: ["24/7 Chat Support", "FAQ Automation", "Ticket Management", "Customer Insights", "Multi-Channel Support", "Sentiment Analysis"],
+    color: "text-accent",
+    bgColor: "bg-accent/10",
+    price: "$45/month",
+    details: "Essential for online stores, service providers, and any business that values customer satisfaction and wants to provide instant support."
   },
   {
     icon: Lightbulb,
@@ -65,8 +71,7 @@ const categories = [
     color: "text-primary",
     bgColor: "bg-primary/10",
     price: "From $79/month",
-    details: "Tailored for businesses with specific needs - from medical practices to manufacturing, construction to consulting - we build AI that fits your exact requirements.",
-    example: "⚡ Example: 'Automatically update our CRM when a client signs a contract, send a welcome email sequence, and create their project folder with all templates ready.'"
+    details: "Tailored for businesses with specific needs - from medical practices to manufacturing, construction to consulting - we build AI that fits your exact requirements."
   }
 ];
 
@@ -112,27 +117,16 @@ const Categories = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-4">
-                    <div className="flex flex-wrap gap-2">
-                      {category.features.map((feature, featureIndex) => (
-                        <Badge 
-                          key={featureIndex}
-                          variant="secondary"
-                          className="text-xs bg-secondary/50 hover:bg-secondary/70 transition-colors"
-                        >
-                          {feature}
-                        </Badge>
-                      ))}
-                    </div>
-                    {category.title === "Social Media AI Assistant" ? (
-                      <TypingDemo />
-                    ) : (
-                      <div className="p-3 bg-muted/30 rounded-lg border-l-4 border-l-primary/30">
-                        <p className="text-sm text-muted-foreground italic">
-                          {category.example}
-                        </p>
-                      </div>
-                    )}
+                  <div className="flex flex-wrap gap-2">
+                    {category.features.map((feature, featureIndex) => (
+                      <Badge 
+                        key={featureIndex}
+                        variant="secondary"
+                        className="text-xs bg-secondary/50 hover:bg-secondary/70 transition-colors"
+                      >
+                        {feature}
+                      </Badge>
+                    ))}
                   </div>
                 </CardContent>
               </Card>
