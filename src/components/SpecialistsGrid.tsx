@@ -1,17 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Check, ArrowRight } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Check, Phone, ArrowRight } from "lucide-react";
 import { categories } from "@/data/categories";
-import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const SpecialistsGrid = () => {
-  const navigate = useNavigate();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [name, setName] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
-  const handleGetStarted = (categoryTitle: string) => {
-    // Navigate to auth page with the selected category
-    navigate(`/auth?category=${encodeURIComponent(categoryTitle)}`);
+  const handleRequestConsultation = (categoryTitle: string) => {
+    setSelectedCategory(categoryTitle);
+    setIsDialogOpen(true);
+  };
+
+  const handleSubmitConsultation = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!phoneNumber || !name) {
+      toast({
+        title: "Missing Information",
+        description: "Please provide both your name and phone number.",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const { error } = await supabase
+        .from('inquiries')
+        .insert([
+          {
+            contact_name: name,
+            phone: phoneNumber,
+            use_case: selectedCategory,
+            company_name: "To be discussed",
+            email: "phone-consultation@temp.com",
+            message: `Phone consultation requested for ${selectedCategory}`,
+            status: 'pending'
+          }
+        ]);
+
+      if (error) throw error;
+
+      toast({
+        title: "Consultation Requested",
+        description: "We'll contact you within 24 hours to discuss your AI solution needs.",
+      });
+      
+      setIsDialogOpen(false);
+      setPhoneNumber("");
+      setName("");
+      setSelectedCategory("");
+    } catch (error) {
+      console.error('Error submitting consultation request:', error);
+      toast({
+        title: "Error",
+        description: "Failed to submit consultation request. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   return (
     <section className="py-16 px-6">
@@ -50,13 +109,66 @@ const SpecialistsGrid = () => {
                       </div>
                     ))}
                   </div>
-                  <Button 
-                    onClick={() => handleGetStarted(category.title)}
-                    className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300"
-                  >
-                    Get Started
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
+                  <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                    <DialogTrigger asChild>
+                      <Button 
+                        onClick={() => handleRequestConsultation(category.title)}
+                        className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300"
+                      >
+                        Request Consultation
+                        <Phone className="w-4 h-4 ml-2" />
+                      </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-md">
+                      <DialogHeader>
+                        <DialogTitle>Request a Consultation</DialogTitle>
+                        <DialogDescription>
+                          We'll call you within 24 hours to discuss your {selectedCategory} needs and explain how to get started.
+                        </DialogDescription>
+                      </DialogHeader>
+                      <form onSubmit={handleSubmitConsultation} className="space-y-4">
+                        <div className="space-y-2">
+                          <Label htmlFor="name">Your Name</Label>
+                          <Input
+                            id="name"
+                            type="text"
+                            placeholder="Enter your full name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <Label htmlFor="phone">Phone Number</Label>
+                          <Input
+                            id="phone"
+                            type="tel"
+                            placeholder="Enter your phone number"
+                            value={phoneNumber}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                            required
+                          />
+                        </div>
+                        <div className="flex justify-end space-x-2 pt-4">
+                          <Button
+                            type="button"
+                            variant="outline"
+                            onClick={() => setIsDialogOpen(false)}
+                            disabled={isSubmitting}
+                          >
+                            Cancel
+                          </Button>
+                          <Button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="bg-gradient-primary hover:shadow-glow"
+                          >
+                            {isSubmitting ? "Submitting..." : "Request Call"}
+                          </Button>
+                        </div>
+                      </form>
+                    </DialogContent>
+                  </Dialog>
                 </CardContent>
               </Card>
             );
