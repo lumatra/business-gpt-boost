@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
-import { Loader2, LogOut, MessageSquare, Settings, Users, BarChart3, Calendar, Heart, Share2, Hash, TrendingUp, Clock, Plus } from 'lucide-react';
+import { Loader2, LogOut, MessageSquare, Settings, Users, BarChart3, Calendar, Heart, Share2, Hash, TrendingUp, Clock, Plus, Calculator } from 'lucide-react';
 import type { User } from '@supabase/supabase-js';
 
 const Dashboard = () => {

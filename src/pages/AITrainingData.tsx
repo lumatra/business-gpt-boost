@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
-import { Loader2, ArrowLeft, Upload, FileText, Trash2, Download, Plus, Edit, Save, X, Globe, Building, Bot } from 'lucide-react';
+import { Loader2, ArrowLeft, Upload, FileText, Trash2, Download, Plus, Edit, Save, X, Globe, Building, Bot, Share2, Users, TrendingUp, Calculator } from 'lucide-react';
 import type { User } from '@supabase/supabase-js';
 
 const AITrainingData = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -20,6 +22,16 @@ const AITrainingData = () => {
   const [aiAssistantFiles, setAiAssistantFiles] = useState<any[]>([]);
   const [isEditing, setIsEditing] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [selectedAssistantType, setSelectedAssistantType] = useState<string>('');
+  
+  // Available assistant types
+  const assistantTypes = [
+    { value: 'social_media', label: 'Social Media Assistant', icon: Share2, description: 'Content creation, scheduling, engagement' },
+    { value: 'hr_assistant', label: 'HR Assistant', icon: Users, description: 'Staff management, scheduling, communication' },
+    { value: 'marketing', label: 'Marketing Assistant', icon: TrendingUp, description: 'Campaigns, analytics, customer outreach' },
+    { value: 'finance', label: 'Finance Assistant', icon: Calculator, description: 'Accounting, reports, financial analysis' },
+    { value: 'customer_service', label: 'Customer Service', icon: Bot, description: 'Support tickets, chat responses, FAQ' }
+  ];
   
   // Form data for AI assistant information
   const [formData, setFormData] = useState({
@@ -43,7 +55,30 @@ const AITrainingData = () => {
     };
 
     checkAuth();
-  }, [navigate]);
+
+    // Get assistant type from URL params
+    const typeParam = searchParams.get('type');
+    if (typeParam) {
+      setSelectedAssistantType(typeParam);
+    } else {
+      setSelectedAssistantType('social_media'); // Default to social media
+    }
+  }, [navigate, searchParams]);
+
+  // Load data when assistant type changes
+  useEffect(() => {
+    if (profile?.companies?.id && selectedAssistantType) {
+      loadAIAssistantData(profile.companies.id, selectedAssistantType);
+    }
+  }, [selectedAssistantType, profile?.companies?.id]);
+
+  const handleAssistantTypeChange = (newType: string) => {
+    setSelectedAssistantType(newType);
+    setSearchParams({ type: newType });
+    setIsEditing(false);
+    setAiAssistantData(null);
+    setAiAssistantFiles([]);
+  };
 
   const loadUserData = async (userId: string) => {
     try {
@@ -59,8 +94,8 @@ const AITrainingData = () => {
       } else if (profileData) {
         setProfile(profileData);
         
-        if (profileData.companies) {
-          await loadAIAssistantData(profileData.companies.id);
+        if (profileData.companies && selectedAssistantType) {
+          await loadAIAssistantData(profileData.companies.id, selectedAssistantType);
         }
       }
     } catch (error) {
@@ -70,13 +105,16 @@ const AITrainingData = () => {
     }
   };
 
-  const loadAIAssistantData = async (companyId: string) => {
+  const loadAIAssistantData = async (companyId: string, assistantType: string = selectedAssistantType) => {
+    if (!assistantType) return;
+
     try {
-      // Load AI assistant data
+      // Load AI assistant data for specific type
       const { data: assistantData, error: assistantError } = await supabase
         .from('ai_assistant_data')
         .select('*')
         .eq('company_id', companyId)
+        .eq('assistant_type', assistantType)
         .maybeSingle();
 
       if (assistantError) {
@@ -103,9 +141,11 @@ const AITrainingData = () => {
           setAiAssistantFiles(filesData || []);
         }
       } else {
-        // No AI assistant data exists, initialize empty form
+        // No data for this assistant type yet
+        setAiAssistantData(null);
+        setAiAssistantFiles([]);
         setFormData({
-          assistant_type: 'business',
+          assistant_type: assistantType,
           website_url: '',
           website_content: '',
           business_info: ''
@@ -117,48 +157,50 @@ const AITrainingData = () => {
   };
 
   const handleSave = async () => {
-    if (!profile?.companies?.id) return;
+    if (!profile?.companies?.id || !selectedAssistantType) {
+      toast({
+        title: "Error",
+        description: "Company information not found",
+        variant: "destructive",
+      });
+      return;
+    }
 
     setSaving(true);
+    
     try {
+      const dataToSave = {
+        ...formData,
+        assistant_type: selectedAssistantType,
+        company_id: profile.companies.id
+      };
+
       if (aiAssistantData) {
-        // Update existing data
+        // Update existing record
         const { error } = await supabase
           .from('ai_assistant_data')
-          .update({
-            assistant_type: formData.assistant_type,
-            website_url: formData.website_url,
-            website_content: formData.website_content,
-            business_info: formData.business_info
-          })
+          .update(dataToSave)
           .eq('id', aiAssistantData.id);
 
         if (error) throw error;
       } else {
-        // Create new data
-        const { data: newData, error } = await supabase
+        // Create new record
+        const { data, error } = await supabase
           .from('ai_assistant_data')
-          .insert({
-            company_id: profile.companies.id,
-            assistant_type: formData.assistant_type,
-            website_url: formData.website_url,
-            website_content: formData.website_content,
-            business_info: formData.business_info
-          })
+          .insert([dataToSave])
           .select()
           .single();
 
         if (error) throw error;
-        setAiAssistantData(newData);
+        setAiAssistantData(data);
       }
-
+      
       toast({
         title: "Success",
-        description: "AI training data updated successfully.",
+        description: "AI training data saved successfully.",
       });
-
+      
       setIsEditing(false);
-      await loadAIAssistantData(profile.companies.id); // Reload data
     } catch (error: any) {
       toast({
         title: "Error",
@@ -171,42 +213,53 @@ const AITrainingData = () => {
   };
 
   const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (!file || !aiAssistantData?.id) return;
+    const files = event.target.files;
+    if (!files || files.length === 0) return;
+
+    if (!aiAssistantData) {
+      toast({
+        title: "Error",
+        description: "Please save the assistant configuration first before uploading files.",
+        variant: "destructive",
+      });
+      return;
+    }
 
     try {
-      // Upload file to Supabase Storage
-      const fileExt = file.name.split('.').pop();
-      const fileName = `${Date.now()}.${fileExt}`;
-      const filePath = `ai-assistant-files/${aiAssistantData.id}/${fileName}`;
+      for (const file of Array.from(files)) {
+        const fileExt = file.name.split('.').pop();
+        const fileName = `${Date.now()}_${file.name}`;
+        const filePath = `${aiAssistantData.id}/${fileName}`;
 
-      const { error: uploadError } = await supabase.storage
-        .from('ai-assistant-files')
-        .upload(filePath, file);
+        // Upload to Supabase Storage
+        const { error: uploadError } = await supabase.storage
+          .from('ai-assistant-files')
+          .upload(filePath, file);
 
-      if (uploadError) throw uploadError;
+        if (uploadError) throw uploadError;
 
-      // Save file record to database
-      const { error: dbError } = await supabase
-        .from('ai_assistant_files')
-        .insert({
-          assistant_data_id: aiAssistantData.id,
-          file_name: file.name,
-          file_path: filePath,
-          file_type: file.type,
-          file_size: file.size,
-          is_image: file.type.startsWith('image/')
-        });
+        // Save file info to database
+        const { error: dbError } = await supabase
+          .from('ai_assistant_files')
+          .insert([{
+            assistant_data_id: aiAssistantData.id,
+            file_name: file.name,
+            file_path: filePath,
+            file_type: file.type,
+            file_size: file.size,
+            is_image: file.type.startsWith('image/')
+          }]);
 
-      if (dbError) throw dbError;
+        if (dbError) throw dbError;
+      }
 
       toast({
         title: "Success",
-        description: "File uploaded successfully.",
+        description: `${files.length} file(s) uploaded successfully.`,
       });
 
       // Reload files
-      await loadAIAssistantData(profile!.companies.id);
+      await loadAIAssistantData(profile.companies.id, selectedAssistantType);
     } catch (error: any) {
       toast({
         title: "Error",
@@ -312,222 +365,237 @@ const AITrainingData = () => {
       </header>
 
       <main className="container mx-auto px-4 py-8 space-y-8">
-        {/* AI Assistant Configuration */}
+        {/* Assistant Type Selector */}
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Bot className="h-5 w-5" />
-              AI Assistant Configuration
-            </CardTitle>
+            <CardTitle>Select AI Assistant Type</CardTitle>
             <CardDescription>
-              Configure the basic information that will help train your AI assistants
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <Label htmlFor="assistant_type">Assistant Type</Label>
-                {isEditing ? (
-                  <select
-                    id="assistant_type"
-                    value={formData.assistant_type}
-                    onChange={(e) => setFormData({ ...formData, assistant_type: e.target.value })}
-                    className="w-full px-3 py-2 border border-input bg-background rounded-md"
-                  >
-                    <option value="business">Business Assistant</option>
-                    <option value="social_media">Social Media Assistant</option>
-                    <option value="hr">HR Assistant</option>
-                    <option value="marketing">Marketing Assistant</option>
-                    <option value="custom">Custom Assistant</option>
-                  </select>
-                ) : (
-                  <p className="text-sm py-2 px-3 bg-secondary/20 rounded capitalize">{formData.assistant_type || 'Not set'}</p>
-                )}
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="website_url" className="flex items-center gap-2">
-                  <Globe className="h-4 w-4" />
-                  Website URL
-                </Label>
-                {isEditing ? (
-                  <Input
-                    id="website_url"
-                    type="url"
-                    value={formData.website_url}
-                    onChange={(e) => setFormData({ ...formData, website_url: e.target.value })}
-                    placeholder="https://yourwebsite.com"
-                  />
-                ) : (
-                  <p className="text-sm py-2 px-3 bg-secondary/20 rounded">
-                    {formData.website_url ? (
-                      <a href={formData.website_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                        {formData.website_url}
-                      </a>
-                    ) : 'Not set'}
-                  </p>
-                )}
-              </div>
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="business_info" className="flex items-center gap-2">
-                <Building className="h-4 w-4" />
-                Business Information
-              </Label>
-              {isEditing ? (
-                <Textarea
-                  id="business_info"
-                  value={formData.business_info}
-                  onChange={(e) => setFormData({ ...formData, business_info: e.target.value })}
-                  placeholder="Detailed information about your business, services, policies, etc. This will help the AI understand your business context."
-                  rows={8}
-                />
-              ) : (
-                <div className="text-sm py-2 px-3 bg-secondary/20 rounded min-h-[120px] whitespace-pre-wrap">
-                  {formData.business_info || 'Not set'}
-                </div>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="website_content">Website Content</Label>
-              {isEditing ? (
-                <Textarea
-                  id="website_content"
-                  value={formData.website_content}
-                  onChange={(e) => setFormData({ ...formData, website_content: e.target.value })}
-                  placeholder="Key content from your website, services offered, company values, etc."
-                  rows={6}
-                />
-              ) : (
-                <div className="text-sm py-2 px-3 bg-secondary/20 rounded min-h-[100px] whitespace-pre-wrap">
-                  {formData.website_content || 'Not set'}
-                </div>
-              )}
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* File Management */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center justify-between">
-              <span className="flex items-center gap-2">
-                <FileText className="h-5 w-5" />
-                Training Documents & Files
-              </span>
-              {aiAssistantData && (
-                <div className="flex gap-2">
-                  <Button 
-                    onClick={() => document.getElementById('file-upload')?.click()}
-                    size="sm"
-                  >
-                    <Upload className="h-4 w-4 mr-2" />
-                    Upload File
-                  </Button>
-                  <input
-                    id="file-upload"
-                    type="file"
-                    accept=".pdf,.doc,.docx,.txt,.md,.jpg,.jpeg,.png,.gif"
-                    onChange={handleFileUpload}
-                    className="hidden"
-                  />
-                </div>
-              )}
-            </CardTitle>
-            <CardDescription>
-              Upload documents, images, and files that will help train your AI assistants about your business
+              Choose which AI assistant you want to configure training data for
             </CardDescription>
           </CardHeader>
           <CardContent>
-            {!aiAssistantData ? (
-              <div className="text-center py-8 text-muted-foreground">
-                <FileText className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                <p>Please save your AI assistant configuration first before uploading files.</p>
-              </div>
-            ) : aiAssistantFiles.length === 0 ? (
-              <div className="text-center py-8 text-muted-foreground">
-                <FileText className="h-12 w-12 mx-auto mb-4 opacity-50" />
-                <p>No training files uploaded yet.</p>
-                <p className="text-sm mt-2">Upload documents, images, and other files to help train your AI assistants.</p>
-              </div>
-            ) : (
-              <div className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {aiAssistantFiles.map((file) => (
-                    <div key={file.id} className="border rounded-lg p-4 hover:shadow-md transition-shadow">
-                      <div className="flex items-start justify-between mb-3">
-                        <div className="flex items-center gap-2">
-                          <span className="text-2xl">{getFileIcon(file.file_type)}</span>
-                          <div className="flex-1 min-w-0">
-                            <p className="font-medium text-sm truncate">{file.file_name}</p>
-                            <p className="text-xs text-muted-foreground">{formatFileSize(file.file_size)}</p>
-                          </div>
-                        </div>
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => handleDeleteFile(file.id, file.file_path)}
-                          className="text-destructive hover:text-destructive"
-                        >
-                          <Trash2 className="h-4 w-4" />
-                        </Button>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {assistantTypes.map((type) => {
+                const IconComponent = type.icon;
+                return (
+                  <Card 
+                    key={type.value}
+                    className={`cursor-pointer transition-all hover:shadow-md ${
+                      selectedAssistantType === type.value 
+                        ? 'ring-2 ring-primary bg-primary/5' 
+                        : 'hover:bg-secondary/20'
+                    }`}
+                    onClick={() => handleAssistantTypeChange(type.value)}
+                  >
+                    <CardContent className="p-4">
+                      <div className="flex items-center gap-3 mb-2">
+                        <IconComponent className="h-5 w-5 text-primary" />
+                        <h3 className="font-medium">{type.label}</h3>
                       </div>
-                      <div className="flex items-center justify-between text-xs text-muted-foreground">
-                        <span>Uploaded {new Date(file.created_at).toLocaleDateString()}</span>
-                        {file.is_image && <span className="bg-primary/10 text-primary px-2 py-1 rounded">Image</span>}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Summary Stats */}
-                <div className="border-t pt-4">
-                  <div className="flex justify-between text-sm text-muted-foreground">
-                    <span>{aiAssistantFiles.length} files uploaded</span>
-                    <span>
-                      Total size: {formatFileSize(aiAssistantFiles.reduce((sum, file) => sum + file.file_size, 0))}
-                    </span>
-                  </div>
-                </div>
-              </div>
-            )}
-          </CardContent>
-        </Card>
-
-        {/* Usage Guidelines */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Training Data Guidelines</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <h4 className="font-medium mb-2">Recommended File Types</h4>
-                <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• Business documents (PDF, Word)</li>
-                  <li>• Product catalogs and menus</li>
-                  <li>• Company policies and procedures</li>
-                  <li>• Staff training materials</li>
-                  <li>• Customer service scripts</li>
-                  <li>• Marketing materials and brochures</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-medium mb-2">Best Practices</h4>
-                <ul className="text-sm text-muted-foreground space-y-1">
-                  <li>• Keep information current and accurate</li>
-                  <li>• Include detailed business context</li>
-                  <li>• Upload high-quality, clear documents</li>
-                  <li>• Organize files by category or purpose</li>
-                  <li>• Regular update training data as needed</li>
-                  <li>• Remove outdated or irrelevant files</li>
-                </ul>
-              </div>
+                      <p className="text-sm text-muted-foreground">{type.description}</p>
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
           </CardContent>
         </Card>
+
+        {selectedAssistantType && (
+          <>
+            {/* Current Assistant Info */}
+            <div className="flex items-center gap-3 p-4 bg-primary/10 rounded-lg border border-primary/20">
+              {(() => {
+                const currentType = assistantTypes.find(t => t.value === selectedAssistantType);
+                const IconComponent = currentType?.icon || Bot;
+                return (
+                  <>
+                    <IconComponent className="h-6 w-6 text-primary" />
+                    <div>
+                      <h3 className="font-semibold text-primary">{currentType?.label}</h3>
+                      <p className="text-sm text-muted-foreground">{currentType?.description}</p>
+                    </div>
+                  </>
+                );
+              })()}
+            </div>
+
+            {/* AI Assistant Configuration */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Bot className="h-5 w-5" />
+                  {assistantTypes.find(t => t.value === selectedAssistantType)?.label} Configuration
+                </CardTitle>
+                <CardDescription>
+                  Configure the specific information and files for this AI assistant
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="website_url" className="flex items-center gap-2">
+                      <Globe className="h-4 w-4" />
+                      Website URL
+                    </Label>
+                    {isEditing ? (
+                      <Input
+                        id="website_url"
+                        type="url"
+                        value={formData.website_url}
+                        onChange={(e) => setFormData({ ...formData, website_url: e.target.value })}
+                        placeholder="https://yourwebsite.com"
+                      />
+                    ) : (
+                      <p className="text-sm py-2 px-3 bg-secondary/20 rounded">
+                        {formData.website_url ? (
+                          <a href={formData.website_url} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                            {formData.website_url}
+                          </a>
+                        ) : 'Not set'}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="business_info" className="flex items-center gap-2">
+                    <Building className="h-4 w-4" />
+                    {selectedAssistantType === 'social_media' ? 'Social Media Strategy & Brand Voice' : 
+                     selectedAssistantType === 'hr_assistant' ? 'HR Policies & Company Culture' :
+                     selectedAssistantType === 'marketing' ? 'Marketing Strategy & Target Audience' :
+                     selectedAssistantType === 'finance' ? 'Financial Processes & Accounting Info' :
+                     'Business Information'}
+                  </Label>
+                  {isEditing ? (
+                    <Textarea
+                      id="business_info"
+                      value={formData.business_info}
+                      onChange={(e) => setFormData({ ...formData, business_info: e.target.value })}
+                      placeholder={
+                        selectedAssistantType === 'social_media' ? 'Describe your brand voice, target audience, content themes, posting schedule preferences...' :
+                        selectedAssistantType === 'hr_assistant' ? 'Company policies, culture, team structure, common HR processes...' :
+                        selectedAssistantType === 'marketing' ? 'Marketing goals, target demographics, current campaigns, brand guidelines...' :
+                        selectedAssistantType === 'finance' ? 'Accounting processes, financial goals, reporting requirements, key metrics...' :
+                        'Describe your business, services, target audience, and key information...'
+                      }
+                      rows={6}
+                    />
+                  ) : (
+                    <div className="text-sm py-2 px-3 bg-secondary/20 rounded">
+                      {formData.business_info ? (
+                        <pre className="whitespace-pre-wrap">{formData.business_info}</pre>
+                      ) : 'Not set'}
+                    </div>
+                  )}
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="website_content" className="flex items-center gap-2">
+                    <FileText className="h-4 w-4" />
+                    Additional Context & Instructions
+                  </Label>
+                  {isEditing ? (
+                    <Textarea
+                      id="website_content"
+                      value={formData.website_content}
+                      onChange={(e) => setFormData({ ...formData, website_content: e.target.value })}
+                      placeholder={
+                        selectedAssistantType === 'social_media' ? 'Past successful posts, content guidelines, hashtag strategies, competitor analysis...' :
+                        selectedAssistantType === 'hr_assistant' ? 'Employee handbook excerpts, common questions, company benefits, onboarding processes...' :
+                        selectedAssistantType === 'marketing' ? 'Sales copy examples, customer testimonials, marketing materials, campaign performance data...' :
+                        selectedAssistantType === 'finance' ? 'Financial templates, reporting formats, common calculations, regulatory requirements...' :
+                        'Any additional context, instructions, or information that will help the AI assistant...'
+                      }
+                      rows={6}
+                    />
+                  ) : (
+                    <div className="text-sm py-2 px-3 bg-secondary/20 rounded">
+                      {formData.website_content ? (
+                        <pre className="whitespace-pre-wrap">{formData.website_content}</pre>
+                      ) : 'Not set'}
+                    </div>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* File Upload and Management */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Upload className="h-5 w-5" />
+                  Training Files for {assistantTypes.find(t => t.value === selectedAssistantType)?.label}
+                </CardTitle>
+                <CardDescription>
+                  Upload documents, images, and other files specific to this assistant type.
+                  {selectedAssistantType === 'social_media' && ' Examples: Brand guidelines, previous posts, logo files, product photos'}
+                  {selectedAssistantType === 'hr_assistant' && ' Examples: Employee handbook, policies, org charts, forms'}
+                  {selectedAssistantType === 'marketing' && ' Examples: Campaign materials, customer data, brand assets, analytics reports'}
+                  {selectedAssistantType === 'finance' && ' Examples: Financial statements, accounting templates, tax documents, budget files'}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-8 text-center">
+                  <input
+                    type="file"
+                    multiple
+                    onChange={handleFileUpload}
+                    className="hidden"
+                    id="file-upload"
+                    accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png,.webp,.xls,.xlsx,.csv"
+                  />
+                  <label htmlFor="file-upload" className="cursor-pointer">
+                    <Upload className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+                    <h3 className="text-lg font-medium mb-2">Upload Training Files</h3>
+                    <p className="text-muted-foreground mb-4">
+                      {selectedAssistantType === 'social_media' ? 'Upload brand assets, content examples, and social media guidelines' :
+                       selectedAssistantType === 'hr_assistant' ? 'Upload HR policies, employee documents, and process guides' :
+                       selectedAssistantType === 'marketing' ? 'Upload marketing materials, customer data, and campaign assets' :
+                       selectedAssistantType === 'finance' ? 'Upload financial documents, templates, and accounting data' :
+                       'Upload relevant documents and files for this assistant'}
+                    </p>
+                    <Button type="button">
+                      <Plus className="h-4 w-4 mr-2" />
+                      Choose Files
+                    </Button>
+                  </label>
+                </div>
+
+                {/* Uploaded Files List */}
+                {aiAssistantFiles.length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-medium mb-4">Uploaded Files ({aiAssistantFiles.length})</h3>
+                    <div className="space-y-3">
+                      {aiAssistantFiles.map((file) => (
+                        <div key={file.id} className="flex items-center justify-between p-3 bg-secondary/20 rounded-lg">
+                          <div className="flex items-center gap-3">
+                            <span className="text-lg">{getFileIcon(file.file_type)}</span>
+                            <div>
+                              <p className="font-medium">{file.file_name}</p>
+                              <p className="text-sm text-muted-foreground">
+                                {formatFileSize(file.file_size)} • {new Date(file.created_at).toLocaleDateString()}
+                              </p>
+                            </div>
+                          </div>
+                          <div className="flex gap-2">
+                            <Button 
+                              variant="outline" 
+                              size="sm"
+                              onClick={() => handleDeleteFile(file.id, file.file_path)}
+                            >
+                              <Trash2 className="h-4 w-4" />
+                            </Button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </>
+        )}
       </main>
     </div>
   );
