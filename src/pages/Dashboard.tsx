@@ -36,15 +36,10 @@ const Dashboard = () => {
       }
 
       setUser(session.user);
-      await loadAIAssistantData(session.user.id);
+      await loadUserData(session.user.id);
     };
 
     checkAuth();
-
-    // Load AI assistant data when user is loaded
-    if (user && profile?.companies?.id) {
-      loadAIAssistantData(profile.companies.id);
-    }
 
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
