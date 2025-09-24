@@ -6,6 +6,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/components/ui/use-toast';
 import { Loader2, LogOut, MessageSquare, Settings, Users, BarChart3, Calendar, Heart, Share2, Hash, TrendingUp, Clock, Plus, Calculator } from 'lucide-react';
 import type { User } from '@supabase/supabase-js';
+import { AITrainingSection } from '@/components/AITrainingSection';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -671,6 +672,15 @@ const Dashboard = () => {
                       </div>
                     </CardContent>
                   </Card>
+                  
+                  {/* Social Media Training Data */}
+                  <AITrainingSection 
+                    assistantType="social_media"
+                    companyId={company.id}
+                    aiAssistantData={aiAssistantData}
+                    aiAssistantFiles={aiAssistantFiles}
+                    onDataUpdate={() => loadAIAssistantData(company.id)}
+                  />
                 </div>
 
                 <div className="space-y-6">
@@ -735,6 +745,15 @@ const Dashboard = () => {
                       </div>
                     </CardContent>
                   </Card>
+                  
+                  {/* HR Training Data */}
+                  <AITrainingSection 
+                    assistantType="hr"
+                    companyId={company.id}
+                    aiAssistantData={aiAssistantData}
+                    aiAssistantFiles={aiAssistantFiles}
+                    onDataUpdate={() => loadAIAssistantData(company.id)}
+                  />
                 </div>
 
                 <div className="space-y-6">
@@ -799,6 +818,15 @@ const Dashboard = () => {
                       </div>
                     </CardContent>
                   </Card>
+                  
+                  {/* Marketing Training Data */}
+                  <AITrainingSection 
+                    assistantType="marketing"
+                    companyId={company.id}
+                    aiAssistantData={aiAssistantData}
+                    aiAssistantFiles={aiAssistantFiles}
+                    onDataUpdate={() => loadAIAssistantData(company.id)}
+                  />
                 </div>
 
                 <div className="space-y-6">
