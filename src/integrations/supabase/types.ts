@@ -99,6 +99,39 @@ export type Database = {
           },
         ]
       }
+      assistant_type_templates: {
+        Row: {
+          assistant_type: string
+          best_practices: string | null
+          created_at: string
+          id: string
+          system_instructions: string
+          templates: Json | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          assistant_type: string
+          best_practices?: string | null
+          created_at?: string
+          id?: string
+          system_instructions: string
+          templates?: Json | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          assistant_type?: string
+          best_practices?: string | null
+          created_at?: string
+          id?: string
+          system_instructions?: string
+          templates?: Json | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       companies: {
         Row: {
           created_at: string
