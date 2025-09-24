@@ -61,44 +61,40 @@ async function createAssistant(openAIApiKey: string, supabase: any, companyId: s
     throw new Error('Company not found');
   }
 
-  // Define assistant configurations for each type
-  const assistantConfigs = {
-    social: {
-      name: `${company.name} - Social Media AI Assistant`,
-      instructions: `You are a social media assistant for ${company.name}. You help with daily post creation, brand voice learning, auto scheduling, and comment management. Use the uploaded brand guidelines, logos, and marketing materials to maintain consistency. Always create engaging content that matches the company's tone and values.`,
-      tools: [{ type: "file_search" }]
-    },
-    finance: {
-      name: `${company.name} - Financial AI Advisor`,
-      instructions: `You are a financial advisor for ${company.name}. You help with cash flow forecasting, pricing optimization, tax planning, and profit analysis. Use the uploaded financial documents, pricing guides, and business information to provide accurate, company-specific financial guidance.`,
-      tools: [{ type: "file_search" }]
-    },
-    sales: {
-      name: `${company.name} - Tender & Sales AI Expert`,
-      instructions: `You are a sales and tender expert for ${company.name}. You help with proposal writing, RFP analysis, quote generation, and competitor research. Use the uploaded company documents, service descriptions, and case studies to create compelling proposals and sales materials.`,
-      tools: [{ type: "file_search" }]
-    },
-    marketing: {
-      name: `${company.name} - Marketing AI Specialist`,
-      instructions: `You are a marketing specialist for ${company.name}. You help with campaign creation, email sequences, ad copywriting, and ROI tracking. Use the uploaded marketing materials, brand guidelines, and business information to create targeted campaigns that resonate with your audience.`,
-      tools: [{ type: "file_search" }]
-    },
-    customer: {
-      name: `${company.name} - Customer Service AI Assistant`,
-      instructions: `You are a customer service assistant for ${company.name}. You provide 24/7 chat support, FAQ automation, ticket management, and sentiment analysis. Use the uploaded company policies, service descriptions, and FAQ documents to provide excellent customer support that reflects the company's values.`,
-      tools: [{ type: "file_search" }]
-    },
-    custom: {
-      name: `${company.name} - Custom AI Solutions`,
-      instructions: `You are a custom AI solution for ${company.name}. You help with CRM automation, process optimization, business case writing, and custom integrations. Use all uploaded documents and business information to provide tailored solutions that address the company's specific needs and challenges.`,
-      tools: [{ type: "file_search" }]
-    }
-  };
+  // Get assistant type template from database
+  const { data: template } = await supabase
+    .from('assistant_type_templates')
+    .select('*')
+    .eq('assistant_type', assistantType)
+    .single();
 
-  const config = assistantConfigs[assistantType as keyof typeof assistantConfigs];
-  if (!config) {
-    throw new Error('Invalid assistant type');
+  if (!template) {
+    throw new Error('Invalid assistant type or template not found');
   }
+
+  // Build comprehensive instructions combining template with company-specific info
+  const companyContext = `
+Company: ${company.name}
+Email: ${company.email}
+${company.website ? `Website: ${company.website}` : ''}
+${company.phone ? `Phone: ${company.phone}` : ''}
+
+SYSTEM INSTRUCTIONS:
+${template.system_instructions}
+
+BEST PRACTICES:
+${template.best_practices || 'Follow industry best practices.'}
+
+TEMPLATES AND FRAMEWORKS:
+${template.templates ? JSON.stringify(template.templates, null, 2) : 'No specific templates provided.'}
+
+You are working specifically for ${company.name}. Use the uploaded documents, business information, and company context to provide personalized, accurate assistance that reflects the company's unique needs and brand voice.`;
+
+  const config = {
+    name: `${company.name} - ${template.title}`,
+    instructions: companyContext,
+    tools: [{ type: "file_search" }]
+  };
 
   // Create the assistant
   const response = await fetch('https://api.openai.com/v1/assistants', {
