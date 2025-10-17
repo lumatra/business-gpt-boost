@@ -23,7 +23,7 @@ const benefits = [
     title: "Expert Help at Fraction of the Cost",
     description: "Get professional-level marketing, finance, and sales support without hiring full-time experts. No retainers, no minimum hours - just expert help when you need it.",
     metric: "Save 90%",
-    color: "text-accent"
+    color: "text-primary"
   },
   {
     icon: TrendingUp,
@@ -37,7 +37,7 @@ const benefits = [
     title: "Your 24/7 Business Partner",
     description: "Whether it's 2 PM or 2 AM, your AI assistant is ready. Need to prepare a proposal? Draft a campaign? Analyze finances? Get expert help anytime, anywhere.",
     metric: "Always On",
-    color: "text-accent"
+    color: "text-primary"
   }
 ];
 
@@ -53,7 +53,7 @@ const Benefits = () => {
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             Get Expert Help For 
-            <span className="bg-gradient-primary bg-clip-text text-transparent"> Every Part of Your Business</span>
+            <span className="text-primary"> Every Part of Your Business</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             From marketing and sales to finance and operations - Helpzz gives you specialized AI assistants that understand your business and deliver real results.
@@ -94,13 +94,13 @@ const Benefits = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-12">
-          <div className="inline-flex flex-col items-center justify-center p-10 rounded-2xl bg-gradient-primary text-primary-foreground max-w-2xl mx-auto shadow-glow">
+          <div className="inline-flex flex-col items-center justify-center p-10 rounded-2xl bg-primary text-primary-foreground max-w-2xl mx-auto shadow-elegant">
             <h3 className="text-3xl font-bold mb-4">Ready to Work Smarter?</h3>
             <p className="text-lg text-primary-foreground/95 mb-8 max-w-lg">
               Join businesses using Helpzz to get more done in less time. Set up your AI assistant in under 5 minutes.
             </p>
             <Link to="/contact">
-              <div className="inline-flex items-center px-8 py-4 bg-white text-accent rounded-lg font-semibold cursor-pointer hover:bg-white/90 transition-all shadow-lg hover:scale-105">
+              <div className="inline-flex items-center px-8 py-4 bg-white text-primary rounded-lg font-semibold cursor-pointer hover:bg-white/90 transition-all shadow-lg hover:scale-105">
                 Get Started Free
                 <ArrowRight className="w-5 h-5 ml-2" />
               </div>
