@@ -27,9 +27,9 @@ const Navigation = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3">
-            <img src={helpzzLogo} alt="Helpzz" className="h-10 w-auto" />
+          {/* Logo - Much larger */}
+          <Link to="/" className="flex items-center">
+            <img src={helpzzLogo} alt="Helpzz - AI Business Solutions" className="h-16 w-auto md:h-12" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -60,13 +60,13 @@ const Navigation = () => {
             </div>
             <div className="flex items-center space-x-3">
               <Link to="/auth">
-                <Button variant="outline" size="sm">
+                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
                   <LogIn className="mr-2 h-4 w-4" />
                   Sign In
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button size="sm" className="bg-gradient-primary hover:shadow-glow transition-all duration-300">
+                <Button size="sm" className="bg-gradient-primary hover:shadow-glow transition-all duration-300 px-6">
                   Get Started
                 </Button>
               </Link>
