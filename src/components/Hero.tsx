@@ -10,9 +10,9 @@ const Hero = () => {
       <div className="relative z-10 max-w-6xl mx-auto px-6 text-center py-20">
         <div className="space-y-10">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/20 border border-accent/40">
             <Sparkles className="w-4 h-4 text-accent" />
-            <span className="text-sm font-medium text-accent">Boost Your Business Results</span>
+            <span className="text-sm font-medium text-foreground">Boost Your Business Results</span>
           </div>
 
           {/* Main Headline - Green and Yellow highlights */}
@@ -30,12 +30,12 @@ const Hero = () => {
             Get the right answer faster with more accurate results. Our AI learns your specific business, industry, and challenges to deliver personalized solutions 24/7.
           </p>
 
-          {/* CTA Buttons - Green with yellow gradient button */}
+          {/* CTA Buttons - Solid green button */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
             <Link to="/contact">
               <Button 
                 size="lg" 
-                className="text-base px-10 py-7 bg-gradient-primary hover:shadow-glow transition-all duration-300 font-semibold rounded-xl text-lg text-white"
+                className="text-base px-10 py-7 bg-primary hover:bg-primary/90 hover:shadow-elegant transition-all duration-300 font-semibold rounded-xl text-lg text-primary-foreground"
               >
                 Get My Personal AI Assistant
               </Button>
