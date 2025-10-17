@@ -18,16 +18,16 @@ const Hero = () => {
           {/* Main Headline - matching reference exactly */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tight">
             <span className="block bg-gradient-primary bg-clip-text text-transparent mb-2">
-              Your Personal Business AI
+              AI Assistant Tailored to
             </span>
             <span className="block text-foreground">
-              That Knows Your Company
+              Your Company Profile & Needs
             </span>
           </h1>
 
           {/* Subheadline */}
           <p className="text-base md:text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed px-4">
-            Get instant, personalized answers and expert help tailored to your specific business. Our AI learns your company, industry, and challenges to provide custom solutions 24/7.
+            Get the right answer faster with more accurate results. Our AI learns your specific business, industry, and challenges to deliver personalized solutions 24/7.
           </p>
 
           {/* CTA Buttons - matching reference */}
