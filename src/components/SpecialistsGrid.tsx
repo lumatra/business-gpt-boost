@@ -113,7 +113,7 @@ const SpecialistsGrid = () => {
                     <DialogTrigger asChild>
                       <Button 
                         onClick={() => handleRequestConsultation(category.title)}
-                        className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300"
+                        className="w-full bg-primary hover:bg-primary/90 hover:shadow-elegant transition-all duration-300"
                       >
                         Request Consultation
                         <Phone className="w-4 h-4 ml-2" />
@@ -161,7 +161,7 @@ const SpecialistsGrid = () => {
                           <Button
                             type="submit"
                             disabled={isSubmitting}
-                            className="bg-gradient-primary hover:shadow-glow"
+                            className="bg-primary hover:bg-primary/90"
                           >
                             {isSubmitting ? "Submitting..." : "Request Call"}
                           </Button>
