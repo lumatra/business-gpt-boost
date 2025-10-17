@@ -51,8 +51,8 @@ export const categories: Category[] = [
       "Profit Analysis",
       "Growth Recommendations",
     ],
-    color: "text-accent",
-    bgColor: "bg-accent/10",
+    color: "text-primary",
+    bgColor: "bg-primary/10",
     price: "£19.99/month",
     details:
       "Ideal for consultants, contractors, small manufacturers, and service businesses who need financial clarity without expensive accountants.",
@@ -89,8 +89,8 @@ export const categories: Category[] = [
       "A/B Testing",
       "ROI Tracking",
     ],
-    color: "text-accent",
-    bgColor: "bg-accent/10",
+    color: "text-primary",
+    bgColor: "bg-primary/10",
     price: "£19.99/month",
     details:
       "Perfect for e-commerce, local services, B2B companies, and any business wanting to attract more customers systematically.",
@@ -108,8 +108,8 @@ export const categories: Category[] = [
       "Multi-Channel Support",
       "Sentiment Analysis",
     ],
-    color: "text-accent",
-    bgColor: "bg-accent/10",
+    color: "text-primary",
+    bgColor: "bg-primary/10",
     price: "£19.99/month",
     details:
       "Essential for online stores, service providers, and any business that values customer satisfaction and wants to provide instant support.",
