@@ -8,50 +8,50 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Helpzz brand color palette */
+    /* Helpzz brand colors - Turquoise and Purple ONLY, NO BLUE */
     --background: 0 0% 100%;
-    --foreground: 210 15% 20%;
+    --foreground: 0 0% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 15% 20%;
+    --card-foreground: 0 0% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 15% 20%;
+    --popover-foreground: 0 0% 15%;
 
-    /* Helpzz turquoise/teal primary */
+    /* Helpzz turquoise/teal primary - NO BLUE */
     --primary: 175 65% 45%;
     --primary-foreground: 0 0% 100%;
     --primary-glow: 175 80% 55%;
 
     /* Light secondary */
-    --secondary: 210 15% 96%;
-    --secondary-foreground: 210 15% 20%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 15%;
 
-    --muted: 210 15% 96%;
-    --muted-foreground: 210 8% 50%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 50%;
 
-    /* Helpzz purple/blue accent */
-    --accent: 250 85% 60%;
+    /* Helpzz purple accent - NO BLUE */
+    --accent: 260 90% 65%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 13% 90%;
-    --input: 210 13% 90%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
     --ring: 175 65% 45%;
 
     --radius: 0.75rem;
 
-    /* Helpzz gradients - turquoise to purple */
-    --gradient-primary: linear-gradient(135deg, hsl(250 85% 60%), hsl(260 90% 65%));
-    --gradient-secondary: linear-gradient(135deg, hsl(210 15% 98%), hsl(220 20% 99%));
-    --gradient-hero: linear-gradient(135deg, hsl(175 65% 45% / 0.05), hsl(250 85% 60% / 0.05));
+    /* Helpzz gradients - Turquoise to Purple ONLY */
+    --gradient-primary: linear-gradient(135deg, hsl(260 90% 65%), hsl(270 95% 70%));
+    --gradient-secondary: linear-gradient(135deg, hsl(0 0% 98%), hsl(0 0% 99%));
+    --gradient-hero: linear-gradient(135deg, hsl(175 65% 45% / 0.05), hsl(260 90% 65% / 0.05));
 
-    /* Helpzz shadows */
-    --shadow-elegant: 0 10px 30px -10px hsl(175 65% 45% / 0.15);
-    --shadow-card: 0 4px 20px -4px hsl(210 15% 20% / 0.08);
-    --shadow-glow: 0 0 60px hsl(250 85% 60% / 0.4);
+    /* Helpzz shadows - Turquoise and Purple */
+    --shadow-elegant: 0 10px 30px -10px hsl(260 90% 65% / 0.2);
+    --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.08);
+    --shadow-glow: 0 0 60px hsl(260 90% 65% / 0.4);
 
     /* Animations */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -68,43 +68,43 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 210 25% 8%;
+    --background: 0 0% 8%;
     --foreground: 0 0% 95%;
 
-    --card: 210 25% 10%;
+    --card: 0 0% 10%;
     --card-foreground: 0 0% 95%;
 
-    --popover: 210 25% 10%;
+    --popover: 0 0% 10%;
     --popover-foreground: 0 0% 95%;
 
     --primary: 175 70% 50%;
-    --primary-foreground: 210 25% 8%;
+    --primary-foreground: 0 0% 8%;
     --primary-glow: 175 80% 60%;
 
-    --secondary: 210 20% 15%;
+    --secondary: 0 0% 15%;
     --secondary-foreground: 0 0% 95%;
 
-    --muted: 210 20% 15%;
-    --muted-foreground: 210 10% 70%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 250 85% 65%;
-    --accent-foreground: 210 25% 8%;
+    --accent: 260 90% 70%;
+    --accent-foreground: 0 0% 8%;
 
     --destructive: 0 62.8% 50.6%;
     --destructive-foreground: 0 0% 95%;
 
-    --border: 210 20% 20%;
-    --input: 210 20% 20%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
     --ring: 175 70% 50%;
 
-    /* Dark mode gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(250 85% 65%), hsl(260 90% 70%));
-    --gradient-secondary: linear-gradient(135deg, hsl(210 20% 15%), hsl(210 25% 18%));
-    --gradient-hero: linear-gradient(135deg, hsl(175 70% 50% / 0.1), hsl(250 85% 65% / 0.05));
+    /* Dark mode gradients - NO BLUE */
+    --gradient-primary: linear-gradient(135deg, hsl(260 90% 70%), hsl(270 95% 75%));
+    --gradient-secondary: linear-gradient(135deg, hsl(0 0% 15%), hsl(0 0% 18%));
+    --gradient-hero: linear-gradient(135deg, hsl(175 70% 50% / 0.1), hsl(260 90% 70% / 0.05));
 
-    --shadow-elegant: 0 10px 30px -10px hsl(175 70% 50% / 0.3);
+    --shadow-elegant: 0 10px 30px -10px hsl(260 90% 70% / 0.3);
     --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.25);
-    --shadow-glow: 0 0 60px hsl(250 85% 65% / 0.4);
+    --shadow-glow: 0 0 60px hsl(260 90% 70% / 0.4);
 
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;

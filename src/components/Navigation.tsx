@@ -27,9 +27,9 @@ const Navigation = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo - Much larger */}
+          {/* Logo - Very Large */}
           <Link to="/" className="flex items-center">
-            <img src={helpzzLogo} alt="Helpzz - AI Business Solutions" className="h-16 w-auto md:h-12" />
+            <img src={helpzzLogo} alt="Helpzz - AI Business Solutions" className="h-20 w-auto md:h-16 lg:h-14" />
           </Link>
 
           {/* Desktop Navigation */}
