@@ -43,8 +43,8 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
 
-    /* Helpzz gradients - Green to Yellow */
-    --gradient-primary: linear-gradient(135deg, hsl(176 70% 41%), hsl(45 100% 51%));
+    /* Helpzz gradients - Green to Yellow (cleaner gradient for buttons only) */
+    --gradient-primary: linear-gradient(90deg, hsl(176 70% 41%) 0%, hsl(176 70% 45%) 50%, hsl(45 100% 51%) 100%);
     --gradient-secondary: linear-gradient(135deg, hsl(0 0% 98%), hsl(0 0% 99%));
     --gradient-hero: linear-gradient(135deg, hsl(176 70% 41% / 0.05), hsl(45 100% 51% / 0.05));
 
@@ -98,7 +98,7 @@ All colors MUST be HSL.
     --ring: 176 70% 45%;
 
     /* Dark mode gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(176 70% 45%), hsl(45 100% 55%));
+    --gradient-primary: linear-gradient(90deg, hsl(176 70% 45%) 0%, hsl(176 70% 50%) 50%, hsl(45 100% 55%) 100%);
     --gradient-secondary: linear-gradient(135deg, hsl(0 0% 15%), hsl(0 0% 18%));
     --gradient-hero: linear-gradient(135deg, hsl(176 70% 45% / 0.1), hsl(45 100% 55% / 0.05));
 

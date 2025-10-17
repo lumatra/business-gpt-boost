@@ -66,7 +66,7 @@ const Navigation = () => {
                 </Button>
               </Link>
               <Link to="/contact">
-                <Button size="sm" className="bg-gradient-primary hover:shadow-glow transition-all duration-300 px-6">
+                <Button size="sm" className="bg-gradient-primary hover:shadow-glow transition-all duration-300 px-6 text-white">
                   Get Started
                 </Button>
               </Link>

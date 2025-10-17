@@ -15,10 +15,10 @@ const Hero = () => {
             <span className="text-sm font-medium text-accent">Boost Your Business Results</span>
           </div>
 
-          {/* Main Headline - matching reference exactly */}
+          {/* Main Headline - Green and Yellow highlights */}
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tight">
-            <span className="block bg-gradient-primary bg-clip-text text-transparent mb-2">
-              AI Assistant Tailored to
+            <span className="block text-primary mb-2">
+              AI Assistant <span className="text-accent">Tailored to</span>
             </span>
             <span className="block text-foreground">
               Your Company Profile & Needs
@@ -30,12 +30,12 @@ const Hero = () => {
             Get the right answer faster with more accurate results. Our AI learns your specific business, industry, and challenges to deliver personalized solutions 24/7.
           </p>
 
-          {/* CTA Buttons - matching reference */}
+          {/* CTA Buttons - Green with yellow gradient button */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
             <Link to="/contact">
               <Button 
                 size="lg" 
-                className="text-base px-10 py-7 bg-gradient-primary hover:shadow-glow transition-all duration-300 font-semibold rounded-xl text-lg"
+                className="text-base px-10 py-7 bg-gradient-primary hover:shadow-glow transition-all duration-300 font-semibold rounded-xl text-lg text-white"
               >
                 Get My Personal AI Assistant
               </Button>
@@ -51,18 +51,18 @@ const Hero = () => {
             </Link>
           </div>
 
-          {/* Key stats - larger and more prominent */}
+          {/* Key stats - Green and Yellow */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mt-24 pt-16">
             <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-3">24/7</div>
+              <div className="text-5xl md:text-6xl font-bold text-accent mb-3">24/7</div>
               <div className="text-muted-foreground">AI Availability</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-3">Expert</div>
+              <div className="text-5xl md:text-6xl font-bold text-accent mb-3">Expert</div>
               <div className="text-muted-foreground">Industry Knowledge</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl md:text-6xl font-bold bg-gradient-primary bg-clip-text text-transparent mb-3">&lt;5min</div>
+              <div className="text-5xl md:text-6xl font-bold text-accent mb-3">&lt;5min</div>
               <div className="text-muted-foreground">Setup Time</div>
             </div>
           </div>
