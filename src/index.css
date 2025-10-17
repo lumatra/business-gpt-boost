@@ -9,7 +9,7 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Helpzz brand colors - Green, Yellow, Dark Grey */
-    --background: 0 0% 100%;
+    --background: 0 0% 98%;
     --foreground: 0 0% 35%;
 
     --card: 0 0% 100%;
