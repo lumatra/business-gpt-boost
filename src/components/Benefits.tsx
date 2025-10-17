@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 import { 
   Clock, 
   DollarSign, 
@@ -12,30 +13,30 @@ import {
 const benefits = [
   {
     icon: Clock,
-    title: "Get Work Done Faster",
-    description: "Stop spending hours on tasks your specialist can do in minutes - get your time back",
-    metric: "10x",
+    title: "Save Hours Every Day",
+    description: "Your AI handles repetitive tasks instantly - from drafting emails to analyzing reports. What took hours now takes minutes. Focus on growing your business while Helpzz handles the rest.",
+    metric: "10x Faster",
     color: "text-primary"
   },
   {
     icon: DollarSign,
-    title: "Save Money",
-    description: "Why hire expensive consultants when you can get expert help for a fraction of the cost?",
-    metric: "90%",
+    title: "Expert Help at Fraction of the Cost",
+    description: "Get professional-level marketing, finance, and sales support without hiring full-time experts. No retainers, no minimum hours - just expert help when you need it.",
+    metric: "Save 90%",
     color: "text-accent"
   },
   {
     icon: TrendingUp,
-    title: "Grow Your Business",
-    description: "Professional marketing, better finances, and winning proposals lead to real growth",
-    metric: "3x",
+    title: "Make Smarter Decisions",
+    description: "Get instant answers backed by your company data and industry best practices. From pricing strategy to market analysis, make confident decisions with AI-powered insights.",
+    metric: "Data-Driven",
     color: "text-primary"
   },
   {
     icon: Users,
-    title: "Always Available",
-    description: "Your business experts work 24/7, ready to help whenever you need them",
-    metric: "24/7",
+    title: "Your 24/7 Business Partner",
+    description: "Whether it's 2 PM or 2 AM, your AI assistant is ready. Need to prepare a proposal? Draft a campaign? Analyze finances? Get expert help anytime, anywhere.",
+    metric: "Always On",
     color: "text-accent"
   }
 ];
@@ -46,16 +47,16 @@ const Benefits = () => {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
-            <Lightbulb className="w-4 h-4 mr-2 text-accent" />
-            <span className="text-sm font-medium text-accent">Real Results</span>
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 border border-primary/30 mb-6">
+            <Lightbulb className="w-4 h-4 mr-2 text-primary" />
+            <span className="text-sm font-medium text-primary">How Helpzz Helps</span>
           </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Why Business Owners 
-            <span className="bg-gradient-primary bg-clip-text text-transparent"> Love Our Experts</span>
+            Get Expert Help For 
+            <span className="bg-gradient-primary bg-clip-text text-transparent"> Every Part of Your Business</span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Join thousands of smart business owners who get professional help without the professional price tag.
+            From marketing and sales to finance and operations - Helpzz gives you specialized AI assistants that understand your business and deliver real results.
           </p>
         </div>
 
@@ -92,18 +93,18 @@ const Benefits = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center">
-          <div className="inline-flex items-center justify-center p-8 rounded-2xl bg-gradient-primary text-primary-foreground max-w-2xl mx-auto">
-            <div className="text-center">
-              <h3 className="text-2xl font-bold mb-4">Ready to Get Expert Help?</h3>
-              <p className="text-primary-foreground/90 mb-6">
-                Start getting professional results for your business today
-              </p>
-              <div className="inline-flex items-center px-6 py-3 bg-white/20 rounded-lg font-medium cursor-pointer hover:bg-white/30 transition-colors">
-                Talk to Your Expert
+        <div className="text-center mt-12">
+          <div className="inline-flex flex-col items-center justify-center p-10 rounded-2xl bg-gradient-primary text-primary-foreground max-w-2xl mx-auto shadow-glow">
+            <h3 className="text-3xl font-bold mb-4">Ready to Work Smarter?</h3>
+            <p className="text-lg text-primary-foreground/95 mb-8 max-w-lg">
+              Join businesses using Helpzz to get more done in less time. Set up your AI assistant in under 5 minutes.
+            </p>
+            <Link to="/contact">
+              <div className="inline-flex items-center px-8 py-4 bg-white text-accent rounded-lg font-semibold cursor-pointer hover:bg-white/90 transition-all shadow-lg hover:scale-105">
+                Get Started Free
                 <ArrowRight className="w-5 h-5 ml-2" />
               </div>
-            </div>
+            </Link>
           </div>
         </div>
       </div>
