@@ -17,6 +17,12 @@ import AdminPortal from "./pages/AdminPortal";
 import CompanyProfile from "./pages/CompanyProfile";
 import AITrainingData from "./pages/AITrainingData";
 import NotFound from "./pages/NotFound";
+import Terms from "./pages/Terms";
+import Privacy from "./pages/Privacy";
+import Cookies from "./pages/Cookies";
+import AcceptableUse from "./pages/AcceptableUse";
+import DPA from "./pages/DPA";
+import AIDisclaimer from "./pages/AIDisclaimer";
 import { AuthProvider } from "./hooks/useAuth";
 import Footer from "./components/Footer";
 
@@ -42,6 +48,12 @@ const App = () => (
             <Route path="/admin" element={<AdminPortal />} />
             <Route path="/company-profile" element={<CompanyProfile />} />
             <Route path="/ai-training-data" element={<AITrainingData />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/cookies" element={<Cookies />} />
+            <Route path="/acceptable-use" element={<AcceptableUse />} />
+            <Route path="/dpa" element={<DPA />} />
+            <Route path="/ai-disclaimer" element={<AIDisclaimer />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
