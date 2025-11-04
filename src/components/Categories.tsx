@@ -33,10 +33,10 @@ const Categories = () => {
           
           <div className="bg-card border border-border rounded-2xl p-8 max-w-4xl mx-auto mb-12">
             <h3 className="text-2xl font-bold mb-4 text-foreground">
-              Save More with Bundled Packages
+              Choose Your AI Specialists Package
             </h3>
             <p className="text-muted-foreground mb-6">
-              Choose individual AI specialists or save significantly with our bundled packages for comprehensive AI support.
+              Select individual AI specialists or bundled packages for comprehensive AI support tailored to your business needs.
             </p>
             <div className="flex items-center justify-center gap-6 text-sm">
               <div className="bg-primary/10 text-primary px-4 py-2 rounded-full font-medium">
@@ -59,11 +59,7 @@ const Categories = () => {
             <div className="relative bg-card border border-border rounded-2xl p-6 transition-all duration-300 hover:shadow-card">
               <div className="text-center mb-6">
                 <h4 className="text-2xl font-bold mb-2 text-foreground">Individual</h4>
-                <div className="mb-4">
-                  <span className="text-4xl font-bold text-foreground">£19.99</span>
-                  <span className="text-muted-foreground">/month</span>
-                </div>
-                <p className="text-muted-foreground">1 AI Specialist of Your Choice</p>
+                <p className="text-muted-foreground mt-4">1 AI Specialist of Your Choice</p>
               </div>
               
               <ul className="space-y-4 mb-8">
@@ -96,14 +92,7 @@ const Categories = () => {
             <div className="relative bg-card border border-border rounded-2xl p-6 transition-all duration-300 hover:shadow-card">
               <div className="text-center mb-6">
                 <h4 className="text-2xl font-bold mb-2 text-foreground">Starter</h4>
-                <div className="mb-2">
-                  <span className="text-4xl font-bold text-foreground">£29</span>
-                  <span className="text-muted-foreground">/month</span>
-                </div>
-                <div className="bg-primary/10 text-primary text-xs font-medium px-3 py-1 rounded-full mb-3">
-                  Save £10.98/month
-                </div>
-                <p className="text-muted-foreground">Perfect for solo entrepreneurs</p>
+                <p className="text-muted-foreground mt-4">Perfect for solo entrepreneurs</p>
               </div>
               
               <ul className="space-y-4 mb-8">
@@ -140,14 +129,7 @@ const Categories = () => {
               
               <div className="text-center mb-6">
                 <h4 className="text-2xl font-bold mb-2 text-foreground">Pro</h4>
-                <div className="mb-2">
-                  <span className="text-4xl font-bold text-foreground">£49</span>
-                  <span className="text-muted-foreground">/month</span>
-                </div>
-                <div className="bg-accent/10 text-accent text-xs font-bold px-3 py-1 rounded-full mb-3">
-                  Save £30.96/month
-                </div>
-                <p className="text-muted-foreground">Ideal for growing businesses</p>
+                <p className="text-muted-foreground mt-4">Ideal for growing businesses</p>
               </div>
               
               <ul className="space-y-4 mb-8">
@@ -195,10 +177,6 @@ const Categories = () => {
                     </div>
                   </div>
                   <div className="flex flex-col items-center gap-4">
-                    <div>
-                      <span className="text-4xl font-bold text-foreground">£119</span>
-                      <span className="text-muted-foreground">/month</span>
-                    </div>
                     <Button size="lg" variant="outline" className="px-8">
                       Contact Sales
                     </Button>

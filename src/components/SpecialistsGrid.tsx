@@ -86,16 +86,11 @@ const SpecialistsGrid = () => {
             const Icon = category.icon;
             return (
               <Card key={index} className="group hover:shadow-card transition-all duration-300 border-border bg-card relative">
-                <div className="absolute top-6 right-6">
-                  <div className="bg-primary/10 text-primary text-sm font-semibold px-3 py-1 rounded-full">
-                    {category.price}
-                  </div>
-                </div>
                 <CardHeader className="pb-4">
                   <div className={`w-12 h-12 rounded-xl ${category.bgColor} flex items-center justify-center mb-4`}>
                     <Icon className={`w-6 h-6 ${category.color}`} />
                   </div>
-                  <CardTitle className="text-xl mb-3 text-foreground pr-20">{category.title}</CardTitle>
+                  <CardTitle className="text-xl mb-3 text-foreground">{category.title}</CardTitle>
                   <CardDescription className="text-muted-foreground text-sm leading-relaxed">
                     {category.description}
                   </CardDescription>

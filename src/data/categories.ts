@@ -14,7 +14,6 @@ export type Category = {
   features: string[];
   color: string;
   bgColor: string;
-  price: string;
   details: string;
 };
 
@@ -34,7 +33,6 @@ export const categories: Category[] = [
     ],
     color: "text-primary",
     bgColor: "bg-primary/10",
-    price: "£19.99/month",
     details:
       "Perfect for restaurants, retail stores, service providers, and any business wanting consistent social media presence without the daily hassle.",
   },
@@ -53,7 +51,6 @@ export const categories: Category[] = [
     ],
     color: "text-primary",
     bgColor: "bg-primary/10",
-    price: "£19.99/month",
     details:
       "Ideal for consultants, contractors, small manufacturers, and service businesses who need financial clarity without expensive accountants.",
   },
@@ -72,7 +69,6 @@ export const categories: Category[] = [
     ],
     color: "text-primary",
     bgColor: "bg-primary/10",
-    price: "£19.99/month",
     details:
       "Essential for B2B services, contractors, agencies, and any business that needs to write proposals or respond to tenders regularly.",
   },
@@ -91,7 +87,6 @@ export const categories: Category[] = [
     ],
     color: "text-primary",
     bgColor: "bg-primary/10",
-    price: "£19.99/month",
     details:
       "Perfect for e-commerce, local services, B2B companies, and any business wanting to attract more customers systematically.",
   },
@@ -110,7 +105,6 @@ export const categories: Category[] = [
     ],
     color: "text-primary",
     bgColor: "bg-primary/10",
-    price: "£19.99/month",
     details:
       "Essential for online stores, service providers, and any business that values customer satisfaction and wants to provide instant support.",
   },
@@ -129,7 +123,6 @@ export const categories: Category[] = [
     ],
     color: "text-primary",
     bgColor: "bg-primary/10",
-    price: "£99 setup + £19/month",
     details:
       "Tailored for businesses with specific needs - from medical practices to manufacturing, construction to consulting - we build AI that fits your exact requirements.",
   },
