@@ -1,9 +1,12 @@
 import React from "react";
 import SEO from "@/components/SEO";
+import Navigation from "@/components/Navigation";
 
 const Privacy = () => {
   return (
-    <main className="container mx-auto px-4 py-10">
+    <>
+      <Navigation />
+      <main className="container mx-auto px-4 py-10 mt-24">
       <SEO
         title="Privacy Policy | Helpzz"
         description="Learn how Helpzz handles your data in our Privacy Policy."
@@ -174,6 +177,7 @@ const Privacy = () => {
         </section>
       </article>
     </main>
+    </>
   );
 };
 

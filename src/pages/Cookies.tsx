@@ -1,9 +1,12 @@
 import React from "react";
 import SEO from "@/components/SEO";
+import Navigation from "@/components/Navigation";
 
 const Cookies = () => {
   return (
-    <main className="container mx-auto px-4 py-10">
+    <>
+      <Navigation />
+      <main className="container mx-auto px-4 py-10 mt-24">
       <SEO
         title="Cookies Policy | Helpzz"
         description="Understand how Helpzz uses cookies on our website."
@@ -129,6 +132,7 @@ const Cookies = () => {
         </section>
       </article>
     </main>
+    </>
   );
 };
 

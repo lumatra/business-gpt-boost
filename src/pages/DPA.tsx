@@ -1,9 +1,12 @@
 import React from "react";
 import SEO from "@/components/SEO";
+import Navigation from "@/components/Navigation";
 
 const DPA = () => {
   return (
-    <main className="container mx-auto px-4 py-10">
+    <>
+      <Navigation />
+      <main className="container mx-auto px-4 py-10 mt-24">
       <SEO
         title="Data Processing Agreement (DPA) | Helpzz"
         description="Read Helpzz's Data Processing Agreement (DPA)."
@@ -180,6 +183,7 @@ const DPA = () => {
         </section>
       </article>
     </main>
+    </>
   );
 };
 

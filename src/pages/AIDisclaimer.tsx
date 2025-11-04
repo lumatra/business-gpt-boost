@@ -1,9 +1,12 @@
 import React from "react";
 import SEO from "@/components/SEO";
+import Navigation from "@/components/Navigation";
 
 const AIDisclaimer = () => {
   return (
-    <main className="container mx-auto px-4 py-10">
+    <>
+      <Navigation />
+      <main className="container mx-auto px-4 py-10 mt-24">
       <SEO
         title="AI Disclaimer | Helpzz"
         description="Important information about Helpzz's AI features and limitations."
@@ -77,6 +80,7 @@ const AIDisclaimer = () => {
         </section>
       </article>
     </main>
+    </>
   );
 };
 

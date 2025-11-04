@@ -1,9 +1,12 @@
 import React from "react";
 import SEO from "@/components/SEO";
+import Navigation from "@/components/Navigation";
 
 const Terms = () => {
   return (
-    <main className="container mx-auto px-4 py-10">
+    <>
+      <Navigation />
+      <main className="container mx-auto px-4 py-10 mt-24">
       <SEO
         title="Terms and Conditions | Helpzz"
         description="Read Helpzz Terms and Conditions."
@@ -140,6 +143,7 @@ const Terms = () => {
         </section>
       </article>
     </main>
+    </>
   );
 };
 

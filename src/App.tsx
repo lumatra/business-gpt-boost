@@ -25,6 +25,7 @@ import DPA from "./pages/DPA";
 import AIDisclaimer from "./pages/AIDisclaimer";
 import { AuthProvider } from "./hooks/useAuth";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/examples" element={<Examples />} />

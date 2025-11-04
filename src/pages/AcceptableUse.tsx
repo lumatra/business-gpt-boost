@@ -1,9 +1,12 @@
 import React from "react";
 import SEO from "@/components/SEO";
+import Navigation from "@/components/Navigation";
 
 const AcceptableUse = () => {
   return (
-    <main className="container mx-auto px-4 py-10">
+    <>
+      <Navigation />
+      <main className="container mx-auto px-4 py-10 mt-24">
       <SEO
         title="Acceptable Use Policy | Helpzz"
         description="Review Helpzz's Acceptable Use Policy."
@@ -105,6 +108,7 @@ const AcceptableUse = () => {
         </section>
       </article>
     </main>
+    </>
   );
 };
 
