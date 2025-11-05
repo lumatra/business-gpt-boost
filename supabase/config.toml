@@ -2,3 +2,6 @@ project_id = "zkkprgkwxyvlqurguxoi"
 
 [functions.ai-assistant]
 verify_jwt = false
+
+[functions.send-signup-email]
+verify_jwt = false

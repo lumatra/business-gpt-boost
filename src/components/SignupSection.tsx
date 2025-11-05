@@ -2,13 +2,38 @@ import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const SignupSection = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      phone: formData.get("phone") as string,
+    };
+
+    try {
+      const { error } = await supabase.functions.invoke("send-signup-email", {
+        body: data,
+      });
+
+      if (error) throw error;
+
+      setFormSubmitted(true);
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      toast.error("Failed to submit form. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -74,9 +99,10 @@ const SignupSection = () => {
               <div>
                 <Button
                   type="submit"
+                  disabled={isSubmitting}
                   className="w-full px-6 py-4 text-lg bg-emerald-600 hover:bg-emerald-700"
                 >
-                  Send
+                  {isSubmitting ? "Sending..." : "Send"}
                 </Button>
               </div>
             </form>
