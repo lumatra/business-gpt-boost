@@ -10,12 +10,12 @@ const NewHero = () => {
   };
 
   return (
-    <section className="bg-gradient-hero pt-20 pb-24 text-center">
+    <section className="bg-gradient-hero pt-32 pb-24 text-center">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-5xl md:text-6xl font-extrabold text-foreground leading-tight">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-foreground leading-tight">
           Stop Answering the Same Questions.
         </h1>
-        <h2 className="mt-4 text-5xl md:text-6xl font-extrabold text-primary leading-tight">
+        <h2 className="mt-4 text-4xl md:text-5xl font-extrabold text-primary leading-tight">
           Let AI Handle It.
         </h2>
         <p className="mt-8 text-xl text-muted-foreground max-w-2xl mx-auto">
