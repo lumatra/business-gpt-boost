@@ -1,16 +1,22 @@
 import React from "react";
 import Navigation from "@/components/Navigation";
-import Hero from "@/components/Hero";
-import Categories from "@/components/Categories";
-import Benefits from "@/components/Benefits";
+import NewHero from "@/components/NewHero";
+import ProblemSection from "@/components/ProblemSection";
+import SolutionSection from "@/components/SolutionSection";
+import PricingSection from "@/components/PricingSection";
+import SignupSection from "@/components/SignupSection";
+import ContactSection from "@/components/ContactSection";
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-background">
+    <main className="min-h-screen bg-gray-900">
       <Navigation />
-      <Hero />
-      <Categories />
-      <Benefits />
+      <NewHero />
+      <ProblemSection />
+      <SolutionSection />
+      <PricingSection />
+      <SignupSection />
+      <ContactSection />
     </main>
   );
 };

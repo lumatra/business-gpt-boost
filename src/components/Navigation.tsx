@@ -38,38 +38,37 @@ const Navigation = () => {
               <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">
                 Home
               </Link>
-              <Link to="/categories" className="text-muted-foreground hover:text-foreground transition-colors">
-                Categories
-              </Link>
-              <Link
-                to="/#benefits"
+              <button
+                onClick={() => goToSection("problem")}
                 className="text-muted-foreground hover:text-foreground transition-colors"
-                onClick={(e) => {
-                  e.preventDefault();
-                  goToSection('benefits');
-                }}
               >
-                Benefits
-              </Link>
-              <Link to="/examples" className="text-muted-foreground hover:text-foreground transition-colors">
-                Examples
-              </Link>
-              <Link to="/contact" className="text-muted-foreground hover:text-foreground transition-colors">
+                The Problem
+              </button>
+              <button
+                onClick={() => goToSection("solution")}
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Our Solution
+              </button>
+              <button
+                onClick={() => goToSection("pricing")}
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Pricing
+              </button>
+              <button
+                onClick={() => goToSection("contact")}
+                className="text-muted-foreground hover:text-foreground transition-colors"
+              >
                 Contact
-              </Link>
+              </button>
             </div>
             <div className="flex items-center space-x-3">
-              <Link to="/auth">
-                <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-                  <LogIn className="mr-2 h-4 w-4" />
-                  Sign In
+              <button onClick={() => goToSection("signup")}>
+                <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 transition-all duration-300 px-6">
+                  Sign Up Now
                 </Button>
-              </Link>
-              <Link to="/contact">
-                <Button size="sm" className="bg-primary hover:bg-primary/90 transition-all duration-300 px-6">
-                  Get Started
-                </Button>
-              </Link>
+              </button>
             </div>
           </div>
 
@@ -88,40 +87,61 @@ const Navigation = () => {
         {isMenuOpen && (
           <div className="md:hidden mt-4 pt-4 border-t border-border/50">
             <div className="flex flex-col space-y-4">
-              <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors py-2">
+              <Link
+                to="/"
+                onClick={() => setIsMenuOpen(false)}
+                className="text-muted-foreground hover:text-foreground transition-colors py-2"
+              >
                 Home
               </Link>
-              <Link to="/categories" className="text-muted-foreground hover:text-foreground transition-colors py-2">
-                Categories
-              </Link>
-              <Link
-                to="/#benefits"
-                className="text-muted-foreground hover:text-foreground transition-colors py-2"
-                onClick={(e) => {
-                  e.preventDefault();
-                  goToSection('benefits');
+              <button
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  goToSection("problem");
                 }}
+                className="text-muted-foreground hover:text-foreground transition-colors py-2 text-left"
               >
-                Benefits
-              </Link>
-              <Link to="/examples" className="text-muted-foreground hover:text-foreground transition-colors py-2">
-                Examples
-              </Link>
-              <Link to="/contact" className="text-muted-foreground hover:text-foreground transition-colors py-2">
+                The Problem
+              </button>
+              <button
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  goToSection("solution");
+                }}
+                className="text-muted-foreground hover:text-foreground transition-colors py-2 text-left"
+              >
+                Our Solution
+              </button>
+              <button
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  goToSection("pricing");
+                }}
+                className="text-muted-foreground hover:text-foreground transition-colors py-2 text-left"
+              >
+                Pricing
+              </button>
+              <button
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  goToSection("contact");
+                }}
+                className="text-muted-foreground hover:text-foreground transition-colors py-2 text-left"
+              >
                 Contact
-              </Link>
+              </button>
               <div className="flex flex-col space-y-3 pt-4">
-                <Link to="/auth" className="w-full">
-                  <Button variant="outline" size="sm" className="w-full">
-                    <LogIn className="mr-2 h-4 w-4" />
-                    Sign In
+                <button
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    goToSection("signup");
+                  }}
+                  className="w-full"
+                >
+                  <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 w-full">
+                    Sign Up Now
                   </Button>
-                </Link>
-                <Link to="/contact" className="w-full">
-                  <Button size="sm" className="bg-primary hover:bg-primary/90 w-full">
-                    Get Started
-                  </Button>
-                </Link>
+                </button>
               </div>
             </div>
           </div>
