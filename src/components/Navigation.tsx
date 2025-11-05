@@ -65,7 +65,7 @@ const Navigation = () => {
             </div>
             <div className="flex items-center space-x-3">
               <button onClick={() => goToSection("signup")}>
-                <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 transition-all duration-300 px-6">
+                <Button size="sm" className="bg-primary hover:bg-primary/90 transition-all duration-300 px-6">
                   Sign Up Now
                 </Button>
               </button>
@@ -138,7 +138,7 @@ const Navigation = () => {
                   }}
                   className="w-full"
                 >
-                  <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 w-full">
+                  <Button size="sm" className="bg-primary hover:bg-primary/90 w-full">
                     Sign Up Now
                   </Button>
                 </button>
