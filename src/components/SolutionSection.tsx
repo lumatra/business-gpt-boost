@@ -1,50 +1,161 @@
 import React from "react";
-import { Zap, Clock, MessageCircle } from "lucide-react";
+import { Button } from "./ui/button";
+import { 
+  HelpCircle, 
+  Calculator, 
+  MessageSquare, 
+  AlertTriangle, 
+  Shield,
+  Check
+} from "lucide-react";
 
 const SolutionSection = () => {
+  const scrollToSignup = () => {
+    const element = document.getElementById("signup");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const assistants = [
+    {
+      icon: HelpCircle,
+      title: "FAQ Assistant",
+      description: "Answers customer questions instantly",
+      example: '"What\'s your pricing?" "What areas do you cover?" "When can you start?"',
+      benefit: "Responds in seconds with your exact information",
+      gradient: "from-blue-500/10 to-indigo-500/10",
+      iconBg: "bg-blue-600",
+      accentColor: "text-blue-600"
+    },
+    {
+      icon: Calculator,
+      title: "Estimator & Lead Capture",
+      description: "Qualifies leads and takes job details",
+      example: "Asks the right questions, captures contact info, books you in",
+      benefit: "You show up knowing exactly what they need",
+      gradient: "from-green-500/10 to-emerald-500/10",
+      iconBg: "bg-green-600",
+      accentColor: "text-green-600"
+    },
+    {
+      icon: MessageSquare,
+      title: "Social Media Manager",
+      description: "Creates post ideas and captions",
+      example: "Helps you stay active on Instagram/Facebook without the hassle",
+      benefit: "Posts that sound like you, not a robot",
+      gradient: "from-purple-500/10 to-pink-500/10",
+      iconBg: "bg-purple-600",
+      accentColor: "text-purple-600"
+    },
+    {
+      icon: AlertTriangle,
+      title: "Complaints Response Advisor",
+      description: "Helps you handle complaints professionally",
+      example: "Suggests 3 response options when customers aren't happy",
+      benefit: "Takes the emotion out of tricky situations",
+      gradient: "from-orange-500/10 to-red-500/10",
+      iconBg: "bg-orange-600",
+      accentColor: "text-orange-600"
+    },
+    {
+      icon: Shield,
+      title: "Therapy Practice Assistant",
+      description: "Books clients and detects crisis situations",
+      example: "Handles inquiries, explains your process, flags emergencies",
+      benefit: "BACP/UKCP compliant, crisis-aware",
+      gradient: "from-teal-500/10 to-cyan-500/10",
+      iconBg: "bg-teal-600",
+      accentColor: "text-teal-600"
+    }
+  ];
+
   return (
-    <section id="solution" className="py-24 bg-card">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <h2 className="text-base font-semibold text-primary tracking-wide uppercase">
-            Our Solution
+    <section id="how-it-works" className="py-20 bg-card">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-4">
+            Meet Your New Team.
           </h2>
-          <p className="mt-2 text-4xl font-extrabold text-card-foreground sm:text-5xl">
-            Your Personal AI Assistant
-          </p>
-          <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-            We build a custom AI agent trained on your business. It handles FAQs, books appointments, and answers customer queries — all automatically.
+          <p className="text-xl text-muted-foreground">
+            (They Never Sleep, Never Take Breaks, and Cost Less Than a Meal Out.)
           </p>
         </div>
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-background p-8 rounded-lg shadow-card border border-border">
-            <div className="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-primary-foreground">
-              <Clock className="h-6 w-6" />
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          {assistants.map((assistant, index) => (
+            <div 
+              key={index}
+              className={`bg-gradient-to-br ${assistant.gradient} p-8 rounded-2xl border border-border hover:shadow-elegant transition-all duration-300 hover:-translate-y-2`}
+            >
+              <div className={`w-14 h-14 ${assistant.iconBg} rounded-xl flex items-center justify-center mb-4`}>
+                <assistant.icon className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-card-foreground mb-2">{assistant.title}</h3>
+              <p className="text-muted-foreground mb-4">{assistant.description}</p>
+              <p className="text-sm text-muted-foreground mb-4 italic">"{assistant.example}"</p>
+              <p className={`text-sm font-semibold ${assistant.accentColor}`}>→ {assistant.benefit}</p>
             </div>
-            <h3 className="mt-5 text-xl font-bold text-foreground">24/7 Availability</h3>
-            <p className="mt-2 text-base text-muted-foreground">
-              Your AI assistant never sleeps. It's there for customers at 2 AM, on weekends, and during holidays.
-            </p>
+          ))}
+
+          {/* All Included Badge */}
+          <div className="bg-gradient-to-br from-yellow-500/10 to-amber-500/10 p-8 rounded-2xl border-4 border-yellow-500 hover:shadow-elegant transition-all duration-300">
+            <div className="text-center">
+              <div className="w-14 h-14 bg-yellow-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
+                <Check className="w-8 h-8 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-card-foreground mb-2">ALL 5 INCLUDED</h3>
+              <p className="text-4xl font-bold text-yellow-600 mb-2">£9.99/mo</p>
+              <p className="text-muted-foreground">Pick any or all assistants</p>
+              <p className="text-muted-foreground">Mix and match as needed</p>
+              <p className="text-muted-foreground font-semibold mt-4">Most competitors charge £50-100 per assistant</p>
+            </div>
           </div>
-          
-          <div className="bg-background p-8 rounded-lg shadow-card border border-border">
-            <div className="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-primary-foreground">
-              <Zap className="h-6 w-6" />
-            </div>
-            <h3 className="mt-5 text-xl font-bold text-foreground">Instant Responses</h3>
-            <p className="mt-2 text-base text-muted-foreground">
-              Customers get answers in seconds, not hours. No more "I'll get back to you tomorrow."
-            </p>
+        </div>
+
+        {/* How It Works Steps */}
+        <div className="mt-20">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-4">
+              Set Up in 10 Minutes. Start Capturing Leads Today.
+            </h2>
           </div>
-          
-          <div className="bg-background p-8 rounded-lg shadow-card border border-border">
-            <div className="flex items-center justify-center h-12 w-12 rounded-md bg-primary text-primary-foreground">
-              <MessageCircle className="h-6 w-6" />
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
+              <h3 className="text-xl font-bold text-card-foreground mb-3">Quick Setup</h3>
+              <p className="text-muted-foreground mb-2">Tell us about your business (10 minutes)</p>
+              <p className="text-muted-foreground mb-2">Choose which assistants you need</p>
+              <p className="text-sm font-semibold text-primary">→ We'll configure everything for you</p>
             </div>
-            <h3 className="mt-5 text-xl font-bold text-foreground">Trained on Your Business</h3>
-            <p className="mt-2 text-base text-muted-foreground">
-              We customize the AI to know your services, pricing, availability — everything your customers ask about.
-            </p>
+
+            <div className="text-center">
+              <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
+              <h3 className="text-xl font-bold text-card-foreground mb-3">Your Assistants Start Working</h3>
+              <p className="text-muted-foreground mb-2">Get your own UK phone number</p>
+              <p className="text-muted-foreground mb-2">Customers text or use your website</p>
+              <p className="text-sm font-semibold text-primary">→ Responds instantly with your information</p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
+              <h3 className="text-xl font-bold text-card-foreground mb-3">You Get the Leads</h3>
+              <p className="text-muted-foreground mb-2">Assistant captures their details</p>
+              <p className="text-muted-foreground mb-2">Sends you a summary via SMS/email</p>
+              <p className="text-sm font-semibold text-primary">→ You follow up when you're ready</p>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <p className="text-lg font-semibold text-muted-foreground mb-6">No app to download. No tech skills needed. Just works.</p>
+            <Button
+              size="lg"
+              onClick={scrollToSignup}
+              className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 shadow-elegant"
+            >
+              Start Free Trial - See All 5 in Action
+            </Button>
           </div>
         </div>
       </div>
