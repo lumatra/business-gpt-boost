@@ -2,13 +2,13 @@ import React from "react";
 import { Button } from "./ui/button";
 import { Check } from "lucide-react";
 
+const SIGNUP_URLS = {
+  starter: "https://portal.helpzz.co.uk/signup?plan=starter",
+  pro: "https://portal.helpzz.co.uk/signup?plan=pro",
+  plus: "https://portal.helpzz.co.uk/signup?plan=plus",
+};
+
 const PricingSection = () => {
-  const scrollToSignup = () => {
-    const element = document.getElementById("signup");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <section id="pricing" className="py-24 bg-muted">
@@ -52,7 +52,7 @@ const PricingSection = () => {
               </li>
             </ul>
             <Button
-              onClick={scrollToSignup}
+              onClick={() => window.open(SIGNUP_URLS.starter, '_blank')}
               variant="secondary"
               className="w-full py-3"
             >
@@ -94,7 +94,7 @@ const PricingSection = () => {
               </li>
             </ul>
             <Button
-              onClick={scrollToSignup}
+              onClick={() => window.open(SIGNUP_URLS.pro, '_blank')}
               className="w-full py-3 bg-white text-primary hover:bg-gray-100"
             >
               Start Free Trial
@@ -132,7 +132,7 @@ const PricingSection = () => {
               </li>
             </ul>
             <Button
-              onClick={scrollToSignup}
+              onClick={() => window.open(SIGNUP_URLS.plus, '_blank')}
               variant="secondary"
               className="w-full py-3"
             >
