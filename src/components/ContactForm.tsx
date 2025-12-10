@@ -40,6 +40,11 @@ const ContactForm = () => {
 
       if (error) throw error;
 
+      // Send email notification
+      await supabase.functions.invoke('send-contact-email', {
+        body: formData
+      });
+
       toast({
         title: "Inquiry Submitted!",
         description: "We'll get back to you within 24 hours to discuss your custom AI solution.",
