@@ -113,9 +113,9 @@ const SolutionSection = () => {
         {/* Plus You Get Section */}
         <div className="mt-16 mb-12">
           <div className="text-center mb-10">
-            <p className="text-lg font-semibold text-primary mb-2">PLUS YOU GET...</p>
+            <p className="text-lg font-semibold text-primary mb-2">NEED MORE?</p>
             <h3 className="text-2xl md:text-3xl font-bold text-card-foreground">
-              Extra Services Included
+              Optional Add-Ons Available
             </h3>
           </div>
 
@@ -125,8 +125,11 @@ const SolutionSection = () => {
                 key={index}
                 className={`bg-gradient-to-br ${addon.gradient} p-8 rounded-2xl border-2 border-dashed border-primary/30 hover:border-primary/60 transition-all duration-300`}
               >
-                <div className={`w-14 h-14 ${addon.iconBg} rounded-xl flex items-center justify-center mb-4`}>
-                  <addon.icon className="w-8 h-8 text-white" />
+                <div className="flex items-start justify-between mb-4">
+                  <div className={`w-14 h-14 ${addon.iconBg} rounded-xl flex items-center justify-center`}>
+                    <addon.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <span className="text-xs font-semibold bg-primary/10 text-primary px-3 py-1 rounded-full">Add-on</span>
                 </div>
                 <h3 className="text-xl font-bold text-card-foreground mb-2">{addon.title}</h3>
                 <p className="text-muted-foreground mb-4">{addon.description}</p>
@@ -143,10 +146,10 @@ const SolutionSection = () => {
               <div className="w-14 h-14 bg-yellow-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
                 <Check className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-card-foreground mb-2">EVERYTHING INCLUDED</h3>
+              <h3 className="text-2xl font-bold text-card-foreground mb-2">ALL 4 ASSISTANTS</h3>
               <p className="text-4xl font-bold text-yellow-600 mb-2">£9.99/mo</p>
-              <p className="text-muted-foreground">All 4 assistants + SMS + Diary</p>
               <p className="text-muted-foreground">Mix and match as needed</p>
+              <p className="text-muted-foreground text-sm mt-2">SMS & Diary available as add-ons</p>
               <p className="text-muted-foreground font-semibold mt-4">Most competitors charge £50-100 per feature</p>
             </div>
           </div>
