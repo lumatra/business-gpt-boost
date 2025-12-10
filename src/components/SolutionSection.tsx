@@ -5,8 +5,9 @@ import {
   Calculator, 
   MessageSquare, 
   AlertTriangle, 
-  Shield,
-  Check
+  Check,
+  Phone,
+  Calendar
 } from "lucide-react";
 
 const SolutionSection = () => {
@@ -57,16 +58,25 @@ const SolutionSection = () => {
       gradient: "from-orange-500/10 to-red-500/10",
       iconBg: "bg-orange-600",
       accentColor: "text-orange-600"
+    }
+  ];
+
+  const addons = [
+    {
+      icon: Phone,
+      title: "Your Own UK Phone Number",
+      description: "Customers text your number, get instant replies",
+      benefit: "No app needed - works with any phone",
+      gradient: "from-teal-500/10 to-cyan-500/10",
+      iconBg: "bg-teal-600"
     },
     {
-      icon: Shield,
-      title: "Therapy Practice Assistant",
-      description: "Books clients and detects crisis situations",
-      example: "Handles inquiries, explains your process, flags emergencies",
-      benefit: "BACP/UKCP compliant, crisis-aware",
-      gradient: "from-teal-500/10 to-cyan-500/10",
-      iconBg: "bg-teal-600",
-      accentColor: "text-teal-600"
+      icon: Calendar,
+      title: "Diary & Booking Service",
+      description: "Customers can book slots directly",
+      benefit: "No more back-and-forth to find a time",
+      gradient: "from-indigo-500/10 to-violet-500/10",
+      iconBg: "bg-indigo-600"
     }
   ];
 
@@ -82,7 +92,8 @@ const SolutionSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+        {/* Core Assistants */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
           {assistants.map((assistant, index) => (
             <div 
               key={index}
@@ -97,18 +108,46 @@ const SolutionSection = () => {
               <p className={`text-sm font-semibold ${assistant.accentColor}`}>→ {assistant.benefit}</p>
             </div>
           ))}
+        </div>
 
-          {/* All Included Badge */}
+        {/* Plus You Get Section */}
+        <div className="mt-16 mb-12">
+          <div className="text-center mb-10">
+            <p className="text-lg font-semibold text-primary mb-2">PLUS YOU GET...</p>
+            <h3 className="text-2xl md:text-3xl font-bold text-card-foreground">
+              Extra Services Included
+            </h3>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {addons.map((addon, index) => (
+              <div 
+                key={index}
+                className={`bg-gradient-to-br ${addon.gradient} p-8 rounded-2xl border-2 border-dashed border-primary/30 hover:border-primary/60 transition-all duration-300`}
+              >
+                <div className={`w-14 h-14 ${addon.iconBg} rounded-xl flex items-center justify-center mb-4`}>
+                  <addon.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-card-foreground mb-2">{addon.title}</h3>
+                <p className="text-muted-foreground mb-4">{addon.description}</p>
+                <p className="text-sm font-semibold text-primary">→ {addon.benefit}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* All Included Badge */}
+        <div className="max-w-lg mx-auto">
           <div className="bg-gradient-to-br from-yellow-500/10 to-amber-500/10 p-8 rounded-2xl border-4 border-yellow-500 hover:shadow-elegant transition-all duration-300">
             <div className="text-center">
               <div className="w-14 h-14 bg-yellow-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
                 <Check className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-card-foreground mb-2">ALL 5 INCLUDED</h3>
+              <h3 className="text-2xl font-bold text-card-foreground mb-2">EVERYTHING INCLUDED</h3>
               <p className="text-4xl font-bold text-yellow-600 mb-2">£9.99/mo</p>
-              <p className="text-muted-foreground">Pick any or all assistants</p>
+              <p className="text-muted-foreground">All 4 assistants + SMS + Diary</p>
               <p className="text-muted-foreground">Mix and match as needed</p>
-              <p className="text-muted-foreground font-semibold mt-4">Most competitors charge £50-100 per assistant</p>
+              <p className="text-muted-foreground font-semibold mt-4">Most competitors charge £50-100 per feature</p>
             </div>
           </div>
         </div>
@@ -126,13 +165,13 @@ const SolutionSection = () => {
               <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">1</div>
               <h3 className="text-xl font-bold text-card-foreground mb-3">Quick Setup</h3>
               <p className="text-muted-foreground mb-2">Tell us about your business (10 minutes)</p>
-              <p className="text-muted-foreground mb-2">Choose which assistants you need</p>
+              <p className="text-muted-foreground mb-2">Choose what you need</p>
               <p className="text-sm font-semibold text-primary">→ We'll configure everything for you</p>
             </div>
 
             <div className="text-center">
               <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
-              <h3 className="text-xl font-bold text-card-foreground mb-3">Your Assistants Start Working</h3>
+              <h3 className="text-xl font-bold text-card-foreground mb-3">Start Working</h3>
               <p className="text-muted-foreground mb-2">Get your own UK phone number</p>
               <p className="text-muted-foreground mb-2">Customers text or use your website</p>
               <p className="text-sm font-semibold text-primary">→ Responds instantly with your information</p>
@@ -141,7 +180,7 @@ const SolutionSection = () => {
             <div className="text-center">
               <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
               <h3 className="text-xl font-bold text-card-foreground mb-3">You Get the Leads</h3>
-              <p className="text-muted-foreground mb-2">Assistant captures their details</p>
+              <p className="text-muted-foreground mb-2">Captures their details automatically</p>
               <p className="text-muted-foreground mb-2">Sends you a summary via SMS/email</p>
               <p className="text-sm font-semibold text-primary">→ You follow up when you're ready</p>
             </div>
@@ -154,7 +193,7 @@ const SolutionSection = () => {
               onClick={scrollToSignup}
               className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 shadow-elegant"
             >
-              Start Free Trial - See All 5 in Action
+              Start Free Trial - See It All in Action
             </Button>
           </div>
         </div>
