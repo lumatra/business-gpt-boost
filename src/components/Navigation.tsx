@@ -73,7 +73,7 @@ const Navigation = () => {
               </button>
             </div>
             <div className="flex items-center space-x-3">
-              <button onClick={() => goToSection("signup")}>
+              <button onClick={() => goToSection("pricing")}>
                 <Button size="sm" className="bg-primary hover:bg-primary/90 transition-all duration-300 px-6">
                   Sign Up Now
                 </Button>
@@ -149,7 +149,7 @@ const Navigation = () => {
                 <button
                   onClick={() => {
                     setIsMenuOpen(false);
-                    goToSection("signup");
+                    goToSection("pricing");
                   }}
                   className="w-full"
                 >
