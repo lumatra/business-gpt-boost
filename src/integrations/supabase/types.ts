@@ -550,11 +550,16 @@ export type Database = {
           messages_used_this_period: number | null
           name: string
           number_of_employees: number | null
+          onboarding_completed: boolean | null
+          onboarding_notes: string | null
           owner_user_id: string | null
           period_end_date: string | null
           period_start_date: string | null
           phone: string | null
           plan: Database["public"]["Enums"]["account_plan"] | null
+          selected_addons: string[] | null
+          selected_assistant_types: string[] | null
+          setup_status: string | null
           status: Database["public"]["Enums"]["account_status"]
           subscription_plan_id: string | null
           subscription_tier: string | null
@@ -578,11 +583,16 @@ export type Database = {
           messages_used_this_period?: number | null
           name: string
           number_of_employees?: number | null
+          onboarding_completed?: boolean | null
+          onboarding_notes?: string | null
           owner_user_id?: string | null
           period_end_date?: string | null
           period_start_date?: string | null
           phone?: string | null
           plan?: Database["public"]["Enums"]["account_plan"] | null
+          selected_addons?: string[] | null
+          selected_assistant_types?: string[] | null
+          setup_status?: string | null
           status?: Database["public"]["Enums"]["account_status"]
           subscription_plan_id?: string | null
           subscription_tier?: string | null
@@ -606,11 +616,16 @@ export type Database = {
           messages_used_this_period?: number | null
           name?: string
           number_of_employees?: number | null
+          onboarding_completed?: boolean | null
+          onboarding_notes?: string | null
           owner_user_id?: string | null
           period_end_date?: string | null
           period_start_date?: string | null
           phone?: string | null
           plan?: Database["public"]["Enums"]["account_plan"] | null
+          selected_addons?: string[] | null
+          selected_assistant_types?: string[] | null
+          setup_status?: string | null
           status?: Database["public"]["Enums"]["account_status"]
           subscription_plan_id?: string | null
           subscription_tier?: string | null
@@ -763,6 +778,71 @@ export type Database = {
             columns: ["kb_index_id"]
             isOneToOne: false
             referencedRelation: "kb_indices"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      company_onboarding_config: {
+        Row: {
+          availability: Json | null
+          brand_voice: Json | null
+          business_basics: Json | null
+          company_id: string
+          completed_at: string | null
+          completed_steps: number[] | null
+          created_at: string
+          created_by: string | null
+          current_step: number
+          generated_company_context: string | null
+          id: string
+          policies: Json | null
+          service_area: Json | null
+          services_pricing: Json | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          availability?: Json | null
+          brand_voice?: Json | null
+          business_basics?: Json | null
+          company_id: string
+          completed_at?: string | null
+          completed_steps?: number[] | null
+          created_at?: string
+          created_by?: string | null
+          current_step?: number
+          generated_company_context?: string | null
+          id?: string
+          policies?: Json | null
+          service_area?: Json | null
+          services_pricing?: Json | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          availability?: Json | null
+          brand_voice?: Json | null
+          business_basics?: Json | null
+          company_id?: string
+          completed_at?: string | null
+          completed_steps?: number[] | null
+          created_at?: string
+          created_by?: string | null
+          current_step?: number
+          generated_company_context?: string | null
+          id?: string
+          policies?: Json | null
+          service_area?: Json | null
+          services_pricing?: Json | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "company_onboarding_config_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: true
+            referencedRelation: "companies"
             referencedColumns: ["id"]
           },
         ]

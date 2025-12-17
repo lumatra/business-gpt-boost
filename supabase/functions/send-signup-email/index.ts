@@ -29,7 +29,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Send notification to Helpzz team
     const emailResponse = await resend.emails.send({
       from: "Helpzz Signup <noreply@helpzz.co.uk>",
-      to: ["helpzz@lumatra.net"],
+      to: ["signup@helpzz.co.uk"],
       subject: "New Helpzz Signup Request",
       html: `
         <h1>New Signup Request</h1>
