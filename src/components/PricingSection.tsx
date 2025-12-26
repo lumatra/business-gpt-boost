@@ -17,7 +17,7 @@ const PricingSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Transparent Pricing. No Surprises.
           </h2>
-          <p className="text-xl text-muted-foreground">All plans include all 5 assistants</p>
+          <p className="text-xl text-muted-foreground">All plans include all 4 assistants</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -32,7 +32,7 @@ const PricingSection = () => {
             <ul className="space-y-3 mb-8">
               <li className="flex items-start">
                 <Check className="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground">All 5 assistants</span>
+                <span className="text-muted-foreground">All 4 assistants</span>
               </li>
               <li className="flex items-start">
                 <Check className="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
@@ -74,7 +74,7 @@ const PricingSection = () => {
             <ul className="space-y-3 mb-8">
               <li className="flex items-start">
                 <Check className="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
-                <span>All 5 assistants</span>
+                <span>All 4 assistants</span>
               </li>
               <li className="flex items-start">
                 <Check className="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
@@ -112,7 +112,7 @@ const PricingSection = () => {
             <ul className="space-y-3 mb-8">
               <li className="flex items-start">
                 <Check className="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground">All 5 assistants</span>
+                <span className="text-muted-foreground">All 4 assistants</span>
               </li>
               <li className="flex items-start">
                 <Check className="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
