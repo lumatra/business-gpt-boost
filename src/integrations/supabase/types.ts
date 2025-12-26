@@ -580,6 +580,7 @@ export type Database = {
           auto_topup_amount: number | null
           auto_topup_enabled: boolean | null
           auto_topup_threshold: number | null
+          booking_slug: string | null
           brand_ethos: string | null
           created_at: string
           description: string | null
@@ -629,6 +630,7 @@ export type Database = {
           auto_topup_amount?: number | null
           auto_topup_enabled?: boolean | null
           auto_topup_threshold?: number | null
+          booking_slug?: string | null
           brand_ethos?: string | null
           created_at?: string
           description?: string | null
@@ -678,6 +680,7 @@ export type Database = {
           auto_topup_amount?: number | null
           auto_topup_enabled?: boolean | null
           auto_topup_threshold?: number | null
+          booking_slug?: string | null
           brand_ethos?: string | null
           created_at?: string
           description?: string | null
@@ -2374,9 +2377,22 @@ export type Database = {
       }
       public_company_calendar_info: {
         Row: {
+          booking_slug: string | null
           id: string | null
           logo_url: string | null
           name: string | null
+        }
+        Insert: {
+          booking_slug?: string | null
+          id?: string | null
+          logo_url?: string | null
+          name?: string | null
+        }
+        Update: {
+          booking_slug?: string | null
+          id?: string | null
+          logo_url?: string | null
+          name?: string | null
         }
         Relationships: []
       }
