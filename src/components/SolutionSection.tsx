@@ -146,7 +146,7 @@ const SolutionSection = () => {
               <div className="w-14 h-14 bg-yellow-500 rounded-xl flex items-center justify-center mb-4 mx-auto">
                 <Check className="w-8 h-8 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-card-foreground mb-2">ALL 4 ASSISTANTS</h3>
+              <h3 className="text-2xl font-bold text-card-foreground mb-2">ALL 5 ASSISTANTS</h3>
               <p className="text-4xl font-bold text-yellow-600 mb-2">£9.99/mo</p>
               <p className="text-muted-foreground">Mix and match as needed</p>
               <p className="text-muted-foreground text-sm mt-2">SMS & Diary available as add-ons</p>
