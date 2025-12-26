@@ -16,7 +16,7 @@ const SignupSection = () => {
           Ready to Stop Missing Customers?
         </h2>
         <p className="text-xl md:text-2xl mb-8 text-muted-foreground">
-          Start your 14-day free trial. No credit card required.
+          Start your 14-day free trial today.
         </p>
         
         <Button
