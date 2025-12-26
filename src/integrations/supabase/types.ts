@@ -56,6 +56,13 @@ export type Database = {
             referencedRelation: "companies"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "ai_assistant_data_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
+            referencedColumns: ["id"]
+          },
         ]
       }
       ai_assistant_files: {
@@ -218,6 +225,13 @@ export type Database = {
             referencedRelation: "companies"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "assistant_requests_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
+            referencedColumns: ["id"]
+          },
         ]
       }
       assistant_test_configs: {
@@ -328,6 +342,7 @@ export type Database = {
         Row: {
           account_id: string
           api_description: string | null
+          config_json: Json | null
           created_at: string
           description: string | null
           id: string
@@ -342,6 +357,7 @@ export type Database = {
         Insert: {
           account_id: string
           api_description?: string | null
+          config_json?: Json | null
           created_at?: string
           description?: string | null
           id?: string
@@ -356,6 +372,7 @@ export type Database = {
         Update: {
           account_id?: string
           api_description?: string | null
+          config_json?: Json | null
           created_at?: string
           description?: string | null
           id?: string
@@ -376,10 +393,24 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "assistants_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "assistants_company_fk"
             columns: ["account_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "assistants_company_fk"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
         ]
@@ -522,6 +553,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "calendar_bookings_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "calendar_bookings_created_by_fkey"
             columns: ["created_by"]
             isOneToOne: false
@@ -539,16 +577,25 @@ export type Database = {
       }
       companies: {
         Row: {
+          auto_topup_amount: number | null
+          auto_topup_enabled: boolean | null
+          auto_topup_threshold: number | null
           brand_ethos: string | null
           created_at: string
           description: string | null
           email: string
           gpt_configuration: Json | null
           id: string
+          is_internal: boolean | null
           location: string | null
           logo_url: string | null
+          messages_rollover: number | null
+          messages_topup_this_period: number | null
           messages_used_this_period: number | null
           name: string
+          notified_100_percent: boolean | null
+          notified_80_percent: boolean | null
+          notified_90_percent: boolean | null
           number_of_employees: number | null
           onboarding_completed: boolean | null
           onboarding_notes: string | null
@@ -561,27 +608,43 @@ export type Database = {
           selected_assistant_types: string[] | null
           setup_status: string | null
           status: Database["public"]["Enums"]["account_status"]
+          stripe_customer_id: string | null
           subscription_plan_id: string | null
           subscription_tier: string | null
           twilio_enabled: boolean | null
           twilio_phone_number: string | null
           updated_at: string
+          usage_complaints: number | null
+          usage_custom: number | null
+          usage_estimator: number | null
+          usage_faq: number | null
+          usage_social_media: number | null
+          usage_therapy: number | null
           website: string | null
           website_content: Json | null
           website_scrape_status: string | null
           website_scraped_at: string | null
         }
         Insert: {
+          auto_topup_amount?: number | null
+          auto_topup_enabled?: boolean | null
+          auto_topup_threshold?: number | null
           brand_ethos?: string | null
           created_at?: string
           description?: string | null
           email: string
           gpt_configuration?: Json | null
           id?: string
+          is_internal?: boolean | null
           location?: string | null
           logo_url?: string | null
+          messages_rollover?: number | null
+          messages_topup_this_period?: number | null
           messages_used_this_period?: number | null
           name: string
+          notified_100_percent?: boolean | null
+          notified_80_percent?: boolean | null
+          notified_90_percent?: boolean | null
           number_of_employees?: number | null
           onboarding_completed?: boolean | null
           onboarding_notes?: string | null
@@ -594,27 +657,43 @@ export type Database = {
           selected_assistant_types?: string[] | null
           setup_status?: string | null
           status?: Database["public"]["Enums"]["account_status"]
+          stripe_customer_id?: string | null
           subscription_plan_id?: string | null
           subscription_tier?: string | null
           twilio_enabled?: boolean | null
           twilio_phone_number?: string | null
           updated_at?: string
+          usage_complaints?: number | null
+          usage_custom?: number | null
+          usage_estimator?: number | null
+          usage_faq?: number | null
+          usage_social_media?: number | null
+          usage_therapy?: number | null
           website?: string | null
           website_content?: Json | null
           website_scrape_status?: string | null
           website_scraped_at?: string | null
         }
         Update: {
+          auto_topup_amount?: number | null
+          auto_topup_enabled?: boolean | null
+          auto_topup_threshold?: number | null
           brand_ethos?: string | null
           created_at?: string
           description?: string | null
           email?: string
           gpt_configuration?: Json | null
           id?: string
+          is_internal?: boolean | null
           location?: string | null
           logo_url?: string | null
+          messages_rollover?: number | null
+          messages_topup_this_period?: number | null
           messages_used_this_period?: number | null
           name?: string
+          notified_100_percent?: boolean | null
+          notified_80_percent?: boolean | null
+          notified_90_percent?: boolean | null
           number_of_employees?: number | null
           onboarding_completed?: boolean | null
           onboarding_notes?: string | null
@@ -627,11 +706,18 @@ export type Database = {
           selected_assistant_types?: string[] | null
           setup_status?: string | null
           status?: Database["public"]["Enums"]["account_status"]
+          stripe_customer_id?: string | null
           subscription_plan_id?: string | null
           subscription_tier?: string | null
           twilio_enabled?: boolean | null
           twilio_phone_number?: string | null
           updated_at?: string
+          usage_complaints?: number | null
+          usage_custom?: number | null
+          usage_estimator?: number | null
+          usage_faq?: number | null
+          usage_social_media?: number | null
+          usage_therapy?: number | null
           website?: string | null
           website_content?: Json | null
           website_scrape_status?: string | null
@@ -744,6 +830,13 @@ export type Database = {
             referencedRelation: "companies"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "company_calendar_settings_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: true
+            referencedRelation: "public_company_calendar_info"
+            referencedColumns: ["id"]
+          },
         ]
       }
       company_kb_selections: {
@@ -771,6 +864,13 @@ export type Database = {
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "company_kb_selections_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
           {
@@ -845,6 +945,13 @@ export type Database = {
             referencedRelation: "companies"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "company_onboarding_config_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: true
+            referencedRelation: "public_company_calendar_info"
+            referencedColumns: ["id"]
+          },
         ]
       }
       company_tokens: {
@@ -881,6 +988,13 @@ export type Database = {
             columns: ["company_id"]
             isOneToOne: true
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "company_tokens_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: true
+            referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
         ]
@@ -984,6 +1098,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "conversations_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "conversations_assistant_id_fkey"
             columns: ["assistant_id"]
             isOneToOne: false
@@ -995,6 +1116,13 @@ export type Database = {
             columns: ["account_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "conversations_company_fk"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
           {
@@ -1167,6 +1295,101 @@ export type Database = {
             referencedRelation: "companies"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "kb_indices_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      message_transactions: {
+        Row: {
+          ai_response: string | null
+          assistant_id: string | null
+          assistant_type: string | null
+          channel: string
+          company_id: string
+          conversation_id: string | null
+          created_at: string
+          customer_identifier: string | null
+          customer_phone: string | null
+          direction: string
+          id: string
+          is_first_message: boolean | null
+          message_body: string | null
+          messages_consumed: number
+          openai_cost: number | null
+          openai_tokens_in: number | null
+          openai_tokens_out: number | null
+          total_cost: number | null
+          twilio_cost: number | null
+        }
+        Insert: {
+          ai_response?: string | null
+          assistant_id?: string | null
+          assistant_type?: string | null
+          channel?: string
+          company_id: string
+          conversation_id?: string | null
+          created_at?: string
+          customer_identifier?: string | null
+          customer_phone?: string | null
+          direction: string
+          id?: string
+          is_first_message?: boolean | null
+          message_body?: string | null
+          messages_consumed?: number
+          openai_cost?: number | null
+          openai_tokens_in?: number | null
+          openai_tokens_out?: number | null
+          total_cost?: number | null
+          twilio_cost?: number | null
+        }
+        Update: {
+          ai_response?: string | null
+          assistant_id?: string | null
+          assistant_type?: string | null
+          channel?: string
+          company_id?: string
+          conversation_id?: string | null
+          created_at?: string
+          customer_identifier?: string | null
+          customer_phone?: string | null
+          direction?: string
+          id?: string
+          is_first_message?: boolean | null
+          message_body?: string | null
+          messages_consumed?: number
+          openai_cost?: number | null
+          openai_tokens_in?: number | null
+          openai_tokens_out?: number | null
+          total_cost?: number | null
+          twilio_cost?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "message_transactions_assistant_id_fkey"
+            columns: ["assistant_id"]
+            isOneToOne: false
+            referencedRelation: "assistants"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "message_transactions_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "message_transactions_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
+            referencedColumns: ["id"]
+          },
         ]
       }
       messages: {
@@ -1209,6 +1432,13 @@ export type Database = {
             columns: ["account_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "messages_company_fk"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
           {
@@ -1267,6 +1497,13 @@ export type Database = {
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "notifications_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
         ]
@@ -1395,6 +1632,13 @@ export type Database = {
             referencedRelation: "companies"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "onboarding_sessions_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
+            referencedColumns: ["id"]
+          },
         ]
       }
       one_time_tokens_used: {
@@ -1463,6 +1707,88 @@ export type Database = {
             referencedRelation: "companies"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "profiles_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      push_device_tokens: {
+        Row: {
+          company_id: string
+          created_at: string
+          device_label: string | null
+          device_token: string
+          id: string
+          platform: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          company_id: string
+          created_at?: string
+          device_label?: string | null
+          device_token: string
+          id?: string
+          platform: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          company_id?: string
+          created_at?: string
+          device_label?: string | null
+          device_token?: string
+          id?: string
+          platform?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      sms_ai_paused: {
+        Row: {
+          company_id: string
+          id: string
+          paused_at: string
+          paused_by: string | null
+          phone_number: string
+          reason: string | null
+        }
+        Insert: {
+          company_id: string
+          id?: string
+          paused_at?: string
+          paused_by?: string | null
+          phone_number: string
+          reason?: string | null
+        }
+        Update: {
+          company_id?: string
+          id?: string
+          paused_at?: string
+          paused_by?: string | null
+          phone_number?: string
+          reason?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "sms_ai_paused_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sms_ai_paused_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
+            referencedColumns: ["id"]
+          },
         ]
       }
       sms_messages: {
@@ -1521,6 +1847,13 @@ export type Database = {
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sms_messages_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
           {
@@ -1644,10 +1977,152 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "token_transactions_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "token_transactions_conversation_id_fkey"
             columns: ["conversation_id"]
             isOneToOne: false
             referencedRelation: "conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      topup_purchases: {
+        Row: {
+          amount_paid: number
+          applied_to_period_end: string | null
+          applied_to_period_start: string | null
+          auto_topup_trigger_percent: number | null
+          company_id: string
+          created_at: string
+          currency: string
+          id: string
+          is_auto_topup: boolean | null
+          messages_purchased: number
+          payment_status: string
+          purchased_by_user_id: string | null
+          stripe_invoice_id: string | null
+          stripe_payment_intent_id: string | null
+        }
+        Insert: {
+          amount_paid: number
+          applied_to_period_end?: string | null
+          applied_to_period_start?: string | null
+          auto_topup_trigger_percent?: number | null
+          company_id: string
+          created_at?: string
+          currency?: string
+          id?: string
+          is_auto_topup?: boolean | null
+          messages_purchased: number
+          payment_status?: string
+          purchased_by_user_id?: string | null
+          stripe_invoice_id?: string | null
+          stripe_payment_intent_id?: string | null
+        }
+        Update: {
+          amount_paid?: number
+          applied_to_period_end?: string | null
+          applied_to_period_start?: string | null
+          auto_topup_trigger_percent?: number | null
+          company_id?: string
+          created_at?: string
+          currency?: string
+          id?: string
+          is_auto_topup?: boolean | null
+          messages_purchased?: number
+          payment_status?: string
+          purchased_by_user_id?: string | null
+          stripe_invoice_id?: string | null
+          stripe_payment_intent_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "topup_purchases_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "topup_purchases_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      usage_alerts: {
+        Row: {
+          acted_on: boolean | null
+          action_taken: string | null
+          alert_message: string
+          alert_type: string
+          company_id: string
+          created_at: string
+          id: string
+          messages_remaining: number | null
+          period_end: string | null
+          period_start: string | null
+          sent_via_email: boolean | null
+          sent_via_push: boolean | null
+          sent_via_sms: boolean | null
+          usage_percent: number | null
+          viewed_at: string | null
+        }
+        Insert: {
+          acted_on?: boolean | null
+          action_taken?: string | null
+          alert_message: string
+          alert_type: string
+          company_id: string
+          created_at?: string
+          id?: string
+          messages_remaining?: number | null
+          period_end?: string | null
+          period_start?: string | null
+          sent_via_email?: boolean | null
+          sent_via_push?: boolean | null
+          sent_via_sms?: boolean | null
+          usage_percent?: number | null
+          viewed_at?: string | null
+        }
+        Update: {
+          acted_on?: boolean | null
+          action_taken?: string | null
+          alert_message?: string
+          alert_type?: string
+          company_id?: string
+          created_at?: string
+          id?: string
+          messages_remaining?: number | null
+          period_end?: string | null
+          period_start?: string | null
+          sent_via_email?: boolean | null
+          sent_via_push?: boolean | null
+          sent_via_sms?: boolean | null
+          usage_percent?: number | null
+          viewed_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "usage_alerts_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "usage_alerts_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
         ]
@@ -1698,6 +2173,13 @@ export type Database = {
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_availability_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
           {
@@ -1857,7 +2339,75 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      public_booking_availability: {
+        Row: {
+          booking_date: string | null
+          company_id: string | null
+          end_time: string | null
+          provider_user_id: string | null
+          start_time: string | null
+          status: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "calendar_bookings_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "calendar_bookings_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "calendar_bookings_provider_user_id_fkey"
+            columns: ["provider_user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["user_id"]
+          },
+        ]
+      }
+      public_company_calendar_info: {
+        Row: {
+          id: string | null
+          logo_url: string | null
+          name: string | null
+        }
+        Relationships: []
+      }
+      public_provider_availability: {
+        Row: {
+          buffer_minutes: number | null
+          company_id: string | null
+          enabled: boolean | null
+          end_time: string | null
+          provider_ref: string | null
+          slot_duration: number | null
+          start_time: string | null
+          working_days: number[] | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_availability_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_availability_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "public_company_calendar_info"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Functions: {
       add_company_tokens: {
@@ -1909,6 +2459,22 @@ export type Database = {
         Returns: boolean
       }
       generate_onboarding_token: { Args: never; Returns: string }
+      get_company_messages_available: {
+        Args: { p_company_id: string }
+        Returns: number
+      }
+      get_company_usage_stats: {
+        Args: { p_company_id: string }
+        Returns: {
+          messages_available: number
+          messages_remaining: number
+          messages_used: number
+          plan_messages: number
+          rollover_messages: number
+          topup_messages: number
+          usage_percent: number
+        }[]
+      }
       get_user_company_id: { Args: { _user_id: string }; Returns: string }
       has_message_allowance: { Args: { _company_id: string }; Returns: boolean }
       has_role: {
@@ -1923,6 +2489,29 @@ export type Database = {
         Returns: boolean
       }
       is_company_admin: { Args: { _user_id: string }; Returns: boolean }
+      record_message_usage: {
+        Args: {
+          p_ai_response?: string
+          p_assistant_id?: string
+          p_assistant_type?: string
+          p_channel?: string
+          p_company_id: string
+          p_conversation_id?: string
+          p_customer_phone?: string
+          p_direction?: string
+          p_is_first_message?: boolean
+          p_message_body?: string
+          p_openai_cost?: number
+          p_openai_tokens_in?: number
+          p_openai_tokens_out?: number
+          p_twilio_cost?: number
+        }
+        Returns: string
+      }
+      reset_company_monthly_usage: {
+        Args: { p_company_id: string }
+        Returns: undefined
+      }
       reset_monthly_message_counts: { Args: never; Returns: undefined }
       revoke_all_user_sessions: {
         Args: { _user_id: string }
