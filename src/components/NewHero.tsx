@@ -25,7 +25,7 @@ const NewHero = () => {
               Your assistants handle inquiries 24/7 — while you're on the job.
             </p>
             <p className="mt-4 text-lg text-muted-foreground">
-              All 5 assistants. One simple price from <span className="font-bold text-primary">£9.99/month</span>.
+              Up to 5 assistants. One simple price from <span className="font-bold text-primary">£9.99/month</span>.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center lg:justify-start">
               <Button
@@ -45,7 +45,7 @@ const NewHero = () => {
               </Button>
             </div>
             <p className="mt-6 text-sm text-muted-foreground">
-              ✓ No credit card required  ✓ Cancel anytime  ✓ Setup in 10 minutes
+              ✓ Cancel anytime  ✓ Setup in 10 minutes
             </p>
           </div>
           
