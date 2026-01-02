@@ -60,6 +60,13 @@ export type Database = {
             foreignKeyName: "ai_assistant_data_company_id_fkey"
             columns: ["company_id"]
             isOneToOne: false
+            referencedRelation: "company_basic_info"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "ai_assistant_data_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
             referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
@@ -223,6 +230,13 @@ export type Database = {
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "assistant_requests_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company_basic_info"
             referencedColumns: ["id"]
           },
           {
@@ -396,6 +410,13 @@ export type Database = {
             foreignKeyName: "assistants_account_id_fkey"
             columns: ["account_id"]
             isOneToOne: false
+            referencedRelation: "company_basic_info"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "assistants_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
             referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
@@ -404,6 +425,13 @@ export type Database = {
             columns: ["account_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "assistants_company_fk"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "company_basic_info"
             referencedColumns: ["id"]
           },
           {
@@ -556,6 +584,13 @@ export type Database = {
             foreignKeyName: "calendar_bookings_company_id_fkey"
             columns: ["company_id"]
             isOneToOne: false
+            referencedRelation: "company_basic_info"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "calendar_bookings_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
             referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
@@ -612,6 +647,7 @@ export type Database = {
           stripe_customer_id: string | null
           subscription_plan_id: string | null
           subscription_tier: string | null
+          twilio_bundle_sid: string | null
           twilio_enabled: boolean | null
           twilio_phone_number: string | null
           updated_at: string
@@ -662,6 +698,7 @@ export type Database = {
           stripe_customer_id?: string | null
           subscription_plan_id?: string | null
           subscription_tier?: string | null
+          twilio_bundle_sid?: string | null
           twilio_enabled?: boolean | null
           twilio_phone_number?: string | null
           updated_at?: string
@@ -712,6 +749,7 @@ export type Database = {
           stripe_customer_id?: string | null
           subscription_plan_id?: string | null
           subscription_tier?: string | null
+          twilio_bundle_sid?: string | null
           twilio_enabled?: boolean | null
           twilio_phone_number?: string | null
           updated_at?: string
@@ -837,6 +875,13 @@ export type Database = {
             foreignKeyName: "company_calendar_settings_company_id_fkey"
             columns: ["company_id"]
             isOneToOne: true
+            referencedRelation: "company_basic_info"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "company_calendar_settings_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: true
             referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
@@ -867,6 +912,13 @@ export type Database = {
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "company_kb_selections_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company_basic_info"
             referencedColumns: ["id"]
           },
           {
@@ -952,6 +1004,13 @@ export type Database = {
             foreignKeyName: "company_onboarding_config_company_id_fkey"
             columns: ["company_id"]
             isOneToOne: true
+            referencedRelation: "company_basic_info"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "company_onboarding_config_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: true
             referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
@@ -991,6 +1050,13 @@ export type Database = {
             columns: ["company_id"]
             isOneToOne: true
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "company_tokens_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: true
+            referencedRelation: "company_basic_info"
             referencedColumns: ["id"]
           },
           {
@@ -1104,6 +1170,13 @@ export type Database = {
             foreignKeyName: "conversations_account_id_fkey"
             columns: ["account_id"]
             isOneToOne: false
+            referencedRelation: "company_basic_info"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "conversations_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
             referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
@@ -1119,6 +1192,13 @@ export type Database = {
             columns: ["account_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "conversations_company_fk"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "company_basic_info"
             referencedColumns: ["id"]
           },
           {
@@ -1302,6 +1382,13 @@ export type Database = {
             foreignKeyName: "kb_indices_account_id_fkey"
             columns: ["account_id"]
             isOneToOne: false
+            referencedRelation: "company_basic_info"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "kb_indices_account_id_fkey"
+            columns: ["account_id"]
+            isOneToOne: false
             referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
@@ -1390,6 +1477,13 @@ export type Database = {
             foreignKeyName: "message_transactions_company_id_fkey"
             columns: ["company_id"]
             isOneToOne: false
+            referencedRelation: "company_basic_info"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "message_transactions_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
             referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
@@ -1435,6 +1529,13 @@ export type Database = {
             columns: ["account_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "messages_company_fk"
+            columns: ["account_id"]
+            isOneToOne: false
+            referencedRelation: "company_basic_info"
             referencedColumns: ["id"]
           },
           {
@@ -1500,6 +1601,13 @@ export type Database = {
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "notifications_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company_basic_info"
             referencedColumns: ["id"]
           },
           {
@@ -1639,6 +1747,13 @@ export type Database = {
             foreignKeyName: "onboarding_sessions_company_id_fkey"
             columns: ["company_id"]
             isOneToOne: false
+            referencedRelation: "company_basic_info"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "onboarding_sessions_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
             referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
@@ -1708,6 +1823,13 @@ export type Database = {
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "profiles_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company_basic_info"
             referencedColumns: ["id"]
           },
           {
@@ -1789,6 +1911,13 @@ export type Database = {
             foreignKeyName: "sms_ai_paused_company_id_fkey"
             columns: ["company_id"]
             isOneToOne: false
+            referencedRelation: "company_basic_info"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sms_ai_paused_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
             referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
@@ -1850,6 +1979,13 @@ export type Database = {
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "sms_messages_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company_basic_info"
             referencedColumns: ["id"]
           },
           {
@@ -1983,6 +2119,13 @@ export type Database = {
             foreignKeyName: "token_transactions_company_id_fkey"
             columns: ["company_id"]
             isOneToOne: false
+            referencedRelation: "company_basic_info"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "token_transactions_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
             referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
@@ -2050,6 +2193,13 @@ export type Database = {
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "topup_purchases_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company_basic_info"
             referencedColumns: ["id"]
           },
           {
@@ -2125,6 +2275,13 @@ export type Database = {
             foreignKeyName: "usage_alerts_company_id_fkey"
             columns: ["company_id"]
             isOneToOne: false
+            referencedRelation: "company_basic_info"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "usage_alerts_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
             referencedRelation: "public_company_calendar_info"
             referencedColumns: ["id"]
           },
@@ -2176,6 +2333,13 @@ export type Database = {
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_availability_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company_basic_info"
             referencedColumns: ["id"]
           },
           {
@@ -2342,12 +2506,60 @@ export type Database = {
       }
     }
     Views: {
+      company_basic_info: {
+        Row: {
+          booking_slug: string | null
+          brand_ethos: string | null
+          description: string | null
+          email: string | null
+          id: string | null
+          location: string | null
+          logo_url: string | null
+          name: string | null
+          onboarding_completed: boolean | null
+          phone: string | null
+          twilio_enabled: boolean | null
+          twilio_phone_number: string | null
+          website: string | null
+        }
+        Insert: {
+          booking_slug?: string | null
+          brand_ethos?: string | null
+          description?: string | null
+          email?: string | null
+          id?: string | null
+          location?: string | null
+          logo_url?: string | null
+          name?: string | null
+          onboarding_completed?: boolean | null
+          phone?: string | null
+          twilio_enabled?: boolean | null
+          twilio_phone_number?: string | null
+          website?: string | null
+        }
+        Update: {
+          booking_slug?: string | null
+          brand_ethos?: string | null
+          description?: string | null
+          email?: string | null
+          id?: string | null
+          location?: string | null
+          logo_url?: string | null
+          name?: string | null
+          onboarding_completed?: boolean | null
+          phone?: string | null
+          twilio_enabled?: boolean | null
+          twilio_phone_number?: string | null
+          website?: string | null
+        }
+        Relationships: []
+      }
       public_booking_availability: {
         Row: {
           booking_date: string | null
           company_id: string | null
           end_time: string | null
-          provider_user_id: string | null
+          provider_ref: string | null
           start_time: string | null
           status: string | null
         }
@@ -2363,15 +2575,55 @@ export type Database = {
             foreignKeyName: "calendar_bookings_company_id_fkey"
             columns: ["company_id"]
             isOneToOne: false
-            referencedRelation: "public_company_calendar_info"
+            referencedRelation: "company_basic_info"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "calendar_bookings_provider_user_id_fkey"
-            columns: ["provider_user_id"]
+            foreignKeyName: "calendar_bookings_company_id_fkey"
+            columns: ["company_id"]
             isOneToOne: false
-            referencedRelation: "profiles"
-            referencedColumns: ["user_id"]
+            referencedRelation: "public_company_calendar_info"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      public_calendar_settings: {
+        Row: {
+          buffer_minutes: number | null
+          company_id: string | null
+          slot_duration_minutes: number | null
+        }
+        Insert: {
+          buffer_minutes?: number | null
+          company_id?: string | null
+          slot_duration_minutes?: number | null
+        }
+        Update: {
+          buffer_minutes?: number | null
+          company_id?: string | null
+          slot_duration_minutes?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "company_calendar_settings_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: true
+            referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "company_calendar_settings_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: true
+            referencedRelation: "company_basic_info"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "company_calendar_settings_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: true
+            referencedRelation: "public_company_calendar_info"
+            referencedColumns: ["id"]
           },
         ]
       }
@@ -2413,6 +2665,13 @@ export type Database = {
             columns: ["company_id"]
             isOneToOne: false
             referencedRelation: "companies"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_availability_company_id_fkey"
+            columns: ["company_id"]
+            isOneToOne: false
+            referencedRelation: "company_basic_info"
             referencedColumns: ["id"]
           },
           {
@@ -2539,7 +2798,13 @@ export type Database = {
       }
     }
     Enums: {
-      account_plan: "trial" | "starter" | "professional" | "enterprise"
+      account_plan:
+        | "trial"
+        | "starter"
+        | "professional"
+        | "enterprise"
+        | "pro"
+        | "plus"
       account_status: "active" | "suspended" | "cancelled"
       app_role: "admin" | "company_admin" | "company_user"
       assistant_status: "draft" | "active" | "inactive" | "archived"
@@ -2675,7 +2940,14 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      account_plan: ["trial", "starter", "professional", "enterprise"],
+      account_plan: [
+        "trial",
+        "starter",
+        "professional",
+        "enterprise",
+        "pro",
+        "plus",
+      ],
       account_status: ["active", "suspended", "cancelled"],
       app_role: ["admin", "company_admin", "company_user"],
       assistant_status: ["draft", "active", "inactive", "archived"],
