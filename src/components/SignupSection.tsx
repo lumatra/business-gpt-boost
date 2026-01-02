@@ -19,13 +19,14 @@ const SignupSection = () => {
           Start your 14-day free trial today.
         </p>
         
-        <Button
-          onClick={scrollToPricing}
-          size="lg"
-          className="bg-primary hover:bg-primary/90 text-lg px-8 py-6"
-        >
-          View Plans & Sign Up
-        </Button>
+        <a href="https://portal.helpzz.co.uk/signup?plan=pro" target="_blank" rel="noopener noreferrer">
+          <Button
+            size="lg"
+            className="bg-primary hover:bg-primary/90 text-lg px-8 py-6"
+          >
+            Sign Up Now
+          </Button>
+        </a>
 
         <p className="text-sm text-muted-foreground mt-8">
           Or email us: <a href="mailto:helpzz@lumatra.net" className="underline font-semibold hover:text-primary">helpzz@lumatra.net</a>
