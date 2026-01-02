@@ -97,7 +97,7 @@ const PricingSection = () => {
               onClick={() => window.open(SIGNUP_URLS.pro, '_blank')}
               className="w-full py-3 bg-white text-primary hover:bg-gray-100"
             >
-              Start Free Trial
+              Subscribe
             </Button>
           </div>
 
@@ -136,7 +136,7 @@ const PricingSection = () => {
               variant="secondary"
               className="w-full py-3"
             >
-              Start Free Trial
+              Subscribe
             </Button>
           </div>
         </div>
