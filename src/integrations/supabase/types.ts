@@ -1777,6 +1777,42 @@ export type Database = {
         }
         Relationships: []
       }
+      otp_verifications: {
+        Row: {
+          attempts: number | null
+          created_at: string | null
+          email: string
+          expires_at: string
+          id: string
+          invite_token_hash: string
+          otp_hash: string
+          verified: boolean | null
+          verified_at: string | null
+        }
+        Insert: {
+          attempts?: number | null
+          created_at?: string | null
+          email: string
+          expires_at: string
+          id?: string
+          invite_token_hash: string
+          otp_hash: string
+          verified?: boolean | null
+          verified_at?: string | null
+        }
+        Update: {
+          attempts?: number | null
+          created_at?: string | null
+          email?: string
+          expires_at?: string
+          id?: string
+          invite_token_hash?: string
+          otp_hash?: string
+          verified?: boolean | null
+          verified_at?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           company_id: string | null
@@ -2709,6 +2745,7 @@ export type Database = {
         Returns: undefined
       }
       cleanup_expired_onboarding_sessions: { Args: never; Returns: undefined }
+      cleanup_expired_otps: { Args: never; Returns: undefined }
       cleanup_expired_sessions: { Args: never; Returns: undefined }
       deduct_company_message: {
         Args: { _company_id: string }
@@ -2759,11 +2796,13 @@ export type Database = {
         }
         Returns: boolean
       }
+      has_support_role: { Args: { _user_id: string }; Returns: boolean }
       is_calendar_enabled_company: {
         Args: { _company_id: string }
         Returns: boolean
       }
       is_company_admin: { Args: { _user_id: string }; Returns: boolean }
+      is_platform_staff: { Args: { _user_id: string }; Returns: boolean }
       record_message_usage: {
         Args: {
           p_ai_response?: string
@@ -2806,7 +2845,7 @@ export type Database = {
         | "pro"
         | "plus"
       account_status: "active" | "suspended" | "cancelled"
-      app_role: "admin" | "company_admin" | "company_user"
+      app_role: "admin" | "company_admin" | "company_user" | "support"
       assistant_status: "draft" | "active" | "inactive" | "archived"
       assistant_version_status: "draft" | "live" | "archived"
       company_status: "lead" | "trial" | "active" | "suspended"
@@ -2949,7 +2988,7 @@ export const Constants = {
         "plus",
       ],
       account_status: ["active", "suspended", "cancelled"],
-      app_role: ["admin", "company_admin", "company_user"],
+      app_role: ["admin", "company_admin", "company_user", "support"],
       assistant_status: ["draft", "active", "inactive", "archived"],
       assistant_version_status: ["draft", "live", "archived"],
       company_status: ["lead", "trial", "active", "suspended"],
