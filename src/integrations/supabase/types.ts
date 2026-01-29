@@ -1334,12 +1334,14 @@ export type Database = {
         Row: {
           account_id: string | null
           api_instructions: string | null
+          archived_at: string | null
           created_at: string
           description: string | null
           id: string
           metadata: Json | null
           namespace: string
           objective: string | null
+          status: string
           type: Database["public"]["Enums"]["kb_type"]
           updated_at: string
           variable_mappings: Json | null
@@ -1347,12 +1349,14 @@ export type Database = {
         Insert: {
           account_id?: string | null
           api_instructions?: string | null
+          archived_at?: string | null
           created_at?: string
           description?: string | null
           id?: string
           metadata?: Json | null
           namespace: string
           objective?: string | null
+          status?: string
           type: Database["public"]["Enums"]["kb_type"]
           updated_at?: string
           variable_mappings?: Json | null
@@ -1360,12 +1364,14 @@ export type Database = {
         Update: {
           account_id?: string | null
           api_instructions?: string | null
+          archived_at?: string | null
           created_at?: string
           description?: string | null
           id?: string
           metadata?: Json | null
           namespace?: string
           objective?: string | null
+          status?: string
           type?: Database["public"]["Enums"]["kb_type"]
           updated_at?: string
           variable_mappings?: Json | null

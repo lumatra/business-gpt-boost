@@ -40,10 +40,6 @@ const PricingSection = () => {
               </li>
               <li className="flex items-start">
                 <Check className="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground">UK phone number included</span>
-              </li>
-              <li className="flex items-start">
-                <Check className="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
                 <span className="text-muted-foreground">Email support</span>
               </li>
               <li className="flex items-start">
