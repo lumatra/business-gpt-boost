@@ -29,7 +29,7 @@ const SignupSection = () => {
         </a>
 
         <p className="text-sm text-muted-foreground mt-8">
-          Or email us: <a href="mailto:helpzz@lumatra.net" className="underline font-semibold hover:text-primary">helpzz@lumatra.net</a>
+          Or email us: <a href="mailto:info@helpzz.co.uk" className="underline font-semibold hover:text-primary">info@helpzz.co.uk</a>
         </p>
       </div>
     </section>
