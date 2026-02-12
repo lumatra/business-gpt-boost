@@ -25,7 +25,7 @@ const NewHero = () => {
               Your assistants handle inquiries 24/7 — while you're on the job.
             </p>
             <p className="mt-4 text-lg text-muted-foreground">
-              Up to 4 assistants. One simple price from <span className="font-bold text-primary">£9.99/month</span>.
+              One simple plan from <span className="font-bold text-primary">£14.99/month</span>.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center lg:justify-start">
               <Button
@@ -33,7 +33,7 @@ const NewHero = () => {
                 onClick={() => scrollToSection("signup")}
                 className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 shadow-elegant"
               >
-                Start Free Trial - 14 Days
+                Start 30-Day Free Pilot
               </Button>
               <Button
                 size="lg"

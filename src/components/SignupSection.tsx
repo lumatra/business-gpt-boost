@@ -16,7 +16,7 @@ const SignupSection = () => {
           Ready to Stop Missing Customers?
         </h2>
         <p className="text-xl md:text-2xl mb-8 text-muted-foreground">
-          Start your 14-day free trial today.
+          Start your 30-day free pilot today. Just <span className="font-bold text-foreground">£14.99/month</span> after that.
         </p>
         
         <a href="https://portal.helpzz.co.uk/signup?plan=pro" target="_blank" rel="noopener noreferrer">
@@ -24,7 +24,7 @@ const SignupSection = () => {
             size="lg"
             className="bg-primary hover:bg-primary/90 text-lg px-8 py-6"
           >
-            Sign Up Now
+            Start 30-Day Free Pilot
           </Button>
         </a>
 
