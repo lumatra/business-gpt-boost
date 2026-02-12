@@ -22,15 +22,16 @@ const PricingSection = () => {
             <h3 className="text-2xl font-bold text-card-foreground mb-2">Helpzz Plan</h3>
             <div className="mb-6">
               <span className="text-4xl font-bold text-card-foreground">£14.99</span>
-              <span className="text-muted-foreground">/month</span>
+              <span className="text-muted-foreground"> per month</span>
+              <p className="text-sm text-muted-foreground mt-1">After 30-day free pilot</p>
             </div>
             <p className="text-muted-foreground mb-6">
-              Perfect for small and solo businesses who want less admin and faster customer replies.
+              Designed to help you respond faster and never miss a customer enquiry.
             </p>
             <ul className="space-y-3 mb-8">
               <li className="flex items-start">
                 <Check className="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground">25 AI replies per month</span>
+                <span className="text-muted-foreground">25 replies to your customers each month</span>
               </li>
               <li className="flex items-start">
                 <Check className="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
@@ -42,7 +43,7 @@ const PricingSection = () => {
               </li>
               <li className="flex items-start">
                 <Check className="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground">Personal setup included</span>
+                <span className="text-muted-foreground">Personal setup call to tailor Helpzz to your business</span>
               </li>
               <li className="flex items-start">
                 <Check className="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
