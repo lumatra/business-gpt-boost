@@ -152,7 +152,7 @@ const SolutionSection = () => {
               onClick={scrollToSignup}
               className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 shadow-elegant"
             >
-              Start Free Trial - See It All in Action
+              Start 30-Day Free Pilot
             </Button>
           </div>
         </div>
