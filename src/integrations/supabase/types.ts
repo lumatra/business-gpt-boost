@@ -645,8 +645,11 @@ export type Database = {
           setup_status: string | null
           status: Database["public"]["Enums"]["account_status"]
           stripe_customer_id: string | null
+          stripe_subscription_id: string | null
+          stripe_subscription_status: string | null
           subscription_plan_id: string | null
           subscription_tier: string | null
+          trial_started_at: string | null
           twilio_bundle_sid: string | null
           twilio_enabled: boolean | null
           twilio_phone_number: string | null
@@ -696,8 +699,11 @@ export type Database = {
           setup_status?: string | null
           status?: Database["public"]["Enums"]["account_status"]
           stripe_customer_id?: string | null
+          stripe_subscription_id?: string | null
+          stripe_subscription_status?: string | null
           subscription_plan_id?: string | null
           subscription_tier?: string | null
+          trial_started_at?: string | null
           twilio_bundle_sid?: string | null
           twilio_enabled?: boolean | null
           twilio_phone_number?: string | null
@@ -747,8 +753,11 @@ export type Database = {
           setup_status?: string | null
           status?: Database["public"]["Enums"]["account_status"]
           stripe_customer_id?: string | null
+          stripe_subscription_id?: string | null
+          stripe_subscription_status?: string | null
           subscription_plan_id?: string | null
           subscription_tier?: string | null
+          trial_started_at?: string | null
           twilio_bundle_sid?: string | null
           twilio_enabled?: boolean | null
           twilio_phone_number?: string | null
@@ -1559,6 +1568,27 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      missed_call_sms_log: {
+        Row: {
+          caller_number: string
+          company_number: string
+          id: string
+          sent_at: string
+        }
+        Insert: {
+          caller_number: string
+          company_number: string
+          id?: string
+          sent_at?: string
+        }
+        Update: {
+          caller_number?: string
+          company_number?: string
+          id?: string
+          sent_at?: string
+        }
+        Relationships: []
       }
       notifications: {
         Row: {
