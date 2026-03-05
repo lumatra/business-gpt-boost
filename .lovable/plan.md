@@ -1,16 +1,12 @@
 
 
-## Add Cookie Consent Banner
+## Update All Email Addresses to info@helpzz.co.uk
 
-Create a new `CookieConsent` component that:
-- Shows a fixed banner at the bottom of the screen
-- Displays: "We use analytics tools to understand how visitors use our website so we can improve the service."
-- Has "Accept" and "Reject" buttons
-- Stores the user's choice in `localStorage` so it only shows once
-- If rejected, disables Google Analytics by setting `window['ga-disable-G-R9JS1XFHGY'] = true`
-- Links to the `/cookies` policy page
+Two files need changes:
 
-**Files:**
-1. **New: `src/components/CookieConsent.tsx`** — Banner component with accept/reject logic and localStorage persistence
-2. **Edit: `src/App.tsx`** — Add `<CookieConsent />` inside the BrowserRouter
+1. **src/components/SignupSection.tsx** (line 32) -- Change `helpzz@lumatra.net` (both the mailto link and display text) to `info@helpzz.co.uk`
+
+2. **supabase/functions/send-contact-email/index.ts** (line 34) -- Change the recipient `helpzz@lumatra.net` to `info@helpzz.co.uk`
+
+The ContactSection.tsx already uses `info@helpzz.co.uk`, so no change needed there. The signup email function sends to `signup@helpzz.co.uk` which is a separate address and will remain unchanged.
 
