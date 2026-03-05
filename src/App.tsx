@@ -26,6 +26,7 @@ import AIDisclaimer from "./pages/AIDisclaimer";
 import { AuthProvider } from "./hooks/useAuth";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import CookieConsent from "./components/CookieConsent";
 
 const queryClient = new QueryClient();
 
