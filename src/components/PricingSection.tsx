@@ -13,7 +13,7 @@ const PricingSection = () => {
             One Simple Plan. No Complications.
           </h2>
           <p className="text-xl text-muted-foreground">
-            Everything you need to let Helpzz handle customer messages and stay organised.
+            Everything you need for Helpzz to capture enquiries and handle customer messages.
           </p>
         </div>
 
@@ -31,7 +31,7 @@ const PricingSection = () => {
             <ul className="space-y-3 mb-8">
               <li className="flex items-start">
                 <Check className="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                <span className="text-muted-foreground">25 replies to your customers each month</span>
+                <span className="text-muted-foreground">25 automated replies included each month</span>
               </li>
               <li className="flex items-start">
                 <Check className="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
