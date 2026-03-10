@@ -53,23 +53,19 @@ const NewHero = () => {
           <div className="hidden lg:block mt-12 lg:mt-0">
             <div className="bg-card/50 backdrop-blur-lg rounded-2xl p-6 shadow-elegant border border-border">
               <div className="space-y-4">
-                <div className="bg-muted rounded-lg p-4">
-                  <p className="text-sm font-medium text-muted-foreground mb-1">Customer (10:37pm)</p>
-                  <p className="text-foreground">"Do you work weekends?"</p>
-                </div>
-                <div className="bg-primary rounded-lg p-4 ml-8">
-                  <p className="text-sm font-medium text-primary-foreground/80 mb-1">Helpzz Assistant (10:37pm)</p>
-                  <p className="text-primary-foreground">"Yes, I work Saturdays 9am-5pm. Sundays by exception for urgent jobs. What do you need help with?"</p>
-                </div>
-                <div className="bg-muted rounded-lg p-4">
-                  <p className="text-sm font-medium text-muted-foreground mb-1">Customer (10:39pm)</p>
-                  <p className="text-foreground">"Hang a door in Livingston next week"</p>
-                </div>
-                <div className="bg-primary rounded-lg p-4 ml-8">
-                  <p className="text-sm font-medium text-primary-foreground/80 mb-1">Helpzz Assistant (10:39pm)</p>
-                  <p className="text-primary-foreground">"Perfect! I charge £60 to hang a door and I cover Livingston. What's your postcode and phone number?"</p>
-                </div>
-              </div>
+                 <div className="bg-muted rounded-lg p-4">
+                   <p className="text-sm font-medium text-muted-foreground mb-1">Customer</p>
+                   <p className="text-foreground">Do you hang doors?</p>
+                 </div>
+                 <div className="bg-primary rounded-lg p-4 ml-8">
+                   <p className="text-sm font-medium text-primary-foreground/80 mb-1">Helpzz</p>
+                   <p className="text-primary-foreground">Yes — £60 per door and I cover Livingston. What's your postcode and phone number?</p>
+                 </div>
+                 <div className="bg-muted rounded-lg p-4">
+                   <p className="text-sm font-medium text-muted-foreground mb-1">Customer</p>
+                   <p className="text-foreground">EH54 6XX — 07700 900123</p>
+                 </div>
+               </div>
             </div>
           </div>
         </div>
