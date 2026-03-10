@@ -135,9 +135,9 @@ const SolutionSection = () => {
             <div className="text-center">
               <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
               <h3 className="text-xl font-bold text-card-foreground mb-3">Start Working</h3>
-              <p className="text-muted-foreground mb-2">Get your own UK phone number</p>
-              <p className="text-muted-foreground mb-2">Customers text or use your website</p>
-              <p className="text-sm font-semibold text-primary">→ Responds instantly with your information</p>
+              <p className="text-muted-foreground mb-2">Customers text your business or use your website</p>
+              <p className="text-muted-foreground mb-2">Helpzz replies instantly using your pricing and services</p>
+              <p className="text-sm font-semibold text-primary">→ Optional business phone number included</p>
             </div>
 
             <div className="text-center">
