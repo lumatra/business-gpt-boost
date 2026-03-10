@@ -32,7 +32,7 @@ const SolutionSection = () => {
     {
       icon: Calculator,
       title: "Estimator & Lead Capture",
-      description: "Qualifies leads and takes job details",
+      description: "Captures job details and qualified leads",
       example: "Asks the right questions, captures contact info, books you in",
       benefit: "You show up knowing exactly what they need",
       gradient: "from-green-500/10 to-emerald-500/10",
