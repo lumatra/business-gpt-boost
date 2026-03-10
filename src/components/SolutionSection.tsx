@@ -119,7 +119,7 @@ const SolutionSection = () => {
         <div id="how-it-works" className="mt-20">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-4">
-              Set Up in 10 Minutes. Start Capturing Leads Today.
+              Set Up in 10 Minutes. Never Miss Another Enquiry.
             </h2>
           </div>
 
