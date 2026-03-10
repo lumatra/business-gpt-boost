@@ -36,7 +36,7 @@ const ProblemSection = () => {
               <Calendar className="w-6 h-6 text-destructive" />
             </div>
             <h3 className="font-semibold text-card-foreground mb-2">Weekend inquiry</h3>
-            <p className="text-muted-foreground">Lost to competitor who replied first</p>
+            <p className="text-muted-foreground">Booked by the first person who replied</p>
           </div>
           
           <div className="bg-card p-6 rounded-xl shadow-card border border-border">
