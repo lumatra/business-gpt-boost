@@ -9,7 +9,7 @@ const ContactSection = () => {
           Got a Question?
         </h2>
         <p className="mt-4 text-lg text-muted-foreground max-w-3xl mx-auto">
-          Have questions before you sign up? Drop us a line. We're a small business too, and we're here to help.
+          Have questions before you sign up? Drop us a line. We're a small business too — happy to answer any questions before you start.
         </p>
         <Button
           asChild

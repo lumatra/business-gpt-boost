@@ -13,7 +13,7 @@ const SignupSection = () => {
     <section id="signup" className="py-20 bg-gradient-hero">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
-          Ready to Stop Missing Customers?
+          Stop Missing Customers Starting Today
         </h2>
         <p className="text-xl md:text-2xl mb-8 text-muted-foreground">
           Start your 30-day free pilot today. Just <span className="font-bold text-foreground">£14.99/month</span> after that.
