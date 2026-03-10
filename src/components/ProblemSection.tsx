@@ -10,7 +10,7 @@ const ProblemSection = () => {
             You're Brilliant at Your Work.
           </h2>
           <p className="text-xl text-muted-foreground">
-            But You Can't Be in Two Places at Once.
+            But customers move on if you don't reply.
           </p>
         </div>
         
