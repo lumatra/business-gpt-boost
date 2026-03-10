@@ -66,7 +66,7 @@ const NewHero = () => {
                    <p className="text-foreground">Do you hang doors?</p>
                  </div>
                  <div className="bg-primary rounded-lg p-4 ml-8">
-                   <p className="text-sm font-medium text-primary-foreground/80 mb-1">Helpzz</p>
+                   <p className="text-sm font-medium text-primary-foreground/80 mb-1">Helpzz Assistant (10:39pm)</p>
                    <p className="text-primary-foreground">Yes — £60 per door and I cover Livingston. What's your postcode and phone number?</p>
                  </div>
                  <div className="bg-muted rounded-lg p-4">
