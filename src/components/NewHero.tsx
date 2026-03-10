@@ -22,7 +22,7 @@ const NewHero = () => {
               Never Miss Another Customer.
             </h1>
             <p className="mt-4 text-xl md:text-2xl text-muted-foreground">
-              Your assistants handle inquiries 24/7 — while you're on the job.
+              Your assistant handles inquiries 24/7 — while you're on the job.
             </p>
             <p className="mt-4 text-lg text-muted-foreground">
               One simple plan from <span className="font-bold text-primary">£14.99/month</span>.
