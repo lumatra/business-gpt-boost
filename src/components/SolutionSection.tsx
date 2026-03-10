@@ -119,7 +119,7 @@ const SolutionSection = () => {
         <div id="how-it-works" className="mt-20">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-card-foreground mb-4">
-              Set Up in 10 Minutes. Start Capturing Leads Today.
+              Set Up in 10 Minutes. Never Miss Another Enquiry.
             </h2>
           </div>
 
@@ -135,17 +135,17 @@ const SolutionSection = () => {
             <div className="text-center">
               <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">2</div>
               <h3 className="text-xl font-bold text-card-foreground mb-3">Start Working</h3>
-              <p className="text-muted-foreground mb-2">Get your own UK phone number</p>
-              <p className="text-muted-foreground mb-2">Customers text or use your website</p>
-              <p className="text-sm font-semibold text-primary">→ Responds instantly with your information</p>
+              <p className="text-muted-foreground mb-2">Customers text your business or use your website</p>
+              <p className="text-muted-foreground mb-2">Helpzz replies instantly using your pricing and services</p>
+              <p className="text-sm font-semibold text-primary">→ Optional business phone number included</p>
             </div>
 
             <div className="text-center">
               <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
               <h3 className="text-xl font-bold text-card-foreground mb-3">You Get the Leads</h3>
               <p className="text-muted-foreground mb-2">Captures their details automatically</p>
-              <p className="text-muted-foreground mb-2">Sends you a summary via SMS/email</p>
-              <p className="text-sm font-semibold text-primary">→ You follow up when you're ready</p>
+              <p className="text-muted-foreground mb-2">Sent to you instantly by SMS or email</p>
+              <p className="text-sm font-semibold text-primary">→ You call back when you're ready</p>
             </div>
           </div>
 
