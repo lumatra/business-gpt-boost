@@ -51,6 +51,7 @@ const NewHero = () => {
           
           {/* Chat Preview */}
           <div className="hidden lg:block mt-12 lg:mt-0">
+            <h3 className="text-lg font-semibold text-foreground mb-4">This is what happens when a customer messages your business.</h3>
             <div className="bg-card/50 backdrop-blur-lg rounded-2xl p-6 shadow-elegant border border-border">
               <div className="space-y-4">
                  <div className="bg-muted rounded-lg p-4">
