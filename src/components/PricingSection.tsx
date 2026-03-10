@@ -71,6 +71,27 @@ const PricingSection = () => {
             If Helpzz saves you just one missed job per month, it pays for itself.
           </p>
         </div>
+
+        <div className="mt-16 text-center">
+          <h3 className="text-2xl font-bold text-foreground mb-10">What happens next</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <span className="text-3xl mb-3 block">1️⃣</span>
+              <h4 className="text-lg font-semibold text-foreground mb-1">Book your setup call</h4>
+              <p className="text-muted-foreground">We learn about your business</p>
+            </div>
+            <div className="text-center">
+              <span className="text-3xl mb-3 block">2️⃣</span>
+              <h4 className="text-lg font-semibold text-foreground mb-1">We configure your assistants</h4>
+              <p className="text-muted-foreground">Pricing, services, and service area</p>
+            </div>
+            <div className="text-center">
+              <span className="text-3xl mb-3 block">3️⃣</span>
+              <h4 className="text-lg font-semibold text-foreground mb-1">You're live the same day</h4>
+              <p className="text-muted-foreground">Helpzz starts capturing enquiries</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
