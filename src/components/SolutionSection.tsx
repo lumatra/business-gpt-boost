@@ -41,7 +41,7 @@ const SolutionSection = () => {
     },
     {
       icon: MessageSquare,
-      title: "Social Media Manager",
+      title: "Social Media Post Assistant",
       description: "Creates post ideas and captions",
       example: "Helps you stay active on Instagram/Facebook without the hassle",
       benefit: "Posts that sound like you, not a robot",
