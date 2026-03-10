@@ -32,7 +32,7 @@ const SolutionSection = () => {
     {
       icon: Calculator,
       title: "Estimator & Lead Capture",
-      description: "Qualifies leads and takes job details",
+      description: "Captures job details and qualified leads",
       example: "Asks the right questions, captures contact info, books you in",
       benefit: "You show up knowing exactly what they need",
       gradient: "from-green-500/10 to-emerald-500/10",
@@ -41,7 +41,7 @@ const SolutionSection = () => {
     },
     {
       icon: MessageSquare,
-      title: "Social Media Manager",
+      title: "Social Media Post Assistant",
       description: "Creates post ideas and captions",
       example: "Helps you stay active on Instagram/Facebook without the hassle",
       benefit: "Posts that sound like you, not a robot",
@@ -51,7 +51,7 @@ const SolutionSection = () => {
     },
     {
       icon: AlertTriangle,
-      title: "Complaints Response Advisor",
+      title: "Complaint Response Assistant",
       description: "Helps you handle complaints professionally",
       example: "Suggests 3 response options when customers aren't happy",
       benefit: "Takes the emotion out of tricky situations",
@@ -91,6 +91,10 @@ const SolutionSection = () => {
             (They Never Sleep, Never Take Breaks, and Cost Less Than a Meal Out.)
           </p>
         </div>
+
+        <p className="text-center text-lg font-semibold text-card-foreground mb-8">
+          Helpzz includes assistants trained on your business:
+        </p>
 
         {/* Core Assistants */}
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
