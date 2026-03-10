@@ -92,6 +92,10 @@ const SolutionSection = () => {
           </p>
         </div>
 
+        <p className="text-center text-lg font-semibold text-card-foreground mb-8">
+          Helpzz includes assistants trained on your business:
+        </p>
+
         {/* Core Assistants */}
         <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 mb-12">
           {assistants.map((assistant, index) => (
