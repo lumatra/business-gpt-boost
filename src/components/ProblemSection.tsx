@@ -28,7 +28,7 @@ const ProblemSection = () => {
               <Phone className="w-6 h-6 text-destructive" />
             </div>
             <h3 className="font-semibold text-card-foreground mb-2">Someone calls at 8pm</h3>
-            <p className="text-muted-foreground">Straight to voicemail</p>
+            <p className="text-muted-foreground">They ring someone else</p>
           </div>
           
           <div className="bg-card p-6 rounded-xl shadow-card border border-border">
