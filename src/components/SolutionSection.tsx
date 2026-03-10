@@ -144,8 +144,8 @@ const SolutionSection = () => {
               <div className="w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">3</div>
               <h3 className="text-xl font-bold text-card-foreground mb-3">You Get the Leads</h3>
               <p className="text-muted-foreground mb-2">Captures their details automatically</p>
-              <p className="text-muted-foreground mb-2">Sends you a summary via SMS/email</p>
-              <p className="text-sm font-semibold text-primary">→ You follow up when you're ready</p>
+              <p className="text-muted-foreground mb-2">Sent to you instantly by SMS or email</p>
+              <p className="text-sm font-semibold text-primary">→ You call back when you're ready</p>
             </div>
           </div>
 
