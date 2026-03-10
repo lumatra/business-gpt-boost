@@ -20,7 +20,7 @@ const ProblemSection = () => {
               <X className="w-6 h-6 text-destructive" />
             </div>
             <h3 className="font-semibold text-card-foreground mb-2">Customer texts while you're on a job</h3>
-            <p className="text-muted-foreground">You miss the lead</p>
+            <p className="text-muted-foreground">You never see the message</p>
           </div>
           
           <div className="bg-card p-6 rounded-xl shadow-card border border-border">
