@@ -51,7 +51,7 @@ const SolutionSection = () => {
     },
     {
       icon: AlertTriangle,
-      title: "Complaints Response Advisor",
+      title: "Complaint Response Assistant",
       description: "Helps you handle complaints professionally",
       example: "Suggests 3 response options when customers aren't happy",
       benefit: "Takes the emotion out of tricky situations",
