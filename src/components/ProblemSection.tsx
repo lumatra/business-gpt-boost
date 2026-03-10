@@ -49,7 +49,7 @@ const ProblemSection = () => {
         </div>
         
         <div className="text-center mt-12">
-          <p className="text-xl font-semibold text-foreground">Every missed inquiry is money left on the table.</p>
+          <p className="text-xl font-semibold text-foreground">Every missed enquiry is a job going to someone else.</p>
         </div>
       </div>
     </section>
