@@ -44,7 +44,7 @@ const ProblemSection = () => {
               <Clock className="w-6 h-6 text-destructive" />
             </div>
             <h3 className="font-semibold text-card-foreground mb-2">Same questions over and over</h3>
-            <p className="text-muted-foreground">Wasting your time</p>
+            <p className="text-muted-foreground">Evenings spent replying</p>
           </div>
         </div>
         
