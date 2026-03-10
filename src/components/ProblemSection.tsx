@@ -10,7 +10,7 @@ const ProblemSection = () => {
             You're Brilliant at Your Work.
           </h2>
           <p className="text-xl text-muted-foreground">
-            But You Can't Be in Two Places at Once.
+            But customers move on if you don't reply.
           </p>
         </div>
         
@@ -20,7 +20,7 @@ const ProblemSection = () => {
               <X className="w-6 h-6 text-destructive" />
             </div>
             <h3 className="font-semibold text-card-foreground mb-2">Customer texts while you're on a job</h3>
-            <p className="text-muted-foreground">You miss the lead</p>
+            <p className="text-muted-foreground">You never see the message</p>
           </div>
           
           <div className="bg-card p-6 rounded-xl shadow-card border border-border">
@@ -28,7 +28,7 @@ const ProblemSection = () => {
               <Phone className="w-6 h-6 text-destructive" />
             </div>
             <h3 className="font-semibold text-card-foreground mb-2">Someone calls at 8pm</h3>
-            <p className="text-muted-foreground">Straight to voicemail</p>
+            <p className="text-muted-foreground">They ring someone else</p>
           </div>
           
           <div className="bg-card p-6 rounded-xl shadow-card border border-border">
@@ -36,7 +36,7 @@ const ProblemSection = () => {
               <Calendar className="w-6 h-6 text-destructive" />
             </div>
             <h3 className="font-semibold text-card-foreground mb-2">Weekend inquiry</h3>
-            <p className="text-muted-foreground">Lost to competitor who replied first</p>
+            <p className="text-muted-foreground">Booked by the first person who replied</p>
           </div>
           
           <div className="bg-card p-6 rounded-xl shadow-card border border-border">
@@ -44,12 +44,12 @@ const ProblemSection = () => {
               <Clock className="w-6 h-6 text-destructive" />
             </div>
             <h3 className="font-semibold text-card-foreground mb-2">Same questions over and over</h3>
-            <p className="text-muted-foreground">Wasting your time</p>
+            <p className="text-muted-foreground">Evenings spent replying</p>
           </div>
         </div>
         
         <div className="text-center mt-12">
-          <p className="text-xl font-semibold text-foreground">Every missed inquiry is money left on the table.</p>
+          <p className="text-xl font-semibold text-foreground">Every missed enquiry is a job going to someone else.</p>
         </div>
       </div>
     </section>
