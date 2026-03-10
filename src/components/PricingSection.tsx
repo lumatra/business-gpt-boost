@@ -13,7 +13,7 @@ const PricingSection = () => {
             One Simple Plan. No Complications.
           </h2>
           <p className="text-xl text-muted-foreground">
-            Everything you need to let Helpzz handle customer messages and stay organised.
+            Everything you need for Helpzz to capture enquiries and handle customer messages.
           </p>
         </div>
 
