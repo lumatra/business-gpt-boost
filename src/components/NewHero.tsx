@@ -14,24 +14,24 @@ const NewHero = () => {
 
   return (
     <>
-    <section className="bg-gradient-hero pt-32 pb-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-gradient-hero min-h-screen flex items-center snap-start pt-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center bg-primary/10 rounded-full px-4 py-2 mb-6">
+            <div className="inline-flex items-center bg-primary/10 rounded-full px-4 py-2 mb-4">
               <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse mr-2"></span>
               <span className="text-sm font-medium text-foreground">Trusted by UK businesses</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
               Never Miss Another Customer.
             </h1>
-            <p className="mt-4 text-xl md:text-2xl text-muted-foreground">
+            <p className="mt-3 text-xl md:text-2xl text-muted-foreground">
               Your assistant handles inquiries 24/7 — while you're on the job.
             </p>
-            <p className="mt-4 text-lg text-muted-foreground">
+            <p className="mt-3 text-lg text-muted-foreground">
               One simple plan from <span className="font-bold text-primary">£14.99/month</span>.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 mt-6 justify-center lg:justify-start">
               <Button
                 size="lg"
                 onClick={() => scrollToSection("signup")}
@@ -48,39 +48,39 @@ const NewHero = () => {
                 See How It Works
               </Button>
             </div>
-            <p className="mt-6 text-sm text-muted-foreground">
+            <p className="mt-4 text-sm text-muted-foreground">
               ✓ Cancel anytime  ✓ Setup in 10 minutes
             </p>
             <button
               onClick={() => setVideoOpen(true)}
-              className="inline-flex items-center gap-2 mt-4 text-primary font-semibold hover:underline cursor-pointer bg-transparent border-none p-0"
+              className="inline-flex items-center gap-2 mt-3 text-primary font-semibold hover:underline cursor-pointer bg-transparent border-none p-0"
             >
               🎬 Watch Helpzz capture your customer while you're busy
             </button>
           </div>
           
           {/* Chat Preview */}
-          <div className="hidden lg:block mt-12 lg:mt-0">
-            <h3 className="text-lg font-semibold text-foreground mb-4">This is what happens when a customer messages your business.</h3>
-            <div className="bg-card/50 backdrop-blur-lg rounded-2xl p-6 shadow-elegant border border-border">
-              <div className="space-y-4">
-                 <div className="bg-muted rounded-lg p-4">
+          <div className="hidden lg:block mt-8 lg:mt-0">
+            <h3 className="text-lg font-semibold text-foreground mb-3">This is what happens when a customer messages your business.</h3>
+            <div className="bg-card/50 backdrop-blur-lg rounded-2xl p-5 shadow-elegant border border-border">
+              <div className="space-y-3">
+                 <div className="bg-muted rounded-lg p-3">
                    <p className="text-sm font-medium text-muted-foreground mb-1">Customer (10:37pm)</p>
                    <p className="text-foreground">"Do you work weekends?"</p>
                  </div>
-                 <div className="bg-primary rounded-lg p-4 ml-8">
+                 <div className="bg-primary rounded-lg p-3 ml-8">
                    <p className="text-sm font-medium text-primary-foreground/80 mb-1">Helpzz Assistant (10:37pm)</p>
                    <p className="text-primary-foreground">"Yes, I work Saturdays 9am-5pm. Sundays by exception for urgent jobs. What do you need help with?"</p>
                  </div>
-                 <div className="bg-muted rounded-lg p-4">
+                 <div className="bg-muted rounded-lg p-3">
                    <p className="text-sm font-medium text-muted-foreground mb-1">Customer</p>
                    <p className="text-foreground">Do you hang doors?</p>
                  </div>
-                 <div className="bg-primary rounded-lg p-4 ml-8">
+                 <div className="bg-primary rounded-lg p-3 ml-8">
                    <p className="text-sm font-medium text-primary-foreground/80 mb-1">Helpzz Assistant (10:39pm)</p>
                    <p className="text-primary-foreground">Yes — £60 per door and I cover Livingston. What's your postcode and phone number?</p>
                  </div>
-                 <div className="bg-muted rounded-lg p-4">
+                 <div className="bg-muted rounded-lg p-3">
                    <p className="text-sm font-medium text-muted-foreground mb-1">Customer</p>
                    <p className="text-foreground">EH54 6XX — 07700 900123</p>
                  </div>

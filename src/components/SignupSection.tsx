@@ -2,15 +2,8 @@ import React from "react";
 import { Button } from "./ui/button";
 
 const SignupSection = () => {
-  const scrollToPricing = () => {
-    const element = document.getElementById("pricing");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
-    <section id="signup" className="py-20 bg-gradient-hero">
+    <section id="signup" className="min-h-screen flex flex-col justify-center snap-start bg-gradient-hero">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-6">
           Stop Missing Customers Starting Today
