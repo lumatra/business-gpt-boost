@@ -47,6 +47,13 @@ const NewHero = () => {
             <p className="mt-6 text-sm text-muted-foreground">
               ✓ Cancel anytime  ✓ Setup in 10 minutes
             </p>
+            <a
+              href="#video"
+              onClick={(e) => { e.preventDefault(); document.getElementById("video")?.scrollIntoView({ behavior: "smooth" }); }}
+              className="inline-flex items-center gap-2 mt-4 text-primary font-semibold hover:underline"
+            >
+              🎬 Watch Helpzz capture your customer while you're busy
+            </a>
           </div>
           
           {/* Chat Preview */}
