@@ -3,9 +3,9 @@ import { X, Phone, Calendar, Clock } from "lucide-react";
 
 const ProblemSection = () => {
   return (
-    <section id="problem" className="py-20 bg-muted">
+    <section id="problem" className="min-h-screen flex flex-col justify-center snap-start bg-muted">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             You're Brilliant at Your Work.
           </h2>
@@ -48,7 +48,7 @@ const ProblemSection = () => {
           </div>
         </div>
         
-        <div className="text-center mt-12">
+        <div className="text-center mt-10">
           <p className="text-xl font-semibold text-foreground">Every missed enquiry is a job going to someone else.</p>
         </div>
       </div>

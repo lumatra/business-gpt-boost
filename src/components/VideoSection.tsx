@@ -3,9 +3,9 @@ import { Button } from "./ui/button";
 
 const VideoSection = () => {
   return (
-    <section id="video" className="py-24 bg-background">
+    <section id="video" className="min-h-screen flex flex-col justify-center snap-start bg-background">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
+        <div className="text-center mb-8">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             See Helpzz In Action
           </h2>
@@ -27,7 +27,7 @@ const VideoSection = () => {
           </video>
         </div>
 
-        <div className="text-center mt-10">
+        <div className="text-center mt-8">
           <a href="https://portal.helpzz.co.uk/signup?plan=pro" target="_blank" rel="noopener noreferrer">
             <Button
               size="lg"
