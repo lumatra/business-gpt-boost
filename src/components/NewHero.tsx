@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "./ui/button";
+import { Dialog, DialogContent } from "./ui/dialog";
 
 const NewHero = () => {
+  const [videoOpen, setVideoOpen] = useState(false);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -10,6 +13,7 @@ const NewHero = () => {
   };
 
   return (
+    <>
     <section className="bg-gradient-hero pt-32 pb-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
@@ -47,13 +51,12 @@ const NewHero = () => {
             <p className="mt-6 text-sm text-muted-foreground">
               ✓ Cancel anytime  ✓ Setup in 10 minutes
             </p>
-            <a
-              href="#video"
-              onClick={(e) => { e.preventDefault(); document.getElementById("video")?.scrollIntoView({ behavior: "smooth" }); }}
-              className="inline-flex items-center gap-2 mt-4 text-primary font-semibold hover:underline"
+            <button
+              onClick={() => setVideoOpen(true)}
+              className="inline-flex items-center gap-2 mt-4 text-primary font-semibold hover:underline cursor-pointer bg-transparent border-none p-0"
             >
               🎬 Watch Helpzz capture your customer while you're busy
-            </a>
+            </button>
           </div>
           
           {/* Chat Preview */}
@@ -87,7 +90,22 @@ const NewHero = () => {
         </div>
       </div>
     </section>
+
+    <Dialog open={videoOpen} onOpenChange={setVideoOpen}>
+      <DialogContent className="max-w-3xl p-0 overflow-hidden bg-foreground/95 border-none">
+        <video
+          controls
+          autoPlay
+          playsInline
+          className="w-full aspect-video"
+        >
+          <source src="/videos/promo.mp4" type="video/mp4" />
+        </video>
+      </DialogContent>
+    </Dialog>
+    </>
   );
+
 };
 
 export default NewHero;
