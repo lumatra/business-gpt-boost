@@ -3,6 +3,8 @@ import { Button } from "./ui/button";
 import { Dialog, DialogContent } from "./ui/dialog";
 
 const NewHero = () => {
+  const [videoOpen, setVideoOpen] = useState(false);
+
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -48,13 +50,12 @@ const NewHero = () => {
             <p className="mt-6 text-sm text-muted-foreground">
               ✓ Cancel anytime  ✓ Setup in 10 minutes
             </p>
-            <a
-              href="#video"
-              onClick={(e) => { e.preventDefault(); document.getElementById("video")?.scrollIntoView({ behavior: "smooth" }); }}
-              className="inline-flex items-center gap-2 mt-4 text-primary font-semibold hover:underline"
+            <button
+              onClick={() => setVideoOpen(true)}
+              className="inline-flex items-center gap-2 mt-4 text-primary font-semibold hover:underline cursor-pointer bg-transparent border-none p-0"
             >
               🎬 Watch Helpzz capture your customer while you're busy
-            </a>
+            </button>
           </div>
           
           {/* Chat Preview */}
