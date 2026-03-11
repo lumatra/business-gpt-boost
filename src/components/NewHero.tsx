@@ -89,7 +89,22 @@ const NewHero = () => {
         </div>
       </div>
     </section>
+
+    <Dialog open={videoOpen} onOpenChange={setVideoOpen}>
+      <DialogContent className="max-w-3xl p-0 overflow-hidden bg-foreground/95 border-none">
+        <video
+          controls
+          autoPlay
+          playsInline
+          className="w-full aspect-video"
+        >
+          <source src="/videos/promo.mp4" type="video/mp4" />
+        </video>
+      </DialogContent>
+    </Dialog>
+    </>
   );
+
 };
 
 export default NewHero;
