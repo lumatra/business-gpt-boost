@@ -22,7 +22,7 @@ const NewHero = () => {
               <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse mr-2"></span>
               <span className="text-sm font-medium text-foreground">Trusted by UK businesses</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+            <h1 className="text-5xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
               Never Miss Another Customer.
             </h1>
             <p className="mt-2 text-lg md:text-xl text-muted-foreground">
