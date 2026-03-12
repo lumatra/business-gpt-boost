@@ -14,7 +14,7 @@ const NewHero = () => {
 
   return (
     <>
-    <section className="bg-gradient-hero min-h-screen flex items-center snap-start pt-16">
+    <section className="bg-gradient-hero min-h-screen flex items-center snap-start pt-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
           <div className="text-center lg:text-left">
@@ -22,10 +22,10 @@ const NewHero = () => {
               <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse mr-2"></span>
               <span className="text-sm font-medium text-foreground">Trusted by UK businesses</span>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+            <h1 className="text-5xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
               Never Miss Another Customer.
             </h1>
-            <p className="mt-2 text-lg md:text-xl text-muted-foreground">
+            <p className="mt-3 text-lg md:text-xl text-muted-foreground">
               An AI assistant that replies to customer enquiries while you're on the job.
             </p>
             <p className="mt-2 text-lg text-muted-foreground">
