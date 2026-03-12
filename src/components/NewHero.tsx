@@ -48,15 +48,18 @@ const NewHero = () => {
                 See How It Works
               </Button>
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">
-              ✓ Cancel anytime  ✓ Setup in 10 minutes
-            </p>
             <button
               onClick={() => setVideoOpen(true)}
-              className="inline-flex items-center gap-2 mt-3 text-primary font-semibold hover:underline cursor-pointer bg-transparent border-none p-0"
+              className="inline-flex items-center gap-2 mt-3 text-primary font-semibold hover:underline cursor-pointer bg-transparent border-none p-0 text-sm"
             >
               🎬 Watch Helpzz capture your customer while you're busy
             </button>
+            <div className="flex flex-wrap gap-x-4 gap-y-1 mt-3 justify-center lg:justify-start text-xs text-muted-foreground">
+              <span>✓ Built for UK trades</span>
+              <span>✓ Works with SMS & WhatsApp</span>
+              <span>✓ Setup in 10 minutes</span>
+              <span>✓ Cancel anytime</span>
+            </div>
           </div>
           
           {/* Chat Preview */}
