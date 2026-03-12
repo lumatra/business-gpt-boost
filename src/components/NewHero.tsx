@@ -64,10 +64,10 @@ const NewHero = () => {
           
           {/* Chat Preview */}
           <div className="hidden lg:block mt-8 lg:mt-0">
-            <h3 className="text-lg font-semibold text-foreground mb-3">This is what happens when a customer messages your business.</h3>
-            <div className="bg-card/50 backdrop-blur-lg rounded-2xl p-5 shadow-elegant border border-border">
-              <div className="space-y-3">
-                 <div className="bg-muted rounded-lg p-3">
+            <h3 className="text-xl font-bold text-foreground mb-3">This is what happens when a customer messages your business.</h3>
+            <div className="bg-card/50 backdrop-blur-lg rounded-2xl p-4 shadow-elegant border border-border">
+              <div className="space-y-2">
+                 <div className="bg-muted rounded-lg p-2.5">
                    <p className="text-sm font-medium text-muted-foreground mb-1">Customer (10:37pm)</p>
                    <p className="text-foreground">"Do you work weekends?"</p>
                  </div>
