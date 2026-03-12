@@ -25,13 +25,13 @@ const NewHero = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
               Never Miss Another Customer.
             </h1>
-            <p className="mt-3 text-xl md:text-2xl text-muted-foreground">
-              Your assistant handles inquiries 24/7 — while you're on the job.
+            <p className="mt-2 text-lg md:text-xl text-muted-foreground">
+              An AI assistant that replies to customer enquiries while you're on the job.
             </p>
-            <p className="mt-3 text-lg text-muted-foreground">
+            <p className="mt-2 text-lg text-muted-foreground">
               One simple plan from <span className="font-bold text-primary">£14.99/month</span>.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 mt-6 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-3 mt-4 justify-center lg:justify-start">
               <Button
                 size="lg"
                 onClick={() => scrollToSection("signup")}
