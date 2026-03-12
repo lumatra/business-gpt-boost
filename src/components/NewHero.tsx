@@ -25,7 +25,7 @@ const NewHero = () => {
             <h1 className="text-5xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
               Never Miss Another Customer.
             </h1>
-            <p className="mt-2 text-lg md:text-xl text-muted-foreground">
+            <p className="mt-3 text-lg md:text-xl text-muted-foreground">
               An AI assistant that replies to customer enquiries while you're on the job.
             </p>
             <p className="mt-2 text-lg text-muted-foreground">

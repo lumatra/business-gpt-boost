@@ -29,7 +29,7 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo - Very Large */}
           <Link to="/" className="flex items-center">
-            <img src={helpzzLogo} alt="Helpzz - AI Business Solutions" className="h-20 w-auto md:h-16 lg:h-14" />
+            <img src={helpzzLogo} alt="Helpzz - AI Business Solutions" className="h-12 w-auto md:h-10 lg:h-10" />
           </Link>
 
           {/* Desktop Navigation */}
