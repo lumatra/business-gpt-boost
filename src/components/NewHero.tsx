@@ -60,6 +60,9 @@ const NewHero = () => {
               <span>✓ Setup in 10 minutes</span>
               <span>✓ Cancel anytime</span>
             </div>
+            <p className="mt-4 text-base text-muted-foreground max-w-md">
+              <strong>Helpzz</strong> is an AI assistant designed for plumbers, electricians and local trades. It automatically replies to customer enquiries, answers common questions and captures job requests while you're busy working.
+            </p>
           </div>
           
           {/* Chat Preview */}
