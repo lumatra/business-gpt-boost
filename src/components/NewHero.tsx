@@ -83,12 +83,15 @@ const NewHero = () => {
                    <p className="text-sm font-medium text-primary-foreground/80 mb-1">Helpzz Assistant (10:39pm)</p>
                    <p className="text-primary-foreground">Yes — £60 per door and I cover Livingston. What's your postcode and phone number?</p>
                  </div>
-                 <div className="bg-muted rounded-lg p-2.5">
-                   <p className="text-sm font-medium text-muted-foreground mb-1">Customer</p>
-                   <p className="text-foreground">EH54 6XX — 07700 900123</p>
-                 </div>
-               </div>
-            </div>
+                  <div className="bg-muted rounded-lg p-2.5">
+                    <p className="text-sm font-medium text-muted-foreground mb-1">Customer</p>
+                    <p className="text-foreground">EH54 6XX — 07700 900123</p>
+                  </div>
+                </div>
+                <p className="mt-3 text-sm text-muted-foreground text-center">
+                  Your customers get replies like this instantly — even when you're busy on a job.
+                </p>
+              </div>
           </div>
         </div>
       </div>
