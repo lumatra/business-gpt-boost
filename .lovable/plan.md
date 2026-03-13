@@ -1,20 +1,12 @@
 
 
-# Make Helpzz Description Section Stand Out
+## Update All Email Addresses to info@helpzz.co.uk
 
-## Current State
-The Helpzz description paragraph (lines 63-65) is just plain text on the page, making it blend in with the rest of the content.
+Two files need changes:
 
-## Plan
-Wrap the description in a styled container with a light background tint and subtle styling to make it more visible and distinct from the surrounding content.
+1. **src/components/SignupSection.tsx** (line 32) -- Change `helpzz@lumatra.net` (both the mailto link and display text) to `info@helpzz.co.uk`
 
-### Changes to `src/components/NewHero.tsx`
-- Wrap the Helpzz description paragraph in a `div` with:
-  - `bg-muted/50` — light background tint
-  - `rounded-lg` — soft rounded corners
-  - `p-4` — comfortable padding
-  - `border border-border/50` — subtle border
-  - `mt-4 max-w-md` — keep spacing and width constraints
+2. **supabase/functions/send-contact-email/index.ts** (line 34) -- Change the recipient `helpzz@lumatra.net` to `info@helpzz.co.uk`
 
-This creates a subtle "card" effect that draws attention without being overwhelming.
+The ContactSection.tsx already uses `info@helpzz.co.uk`, so no change needed there. The signup email function sends to `signup@helpzz.co.uk` which is a separate address and will remain unchanged.
 

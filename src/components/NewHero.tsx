@@ -60,9 +60,11 @@ const NewHero = () => {
               <span>✓ Setup in 10 minutes</span>
               <span>✓ Cancel anytime</span>
             </div>
-            <p className="mt-4 text-base text-muted-foreground max-w-md">
-              <strong>Helpzz</strong> is an AI assistant designed for plumbers, electricians and local trades. It automatically replies to customer enquiries, answers common questions and captures job requests while you're busy working.
-            </p>
+            <div className="mt-4 max-w-md bg-muted/50 border border-border/50 rounded-lg p-4">
+              <p className="text-base text-muted-foreground">
+                <strong className="text-foreground">Helpzz</strong> is an AI assistant designed for plumbers, electricians and local trades. It automatically replies to customer enquiries, answers common questions and captures job requests while you're busy working.
+              </p>
+            </div>
           </div>
           
           {/* Chat Preview */}
