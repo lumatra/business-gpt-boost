@@ -28,15 +28,6 @@ const NewHero = () => {
             <p className="mt-3 text-lg md:text-xl text-muted-foreground">
               An AI assistant that replies to customer enquiries 24/7 while you're on the job.
             </p>
-            <p className="mt-3 text-lg text-muted-foreground">
-              <strong>Helpzz</strong> is an AI assistant designed for plumbers, electricians and local trades.
-            </p>
-            <p className="text-lg text-muted-foreground">
-              It automatically replies to customer enquiries, answers common questions and
-            </p>
-            <p className="text-lg text-muted-foreground">
-              captures job requests while you're busy working.
-            </p>
             <p className="mt-2 text-lg text-muted-foreground">
               One simple plan from <span className="font-bold text-primary">£14.99/month</span>.
             </p>
@@ -69,6 +60,9 @@ const NewHero = () => {
               <span>✓ Setup in 10 minutes</span>
               <span>✓ Cancel anytime</span>
             </div>
+            <p className="mt-4 text-base text-muted-foreground max-w-md">
+              <strong>Helpzz</strong> is an AI assistant designed for plumbers, electricians and local trades. It automatically replies to customer enquiries, answers common questions and captures job requests while you're busy working.
+            </p>
           </div>
           
           {/* Chat Preview */}
