@@ -76,6 +76,7 @@ const NewHero = () => {
                   Your customers get replies like this instantly — even when you're busy on a job.
                 </p>
               </div>
+              <p className="mt-3 text-sm font-medium text-muted-foreground text-center">No app. No signup. Just text it.</p>
           </div>
         </div>
       </div>
