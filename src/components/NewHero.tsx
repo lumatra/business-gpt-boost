@@ -28,14 +28,14 @@ const NewHero = () => {
               <span className="text-primary">That's £600 gone.</span>
             </h1>
             <p className="mt-5 text-lg md:text-xl text-muted-foreground">
-              Helpzz replies to your customers instantly — even when you're busy on the job.
+              Most trades lose jobs simply by replying too late.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 mt-6 justify-center lg:justify-start">
               <div className="border-2 border-primary bg-primary/10 rounded-xl px-6 py-5 text-center sm:text-left shadow-lg shadow-primary/20">
-                <p className="text-xl font-bold text-foreground">📱 Try it now</p>
-                <p className="text-sm text-muted-foreground mt-2">Text: <span className="text-3xl font-bold text-primary">07401 271927</span></p>
+                <p className="text-xl font-bold text-foreground">📱 Try it now — takes 10 seconds</p>
+                <p className="text-sm text-muted-foreground mt-2">Text: <span className="text-4xl font-bold text-primary">07401 271927</span></p>
                 <p className="text-sm text-muted-foreground mt-2">Ask: <span className="font-semibold text-foreground">"How much for a call out?"</span></p>
-                <p className="text-sm text-muted-foreground">Watch it reply instantly.</p>
+                <p className="text-sm text-muted-foreground mt-3">Watch it reply instantly.</p>
               </div>
             </div>
             <button
