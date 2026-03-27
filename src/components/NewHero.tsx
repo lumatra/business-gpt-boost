@@ -41,14 +41,12 @@ const NewHero = () => {
               >
                 Try it now — see it reply instantly
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={() => scrollToSection("how-it-works")}
-                className="px-8 py-6 text-lg border-2"
-              >
-                See How It Works
-              </Button>
+              <div className="bg-muted/60 border border-border rounded-xl px-6 py-4 text-center sm:text-left">
+                <p className="text-lg font-bold text-foreground">📱 Try it yourself now</p>
+                <p className="text-2xl font-bold text-primary mt-1">07401 271927</p>
+                <p className="text-sm text-muted-foreground mt-1">Ask: <span className="font-semibold text-foreground">"How much for a call out?"</span></p>
+                <p className="text-sm text-muted-foreground">Watch it reply instantly.</p>
+              </div>
             </div>
             <button
               onClick={() => setVideoOpen(true)}
