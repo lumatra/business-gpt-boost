@@ -28,7 +28,7 @@ const NewHero = () => {
               <span className="text-primary">That's £600 gone.</span>
             </h1>
             <p className="mt-5 text-lg md:text-xl text-muted-foreground">
-              Most trades lose jobs simply by replying too late.
+              Helpzz replies to your customers instantly — most trades lose jobs simply by replying too late.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 mt-6 justify-center lg:justify-start">
               <div className="border-2 border-primary bg-primary/10 rounded-xl px-6 py-5 text-center sm:text-left shadow-lg shadow-primary/20">
