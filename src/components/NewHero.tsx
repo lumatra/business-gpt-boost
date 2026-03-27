@@ -39,7 +39,7 @@ const NewHero = () => {
                 onClick={() => scrollToSection("signup")}
                 className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 shadow-elegant"
               >
-                Start 30-Day Free Pilot
+                Try it now — see it reply instantly
               </Button>
               <Button
                 size="lg"
