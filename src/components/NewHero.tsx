@@ -23,10 +23,12 @@ const NewHero = () => {
               <span className="text-sm font-medium text-foreground">Trusted by UK businesses</span>
             </div>
             <h1 className="text-5xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              Never Miss Another Customer.
+              Missed 3 jobs today?
+              <br />
+              <span className="text-primary">That's £600 gone.</span>
             </h1>
             <p className="mt-3 text-lg md:text-xl text-muted-foreground">
-              An AI assistant that replies to customer enquiries 24/7 while you're on the job.
+              Helpzz replies to your customers instantly — even when you're busy on the job.
             </p>
             <p className="mt-2 text-lg text-muted-foreground">
               One simple plan from <span className="font-bold text-primary">£14.99/month</span>.
@@ -37,16 +39,14 @@ const NewHero = () => {
                 onClick={() => scrollToSection("signup")}
                 className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 shadow-elegant"
               >
-                Start 30-Day Free Pilot
+                Try it now — see it reply instantly
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={() => scrollToSection("how-it-works")}
-                className="px-8 py-6 text-lg border-2"
-              >
-                See How It Works
-              </Button>
+              <div className="bg-muted/60 border border-border rounded-xl px-6 py-4 text-center sm:text-left">
+                <p className="text-lg font-bold text-foreground">📱 Try it yourself now</p>
+                <p className="text-2xl font-bold text-primary mt-1">07401 271927</p>
+                <p className="text-sm text-muted-foreground mt-1">Ask: <span className="font-semibold text-foreground">"How much for a call out?"</span></p>
+                <p className="text-sm text-muted-foreground">Watch it reply instantly.</p>
+              </div>
             </div>
             <button
               onClick={() => setVideoOpen(true)}
