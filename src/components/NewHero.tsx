@@ -23,10 +23,12 @@ const NewHero = () => {
               <span className="text-sm font-medium text-foreground">Trusted by UK businesses</span>
             </div>
             <h1 className="text-5xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              Never Miss Another Customer.
+              Missed 3 jobs today?
+              <br />
+              <span className="text-primary">That's £600 gone.</span>
             </h1>
             <p className="mt-3 text-lg md:text-xl text-muted-foreground">
-              An AI assistant that replies to customer enquiries 24/7 while you're on the job.
+              Helpzz replies to your customers instantly — even when you're busy on the job.
             </p>
             <p className="mt-2 text-lg text-muted-foreground">
               One simple plan from <span className="font-bold text-primary">£14.99/month</span>.
