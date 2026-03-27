@@ -34,13 +34,6 @@ const NewHero = () => {
               One simple plan from <span className="font-bold text-primary">£14.99/month</span>.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 mt-4 justify-center lg:justify-start">
-              <Button
-                size="lg"
-                onClick={() => scrollToSection("signup")}
-                className="px-8 py-6 text-lg bg-primary hover:bg-primary/90 shadow-elegant"
-              >
-                Try it now — see it reply instantly
-              </Button>
               <div className="bg-muted/60 border border-border rounded-xl px-6 py-4 text-center sm:text-left">
                 <p className="text-lg font-bold text-foreground">📱 Try it yourself now</p>
                 <p className="text-2xl font-bold text-primary mt-1">07401 271927</p>
