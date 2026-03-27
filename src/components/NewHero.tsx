@@ -30,14 +30,11 @@ const NewHero = () => {
             <p className="mt-3 text-lg md:text-xl text-muted-foreground">
               Helpzz replies to your customers instantly — even when you're busy on the job.
             </p>
-            <p className="mt-2 text-lg text-muted-foreground">
-              One simple plan from <span className="font-bold text-primary">£14.99/month</span>.
-            </p>
             <div className="flex flex-col sm:flex-row gap-3 mt-4 justify-center lg:justify-start">
               <div className="bg-muted/60 border border-border rounded-xl px-6 py-4 text-center sm:text-left">
-                <p className="text-lg font-bold text-foreground">📱 Try it yourself now</p>
-                <p className="text-2xl font-bold text-primary mt-1">07401 271927</p>
-                <p className="text-sm text-muted-foreground mt-1">Ask: <span className="font-semibold text-foreground">"How much for a call out?"</span></p>
+                <p className="text-lg font-bold text-foreground">📱 Try it now</p>
+                <p className="text-sm text-muted-foreground mt-1">Text: <span className="text-2xl font-bold text-primary">07401 271927</span></p>
+                <p className="text-sm text-muted-foreground mt-2">Ask: <span className="font-semibold text-foreground">"How much for a call out?"</span></p>
                 <p className="text-sm text-muted-foreground">Watch it reply instantly.</p>
               </div>
             </div>
@@ -53,7 +50,10 @@ const NewHero = () => {
               <span>✓ Setup in 10 minutes</span>
               <span>✓ Cancel anytime</span>
             </div>
-            <div className="mt-4 max-w-md bg-muted/50 border border-border/50 rounded-lg p-4">
+            <p className="mt-4 text-lg text-muted-foreground">
+              One simple plan from <span className="font-bold text-primary">£14.99/month</span>.
+            </p>
+            <div className="mt-2 max-w-md bg-muted/50 border border-border/50 rounded-lg p-4">
               <p className="text-base text-muted-foreground">
                 <strong className="text-foreground">Helpzz</strong> is an AI assistant designed for plumbers, electricians and local trades. It automatically replies to customer enquiries, answers common questions and captures job requests while you're busy working.
               </p>
