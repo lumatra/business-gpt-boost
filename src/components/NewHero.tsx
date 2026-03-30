@@ -46,6 +46,7 @@ const NewHero = () => {
                 <p className="text-sm text-muted-foreground mt-2">Ask: <span className="font-semibold text-foreground">"How much for a call out?"</span></p>
                 <p className="text-sm text-muted-foreground mt-3">Watch it reply instantly.</p>
               </a>
+              <p className="text-xs text-muted-foreground mt-2 text-center sm:text-left">Opens your messages — just press send</p>
             </div>
             <button
               onClick={() => setVideoOpen(true)}
