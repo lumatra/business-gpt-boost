@@ -1,24 +1,22 @@
 
 
-# Boost Hero Engagement — Clean, Practical Approach
+# Make CTA Box Tappable with SMS Link + Analytics Tracking
 
-## Problem
-Visitors leave after 5 seconds. The "Try it now" phone number box doesn't stand out enough and there's too much content competing for attention above the fold.
+## What changes
 
-## Plan
+### `src/components/NewHero.tsx`
 
-### 1. Increase headline spacing (`src/components/NewHero.tsx`)
-- Increase gaps between headline, subtitle, and CTA (`mt-3` → `mt-5`/`mt-6`) so the eye flows naturally
+1. **Wrap the entire CTA box in an `<a>` tag on mobile** — the `<div>` with the border/shadow becomes a clickable link:
+   - `href="sms:07401271927?body=How%20much%20for%20a%20call%20out%3F"` (URL-encoded body)
+   - Styled with `text-decoration: none; color: inherit;` so it doesn't look like a blue link
+   - On desktop (lg+), the link still works but the box isn't visually different
 
-### 2. Make the "Try it now" box more prominent (`src/components/NewHero.tsx`)
-- Stronger border: `border-2 border-primary`
-- Tinted background: `bg-primary/10`
-- Larger shadow: `shadow-lg shadow-primary/20`
-- Increase phone number size
-- No animations — keep it clean and solid
+2. **Phone number also individually linked** — the `07401 271927` text gets wrapped in the same `sms:` link with matching invisible styling, so desktop users can click just the number too.
 
-### 3. Simplify above-the-fold content (`src/components/NewHero.tsx`)
-- Remove the pricing line and the description card ("Helpzz is an AI assistant...") from the hero section — move them below the fold or remove entirely
-- Remove or shrink the trust signals row — these matter after interest, not before
-- Hero becomes: **Headline → Subtitle → CTA Box → Video link**. Nothing else competing in the first 5 seconds.
+3. **GA event tracking** — add an `onClick` handler that fires `gtag('event', 'sms_click')` when the box/number is tapped. This will show up in Google Analytics under Events as `sms_click`.
+
+### Technical details
+- Use `<a>` tag wrapping the CTA `<div>`, with classes `no-underline text-inherit block`
+- The `onClick` handler calls `window.gtag('event', 'sms_click')` with a type guard check
+- URL-encoded SMS body ensures cross-device compatibility (spaces as `%20`, `?` as `%3F`)
 
