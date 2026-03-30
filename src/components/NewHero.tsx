@@ -33,9 +33,16 @@ const NewHero = () => {
             <div className="flex flex-col sm:flex-row gap-3 mt-6 justify-center lg:justify-start">
               <a
                 href="sms:07401271927?body=How%20much%20for%20a%20call%20out%3F"
-                onClick={() => {
+                onClick={(e) => {
                   if (typeof (window as any).gtag === "function") {
-                    (window as any).gtag("event", "sms_click");
+                    e.preventDefault();
+                    (window as any).gtag("event", "sms_click", {
+                      event_category: "engagement",
+                      event_label: "cta_sms_click",
+                    });
+                    setTimeout(() => {
+                      window.location.href = "sms:07401271927?body=How%20much%20for%20a%20call%20out%3F";
+                    }, 150);
                   }
                 }}
                 className="block no-underline text-inherit border-2 border-primary bg-primary/10 rounded-xl px-6 py-5 text-center sm:text-left shadow-lg shadow-primary/20 hover:bg-primary/15 transition-colors"
