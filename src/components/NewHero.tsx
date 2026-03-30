@@ -31,12 +31,21 @@ const NewHero = () => {
               Helpzz replies to your customers instantly — most trades lose jobs simply by replying too late.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 mt-6 justify-center lg:justify-start">
-              <div className="border-2 border-primary bg-primary/10 rounded-xl px-6 py-5 text-center sm:text-left shadow-lg shadow-primary/20">
+              <a
+                href="sms:07401271927?body=How%20much%20for%20a%20call%20out%3F"
+                onClick={() => {
+                  if (typeof (window as any).gtag === "function") {
+                    (window as any).gtag("event", "sms_click");
+                  }
+                }}
+                className="block no-underline text-inherit border-2 border-primary bg-primary/10 rounded-xl px-6 py-5 text-center sm:text-left shadow-lg shadow-primary/20 hover:bg-primary/15 transition-colors"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
                 <p className="text-xl font-bold text-foreground">📱 Try it now — takes 10 seconds</p>
                 <p className="text-sm text-muted-foreground mt-2">Text: <span className="text-4xl font-bold text-primary">07401 271927</span></p>
                 <p className="text-sm text-muted-foreground mt-2">Ask: <span className="font-semibold text-foreground">"How much for a call out?"</span></p>
                 <p className="text-sm text-muted-foreground mt-3">Watch it reply instantly.</p>
-              </div>
+              </a>
             </div>
             <button
               onClick={() => setVideoOpen(true)}
