@@ -6,7 +6,16 @@ import { toast } from "sonner";
 
 const NewHero = () => {
   const [videoOpen, setVideoOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
 
+  const copyNumber = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigator.clipboard.writeText("07401271927");
+    setCopied(true);
+    toast("Number copied!");
+    setTimeout(() => setCopied(false), 2000);
+  };
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
