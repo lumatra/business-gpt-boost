@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Button } from "./ui/button";
 import { Dialog, DialogContent } from "./ui/dialog";
+import { Copy, Check } from "lucide-react";
+import { toast } from "sonner";
 
 const NewHero = () => {
   const [videoOpen, setVideoOpen] = useState(false);
