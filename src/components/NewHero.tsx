@@ -59,10 +59,21 @@ const NewHero = () => {
                 className="block no-underline text-inherit border-2 border-primary bg-primary/10 rounded-xl px-6 py-5 text-center sm:text-left shadow-lg shadow-primary/20 hover:bg-primary/15 transition-colors"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                <p className="text-xl font-bold text-foreground">📱 Try it now — takes 10 seconds</p>
-                <p className="text-sm text-muted-foreground mt-2">Text: <span className="text-4xl font-bold text-primary">07401 271927</span></p>
-                <p className="text-sm text-muted-foreground mt-2">Ask: <span className="font-semibold text-foreground">"How much for a call out?"</span></p>
-                <p className="text-sm text-muted-foreground mt-3">Watch it reply instantly.</p>
+                <p className="text-lg font-bold text-foreground">📱 Try it now — takes 10 seconds</p>
+                <div className="flex items-center gap-2 mt-3 justify-center sm:justify-start flex-wrap">
+                  <span className="text-sm text-muted-foreground">Text:</span>
+                  <span className="text-5xl md:text-6xl font-bold text-primary leading-none">07401 271927</span>
+                  <button
+                    onClick={copyNumber}
+                    className="hidden lg:inline-flex items-center gap-1.5 bg-primary/20 hover:bg-primary/30 text-primary rounded-lg px-3 py-1.5 text-sm font-medium transition-colors self-center"
+                    title="Copy number"
+                  >
+                    {copied ? <Check size={16} /> : <Copy size={16} />}
+                    {copied ? "Copied!" : "Copy"}
+                  </button>
+                </div>
+                <p className="text-sm text-muted-foreground mt-3">Ask: <span className="font-semibold text-foreground">"How much for a call out?"</span></p>
+                <p className="text-sm text-muted-foreground mt-2">Watch it reply instantly.</p>
               </a>
               <p className="text-xs text-muted-foreground mt-2 text-center sm:text-left">Opens your messages — just press send</p>
             </div>
