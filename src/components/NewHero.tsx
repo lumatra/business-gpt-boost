@@ -59,8 +59,6 @@ const NewHero = () => {
                 <p className="text-6xl md:text-7xl font-extrabold text-primary leading-none mt-4">07401 271927</p>
                 <p className="text-base text-muted-foreground mt-4">Tap → message opens → just press send</p>
                 <p className="text-sm font-semibold text-foreground mt-3">No signup. No app. Just try it.</p>
-                <p className="text-sm font-semibold text-primary mt-2">⚡ Replies in seconds</p>
-                <p className="text-base text-primary mt-3 animate-bounce">⬇️ Tap here to try it</p>
               </a>
               <button
                 onClick={copyNumber}
