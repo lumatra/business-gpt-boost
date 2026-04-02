@@ -1,28 +1,44 @@
 
 
-# Fix GA Click Tracking on SMS CTA
+# Brutally Obvious CTA — Final Tweaks
 
-## Problem
-The current `onClick` fires `gtag` but the browser immediately navigates to the `sms:` link, so the GA beacon likely never completes.
+## Summary
+Apply all feedback: strip distractions, rewrite CTA copy for maximum urgency, make number the dominant visual element, add reassurance and urgency lines.
 
-## Change (`src/components/NewHero.tsx`, lines 36-40)
+## Changes to `src/components/NewHero.tsx`
 
-Replace the current `onClick` with one that prevents the default navigation, fires the GA event with category/label metadata, then redirects after a 150ms delay:
+### 1. Remove distractions from above the fold
+- Remove "Trusted by UK businesses" badge (lines 32-35)
+- Remove video button (lines 80-85) — video dialog stays, trigger moves below fold or is accessed elsewhere
 
-```tsx
-onClick={(e) => {
-  if (typeof (window as any).gtag === "function") {
-    e.preventDefault();
-    (window as any).gtag("event", "sms_click", {
-      event_category: "engagement",
-      event_label: "cta_sms_click",
-    });
-    setTimeout(() => {
-      window.location.href = "sms:07401271927?body=How%20much%20for%20a%20call%20out%3F";
-    }, 150);
-  }
-}}
+### 2. Rewrite CTA box content (lines 62-76)
+New structure inside the `<a>` tag:
+
+```
+TEXT THIS NOW — SEE IT REPLY        ← uppercase, bold, tracking-wide
+07401 271927                        ← text-6xl md:text-7xl, biggest element on page
+Tap → message opens → just press send
+No signup. No app. Just try it.
+⚡ Replies in seconds
+⬇️ Tap here to try it
 ```
 
-Single file, single edit. GA will now reliably capture the event before the SMS app opens.
+### 3. Make phone number visually dominant
+- Bump to `text-6xl md:text-7xl font-extrabold text-primary` — largest element on the entire page
+- Give it its own line, centered on mobile
+- Remove the "Text:" prefix label — the number speaks for itself
+
+### 4. Move copy button outside the `<a>` tag
+- Prevents any click interception on the SMS link
+- Desktop only (`hidden lg:flex`), sits below the CTA box
+
+### 5. Consolidate helper text
+- Move "Opens your messages — just press send" (line 78) inside the box as the instruction line
+- Remove the separate `<p>` outside
+
+### What stays the same
+- Mobile tap opens SMS with pre-filled message — unchanged
+- GA tracking with 150ms delay — unchanged
+- Desktop chat preview (right column) — unchanged
+- Headline and subheadline — unchanged
 
