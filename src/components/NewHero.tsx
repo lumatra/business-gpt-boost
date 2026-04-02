@@ -29,10 +29,6 @@ const NewHero = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center bg-primary/10 rounded-full px-4 py-2 mb-3">
-              <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse mr-2"></span>
-              <span className="text-sm font-medium text-foreground">Trusted by UK businesses</span>
-            </div>
             <h1 className="text-5xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
               Missed 3 jobs today?
               <br />
@@ -41,7 +37,7 @@ const NewHero = () => {
             <p className="mt-5 text-lg md:text-xl text-muted-foreground">
               Helpzz replies to your customers instantly — most trades lose jobs simply by replying too late.
             </p>
-            <div className="flex flex-col sm:flex-row gap-3 mt-6 justify-center lg:justify-start">
+            <div className="flex flex-col gap-3 mt-6 justify-center lg:justify-start">
               <a
                 href="sms:07401271927?body=How%20much%20for%20a%20call%20out%3F"
                 onClick={(e) => {
@@ -56,33 +52,25 @@ const NewHero = () => {
                     }, 150);
                   }
                 }}
-                className="block no-underline text-inherit border-2 border-primary bg-primary/10 rounded-xl px-6 py-5 text-center sm:text-left shadow-lg shadow-primary/20 hover:bg-primary/15 transition-colors"
+                className="block no-underline text-inherit border-2 border-primary bg-primary/10 rounded-xl px-6 py-6 text-center shadow-lg shadow-primary/20 hover:bg-primary/15 transition-colors"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                <p className="text-lg font-bold text-foreground">📱 Try it now — takes 10 seconds</p>
-                <div className="flex items-center gap-2 mt-3 justify-center sm:justify-start flex-wrap">
-                  <span className="text-sm text-muted-foreground">Text:</span>
-                  <span className="text-5xl md:text-6xl font-bold text-primary leading-none">07401 271927</span>
-                  <button
-                    onClick={copyNumber}
-                    className="hidden lg:inline-flex items-center gap-1.5 bg-primary/20 hover:bg-primary/30 text-primary rounded-lg px-3 py-1.5 text-sm font-medium transition-colors self-center"
-                    title="Copy number"
-                  >
-                    {copied ? <Check size={16} /> : <Copy size={16} />}
-                    {copied ? "Copied!" : "Copy"}
-                  </button>
-                </div>
-                <p className="text-sm text-muted-foreground mt-3">Ask: <span className="font-semibold text-foreground">"How much for a call out?"</span></p>
-                <p className="text-sm text-muted-foreground mt-2">Watch it reply instantly.</p>
+                <p className="text-lg md:text-xl font-extrabold text-primary uppercase tracking-wide">TEXT THIS NOW — SEE IT REPLY</p>
+                <p className="text-6xl md:text-7xl font-extrabold text-primary leading-none mt-4">07401 271927</p>
+                <p className="text-base text-muted-foreground mt-4">Tap → message opens → just press send</p>
+                <p className="text-sm font-semibold text-foreground mt-3">No signup. No app. Just try it.</p>
+                <p className="text-sm font-semibold text-primary mt-2">⚡ Replies in seconds</p>
+                <p className="text-base text-primary mt-3 animate-bounce">⬇️ Tap here to try it</p>
               </a>
-              <p className="text-xs text-muted-foreground mt-2 text-center sm:text-left">Opens your messages — just press send</p>
+              <button
+                onClick={copyNumber}
+                className="hidden lg:inline-flex items-center justify-center gap-1.5 bg-primary/20 hover:bg-primary/30 text-primary rounded-lg px-4 py-2 text-sm font-medium transition-colors self-center"
+                title="Copy number"
+              >
+                {copied ? <Check size={16} /> : <Copy size={16} />}
+                {copied ? "Copied!" : "Copy number"}
+              </button>
             </div>
-            <button
-              onClick={() => setVideoOpen(true)}
-              className="inline-flex items-center gap-2 mt-4 text-primary font-semibold hover:underline cursor-pointer bg-transparent border-none p-0 text-sm"
-            >
-              🎬 Watch Helpzz capture your customer while you're busy
-            </button>
           </div>
           
           {/* Chat Preview */}
