@@ -1,44 +1,28 @@
 
 
-# Brutally Obvious CTA — Final Tweaks
+# Simplify CTA — Remove Extra Lines
 
-## Summary
-Apply all feedback: strip distractions, rewrite CTA copy for maximum urgency, make number the dominant visual element, add reassurance and urgency lines.
+## What changes
+In `src/components/NewHero.tsx`, remove the two extra lines from the CTA box (lines 62-63):
+- Remove `⚡ Replies in seconds`
+- Remove `⬇️ Tap here to try it` (the bouncing arrow)
 
-## Changes to `src/components/NewHero.tsx`
-
-### 1. Remove distractions from above the fold
-- Remove "Trusted by UK businesses" badge (lines 32-35)
-- Remove video button (lines 80-85) — video dialog stays, trigger moves below fold or is accessed elsewhere
-
-### 2. Rewrite CTA box content (lines 62-76)
-New structure inside the `<a>` tag:
-
+## Result — CTA becomes exactly:
 ```
-TEXT THIS NOW — SEE IT REPLY        ← uppercase, bold, tracking-wide
-07401 271927                        ← text-6xl md:text-7xl, biggest element on page
+TEXT THIS NOW — SEE IT REPLY
+07401 271927
 Tap → message opens → just press send
 No signup. No app. Just try it.
-⚡ Replies in seconds
-⬇️ Tap here to try it
 ```
 
-### 3. Make phone number visually dominant
-- Bump to `text-6xl md:text-7xl font-extrabold text-primary` — largest element on the entire page
-- Give it its own line, centered on mobile
-- Remove the "Text:" prefix label — the number speaks for itself
+Four lines. Zero confusion. Nothing else competing for attention inside the box.
 
-### 4. Move copy button outside the `<a>` tag
-- Prevents any click interception on the SMS link
-- Desktop only (`hidden lg:flex`), sits below the CTA box
+## What stays the same
+- Phone number size (`text-6xl md:text-7xl font-extrabold`)
+- SMS link with GA tracking
+- Desktop copy button (outside the box)
+- Chat preview on desktop
 
-### 5. Consolidate helper text
-- Move "Opens your messages — just press send" (line 78) inside the box as the instruction line
-- Remove the separate `<p>` outside
-
-### What stays the same
-- Mobile tap opens SMS with pre-filled message — unchanged
-- GA tracking with 150ms delay — unchanged
-- Desktop chat preview (right column) — unchanged
-- Headline and subheadline — unchanged
+## Technical detail
+Two lines deleted from the `<a>` tag in `src/components/NewHero.tsx` (lines 62-63).
 
